@@ -27,9 +27,3 @@ export default class BracketRunner extends Component {
 }//BracketRunner
 
 AppRegistry.registerComponent('BracketRunner', () => BracketRunner);
-
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
