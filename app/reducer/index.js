@@ -1,18 +1,8 @@
-import update from 'react-addons-update';
+import {combineReducers} from 'redux';
 
-var defaultState = {};
-
-module.exports = (state=defaultState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+import bracketReducer from './bracketReducer';
 
 
-// case 'ADD_TODO':
-//   return update(state, {
-//     todos: {
-//       $push: [action.newTodoText]
-//     }
-//   });
+module.exports = combineReducers({
+  bracket: bracketReducer
+});
