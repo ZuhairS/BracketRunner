@@ -7,8 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongodb": "^2.2.30",
@@ -21,7 +19,6 @@
     "react-redux": "^5.0.5",
     "react-tournament-bracket": "^0.1.0",
     "redux": "^3.7.2"
->>>>>>> 602716a9fcfea53e98402ddb20924c7a1138fb06
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
