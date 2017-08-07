@@ -46,7 +46,7 @@ const HomeStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     width: 400,
-    paddingTop: 59
+    paddingTop: 25
   },
   body: {
     flex: 9,
