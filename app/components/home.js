@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {
   AppRegistry,
   StyleSheet,
@@ -11,7 +12,7 @@ import {
 import TextComponent from './text';
 import Bracket from './bracket';
 
-const Main = React.createClass({
+const Home = React.createClass({
   getInitialState: function() {
     return {
       text: "BracketRunner!"
@@ -46,7 +47,7 @@ const HomeStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     width: 400,
-    paddingTop: 59
+    paddingTop: 25
   },
   body: {
     flex: 9,
@@ -59,4 +60,10 @@ const HomeStyles = StyleSheet.create({
   },
 });
 
-module.exports = Main;
+var mapStatetoProps = (bracket) => {
+  return {
+    matches: bracket.matches
+  }
+}
+
+module.exports = connect(mapStatetoProps)(Home);
