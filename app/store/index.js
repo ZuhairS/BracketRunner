@@ -4,7 +4,9 @@ import {createStore, compose, applyMiddleware} from 'redux';
 // import {persistStore, autoRehydrate} from 'redux-persist';
 import reducer from '../reducers';
 
-// var defaultState = {};
+var defaultState = {
+  bracket: "I'm the Bracket"
+};
 //
 // exports.configureStore = (initialState=defaultState) => {
 //   var store = createStore(reducer, initialState, compose(
@@ -14,6 +16,9 @@ import reducer from '../reducers';
 //   return store;
 // }
 
-export var configureStore = (initialState) => {
+
+
+
+export var configureStore = (initialState=defaultState) => {
   return createStore(reducer, initialState)
 }

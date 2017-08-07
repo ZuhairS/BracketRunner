@@ -62,7 +62,7 @@ const HomeStyles = StyleSheet.create({
 
 var mapStatetoProps = (state) => {
   return {
-    text: state.text
+    bracket: state.bracket
   }
 }
 
