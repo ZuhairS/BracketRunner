@@ -7,7 +7,7 @@ Additionally we found a disconnect between professional gammers and views.  It i
 
 
 ### Functionality & MVP
-- [ ] User Authentication
+- [ ] User Authentication Not Backend
 - [ ] CRUD bracket functionality and bracket logic
 - [ ] User Profiles
 - [ ] Explore and Search
