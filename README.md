@@ -17,7 +17,7 @@ Additionally we found a disconnect between professional gammers and views.  It i
 ### Wireframes
 * [View Wireframes][wireframes]
 
-[wireframes]: docs/wireframes
+[wireframes]: ./docs/wireframes
 
 
 ### Technologies & Technical Challenges
