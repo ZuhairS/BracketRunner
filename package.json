@@ -1,22 +1,28 @@
 {
-	"name": "BracketRunner",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
-	},
-	"dependencies": {
-		"react": "16.0.0-alpha.12",
-		"react-native": "0.47.1"
-	},
-	"devDependencies": {
-		"babel-jest": "20.0.3",
-		"babel-preset-react-native": "2.1.0",
-		"jest": "20.0.4",
-		"react-test-renderer": "16.0.0-alpha.12"
-	},
-	"jest": {
-		"preset": "react-native"
-	}
+  "name": "BracketRunner",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.5",
+    "morgan": "^1.8.2",
+    "react": "16.0.0-alpha.12",
+    "react-native": "0.47.1",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "2.1.0",
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.12"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
 }
