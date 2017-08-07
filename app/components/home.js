@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {
   AppRegistry,
   StyleSheet,
@@ -59,4 +60,10 @@ const HomeStyles = StyleSheet.create({
   },
 });
 
-module.exports = Main;
+var mapStatetoProps = (state) => {
+  return {
+    text: state.text
+  }
+}
+
+module.exports = connect(mapStatetoProps)(Main);
