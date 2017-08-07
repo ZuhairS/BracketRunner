@@ -10,7 +10,7 @@ Additionally we found a disconnect between professional gammers and views.  It i
 - [ ] User Authentication
 - [ ] CRUD bracket functionality and bracket logic
 - [ ] User Profiles
-- [ ] Explore and Search
+- [ ] Explore/Search
 
 
 ### Wireframes
