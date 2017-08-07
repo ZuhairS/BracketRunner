@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback
 } from 'react-native';
 
-const Main = React.createClass({
+const TextComponent = React.createClass({
   render: function() {
     return (
       <View style={MainStyles.container}>
@@ -25,4 +25,4 @@ const MainStyles = StyleSheet.create({
   }
 });
 
-module.exports = Main;
+module.exports = TextComponent;

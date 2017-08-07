@@ -12,7 +12,7 @@ import {
 import TextComponent from './text';
 import Bracket from './bracket';
 
-const Main = React.createClass({
+const Home = React.createClass({
   getInitialState: function() {
     return {
       text: "BracketRunner!"
@@ -60,10 +60,10 @@ const HomeStyles = StyleSheet.create({
   },
 });
 
-var mapStatetoProps = (state) => {
+var mapStatetoProps = (bracket) => {
   return {
-    bracket: state.bracket
+    matches: bracket.matches
   }
 }
 
-module.exports = connect(mapStatetoProps)(Main);
+module.exports = connect(mapStatetoProps)(Home);

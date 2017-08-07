@@ -12,7 +12,7 @@ import {configureStore} from './app/store';
 export default class BracketRunner extends Component {
   render() {
     return (
-        <Provider store={configureStore()}>
+      <Provider store={configureStore()}>
         <NavigatorIOS
           initialRoute={{
             component: Home,
@@ -21,7 +21,7 @@ export default class BracketRunner extends Component {
           }}
           style={{flex: 1}}
         />
-        </Provider>
+      </Provider>
     );
   }
 }//BracketRunner
