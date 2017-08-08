@@ -1,7 +1,7 @@
 //modules
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { receiveBracket } from '../actions/bracket_actions';
+import { receiveBracket } from '../../actions/bracket_actions';
 import {
   StyleSheet,
   Text,
@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 
 //components
-import Home from './home';
-import TextComponent from './text';
-import BracketMatches from './bracket_matches';
+import HomePage from '../home_page';
+import NavBar from '../nav_bar';
+import BracketMatchesIndex from './bracket_matches_index';
 
 export default class Bracket extends Component{
   constructor(props) {
@@ -30,8 +30,8 @@ export default class Bracket extends Component{
 
   navigateToHome() {
     this.props.navigator.pop({
-      component: Home,
-      title: 'Home',
+      component: HomePage,
+      title: 'HomePage',
       navigationBarHidden: true
     });
   }
@@ -39,7 +39,7 @@ export default class Bracket extends Component{
   render() {
     return (
       <View style={bracketStyles.container}>
-        <TextComponent text={this.state.text}/>
+        <NavBar text={this.state.text}/>
         {/*link to home button*/}
         <TouchableOpacity onPress={this.navigateToHome}>
           <Text>Home</Text>
@@ -50,7 +50,7 @@ export default class Bracket extends Component{
         </TouchableOpacity>
         <View style={bracketStyles.body}>
 
-        <BracketMatches/>
+        <BracketMatchesIndex/>
 
         </View>
       </View>
@@ -81,16 +81,10 @@ const bracketStyles = StyleSheet.create({
   }
 });
 
-const mapStatetoProps = ({bracket}) => {
-  return {
-    matches: bracket.matches
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     receiveBracket: () => dispatch(receiveBracket())
   }
 }
 
-module.exports = connect(mapStatetoProps, mapDispatchToProps)(Bracket);
+module.exports = connect(null, mapDispatchToProps)(Bracket);

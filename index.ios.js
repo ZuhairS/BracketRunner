@@ -6,8 +6,8 @@ import {AppRegistry,
   NavigatorIOS} from 'react-native';
 import {Provider} from 'react-redux';
 
-import Home from './app/components/home';
-import {configureStore} from './app/store';
+import HomePage from './app/components/home_page';
+import {configureStore} from './app/store/store';
 
 export default class BracketRunner extends Component {
   render() {
@@ -15,7 +15,7 @@ export default class BracketRunner extends Component {
       <Provider store={configureStore()}>
         <NavigatorIOS
           initialRoute={{
-            component: Home,
+            component: HomePage,
             title: 'Home',
             navigationBarHidden: true
           }}

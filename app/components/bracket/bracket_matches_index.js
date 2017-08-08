@@ -8,10 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-//components
-
-
-export default class BracketMatches extends Component{
+export default class BracketMatchesIndex extends Component{
   constructor(props) {
     super(props);
 
@@ -19,7 +16,7 @@ export default class BracketMatches extends Component{
 
   render() {
     const {matches} = this.props;
-    
+
     return (
       <View style={bracketStyles.bracketContainer}>
         <Text>Matches</Text>
@@ -81,7 +78,7 @@ export default class BracketMatches extends Component{
       </View>
     );
   }
-};
+}//BracketMatchesIndex
 
 const bracketStyles = StyleSheet.create({
   bracketContainer: {
@@ -96,7 +93,6 @@ const bracketStyles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: 'lightgrey'
   }
-
 });
 
 const mapStatetoProps = ({bracket}) => {
@@ -105,4 +101,4 @@ const mapStatetoProps = ({bracket}) => {
   }
 }
 
-module.exports = connect(mapStatetoProps)(BracketMatches);
+module.exports = connect(mapStatetoProps)(BracketMatchesIndex);

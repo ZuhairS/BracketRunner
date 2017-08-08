@@ -19,8 +19,7 @@ var defaultState = {
 module.exports = (state = defaultState, action) => {
   switch(action.type) {
 
-    case 'SET_BRACKET':
-      console.log(action);
+    case 'RECEIVE_BRACKET':
       return defaultState;
       // return Object.assign({}, state, {bracket: action.bracket});
 

@@ -17,12 +17,21 @@ export default class BracketForm extends Component {
     return (
       <View style={styles.container}>
         <Text>
-          Welcome to React Native
+          Please enter bracket information
+        </Text>
+        <Text>
+          Bracket name
+        </Text>
+        <Text>
+          Number of Entrants
+        </Text>
+        <Text>
+          more fields...
         </Text>
       </View>
     );
   }
-});
+}
 
 const styles = StyleSheet.create({
   container: {

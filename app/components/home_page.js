@@ -9,26 +9,28 @@ import {
   NavigatorIOS
 } from 'react-native';
 //imported components
-import TextComponent from './text';
-import Bracket from './bracket';
+import NavBar from './nav_bar';
+import BracketPage from './bracket/bracket_page';
 
-const Home = React.createClass({
-  getInitialState: function() {
-    return {
-      text: "BracketRunner!"
-    }
-  },
-  navigateToBracket: function() {
+export default class HomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.navigateToBracket = this.navigateToBracket.bind(this);
+  }
+
+  navigateToBracket() {
     this.props.navigator.push({
-      component: Bracket,
-      title: 'Bracket',
+      component: BracketPage,
+      title: 'BracketPage',
       navigationBarHidden: true
     });
-  },
+  }
+
   render() {
     return (
       <View style={HomeStyles.container}>
-        <TextComponent text={this.state.text}/>
+        <NavBar/>
         <View style={HomeStyles.body}>
           <TouchableOpacity onPress={this.navigateToBracket}>
             <Text>Go to Bracket </Text>
@@ -38,7 +40,7 @@ const Home = React.createClass({
       </View>
     );
   }
-});
+}
 
 const HomeStyles = StyleSheet.create({
   container: {
@@ -66,4 +68,4 @@ var mapStatetoProps = (bracket) => {
   }
 }
 
-module.exports = connect(mapStatetoProps)(Home);
+module.exports = connect(mapStatetoProps)(HomePage);
