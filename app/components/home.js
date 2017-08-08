@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   AppRegistry,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   NavigatorIOS
 } from 'react-native';
-
+//imported components
 import TextComponent from './text';
 import Bracket from './bracket';
 
@@ -31,7 +31,7 @@ const Home = React.createClass({
         <TextComponent text={this.state.text}/>
         <View style={HomeStyles.body}>
           <TouchableOpacity onPress={this.navigateToBracket}>
-            <Text>Go to Bracket</Text>
+            <Text>Go to Bracket </Text>
           </TouchableOpacity>
         </View>
 

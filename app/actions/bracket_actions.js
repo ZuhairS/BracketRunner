@@ -4,22 +4,20 @@ import Keychain from 'react-native-keychain';
 import {BRACKET_URL} from '../api';
 
 //constants
-
-
-
-//asyn actions
-exports.getBracket = function(dispatch) {
-  return axios.get(BRACKET_URL(bracket_id))
-  .then((response) => {
-    dispatch(setBracket(response.data.bracket));
-  })
-}
+export const RECEIVE_BRACKET = 'RECEIVE_BRACKET';
 
 
 //sync actions
-export const setBracket = () => {
-  console.log("we made it");
+export const receiveBracket = () => {
   return {
-    type: 'SET_BRACKET'
+    type: RECEIVE_BRACKET
   }
+}
+
+//asyn actions
+exports.fetchBracket = function(dispatch) {
+  return axios.get(BRACKET_URL(bracket_id))
+  .then((response) => {
+    dispatch(fetchBracket(response.data.bracket));
+  })
 }
