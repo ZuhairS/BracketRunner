@@ -1,9 +1,10 @@
 import axios from 'axios';
 import Keychain from 'react-native-keychain';
 
-import {SIGNIN_URL, SIGNUP_URL} from '../util/auth_api';
+import {SIGNIN_URL, SIGNUP_URL} from '../util/auth_api_util';
 // import * as APIUtil from '../util/auth_api_util';
-import {addAlert} from './alertsActions';
+// if we get this to work lets refactor it will this better style
+import {addAlert} from './alerts_actions';
 
 export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
