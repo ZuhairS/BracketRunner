@@ -11,12 +11,10 @@ const router = require('express').Router();
 // const BracketController = require('../controllers/bracket_controller');
 
 // Auth Routes
-// -----------------------------------------------------------------------------
 router.route('/signup').post(AuthenticationController.signup);
 router.route('/signin').post([requireLogin, AuthenticationController.signin]);
 
-// Bracket Routes
-// -----------------------------------------------------------------------------
+// // Bracket Routes
 // router.route('/brackets/:bracket_id').get(BracketController.show);
 
 module.exports = router;

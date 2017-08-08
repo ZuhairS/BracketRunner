@@ -15,7 +15,7 @@ var localStrategy = new LocalStrategy(localOptions, function(
   password,
   done
 ) {
-  // Verify this username and password
+  // Verify the username and password
   User.findOne({ email: email.toLowerCase() }, function(err, user) {
     if (err) {
       return done(err);
