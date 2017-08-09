@@ -20,7 +20,6 @@
     "passport-local": "^1.0.0",
     "react": "16.0.0-alpha.12",
     "react-native": "0.47.1",
-    "react-native-keychain": "^2.0.0-rc",
     "react-redux": "^5.0.5",
     "react-tournament-bracket": "^0.1.0",
     "redux": "^3.7.2",
