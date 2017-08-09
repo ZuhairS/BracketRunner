@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 //imported components
 import NavBar from './nav_bar/nav_bar';
-import BracketPage from './bracket/bracket_page';
+import BracketFeed from './bracket/bracket_feed';
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -22,8 +22,10 @@ export default class HomePage extends Component {
       <View style={styles.container}>
         <NavBar/>
         <View style={styles.body}>
-          <Text>Home Page</Text>
+          <Text>Home</Text>
+          <BracketFeed />
         </View>
+
       </View>
     );
   }
@@ -41,11 +43,10 @@ const styles = StyleSheet.create({
   body: {
     flex: 9,
     alignSelf: 'stretch',
-    backgroundColor: '#eee',
-    flexDirection: 'row',
+    backgroundColor: 'white',
+    flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    paddingTop: 50
+    alignItems: 'center'
   },
 });
 

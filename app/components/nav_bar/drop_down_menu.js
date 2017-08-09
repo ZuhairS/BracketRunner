@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 //components
-import BracketPage from '../bracket/bracket_page';
+import BracketFeed from '../bracket/bracket_feed';
 
 export class DropDownMenu extends Component {
   constructor(props) {
@@ -26,15 +26,6 @@ export class DropDownMenu extends Component {
 
     this._setModalVisible = this._setModalVisible.bind(this);
     this._toggleTransparent = this._toggleTransparent.bind(this);
-    this.navigateToBracket = this.navigateToBracket.bind(this);
-  }
-
-  navigateToBracket() {
-    this.props.navigator.push({
-      component: BracketPage,
-      title: 'BracketPage',
-      navigationBarHidden: true
-    });
   }
 
   _setModalVisible(visible) {
@@ -61,16 +52,13 @@ export class DropDownMenu extends Component {
     return (
       <View>
         <Modal
-          animationType='fade'
+          animationType='none'
           transparent={this.state.transparent}
           visible={this.state.modalVisible}
           onRequestClose={() => {this._setModalVisible(false)}}
           >
           <View style={[styles.container, modalBackgroundStyle]}>
             <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
-              <TouchableOpacity onPress={this.navigateToBracket}>
-                <Text>Click for Bracket</Text>
-              </TouchableOpacity>
               <TouchableOpacity
                 onPress={this._setModalVisible.bind(this, false)}
                 style={styles.modalButton}>
