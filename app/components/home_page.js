@@ -22,8 +22,7 @@ export default class HomePage extends Component {
       <View style={styles.container}>
         <NavBar/>
         <View style={styles.body}>
-          <Text>Home</Text>
-          <BracketFeed />
+          
         </View>
 
       </View>
@@ -45,8 +44,8 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     backgroundColor: 'white',
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
   },
 });
 

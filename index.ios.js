@@ -17,14 +17,6 @@ export default class BracketRunner extends Component {
   render() {
     return (
       <Provider store={configureStore()}>
-        {/* <NavigatorIOS
-          initialRoute={{
-            component: HomePage,
-            title: 'Home',
-            navigationBarHidden: true
-          }}
-          style={{flex: 1}}
-        /> */}
         <Tabs />
       </Provider>
     );

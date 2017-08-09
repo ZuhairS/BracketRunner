@@ -12,25 +12,24 @@ export default class BracketFeed extends Component{
   constructor(props) {
     super(props);
 
-    this.onViewBracket = this.onViewBracket.bind(this);
+    this.onLearnMore = this.onLearnMore.bind(this);
   }
 
-  onViewBracket = (bracket) => {
-    this.props.navigation.navigate('BracketDetail',)
+  onLearnMore() {
+    this.props.navigation.navigate('BracketDetail');
   }
 
   render() {
-    const {matches} = this.props;
-
+    const { bracket } = this.props;
     return (
       <View style={styles.bracketContainer}>
-        <TouchableOpacity style={styles.bracketButton}>
+        <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
           <Text>Bracket 1</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bracketButton}>
+        <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
           <Text>Bracket 2</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bracketButton}>
+        <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
           <Text>Bracket 3</Text>
         </TouchableOpacity>
       </View>
@@ -59,10 +58,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStatetoProps = ({bracket}) => {
-  return {
-    matches: bracket.matches
-  }
-}
-
-module.exports = connect(mapStatetoProps)(BracketFeed);
+module.exports = BracketFeed

@@ -20,28 +20,34 @@ export default class BracketDetail extends Component{
   constructor(props) {
     super(props);
 
-    // this.navigateToHome = this.navigateToHome.bind(this);
+    // this.state = {
+    //   matches:[
+    //     {
+    //       player1:"nick",
+    //       player2:"zuhair"
+    //     }, {
+    //       player1:"zach",
+    //       player2:"ali"
+    //     }, {
+    //       player1:"younis",
+    //       player2:"chris"
+    //     }, {
+    //       player1:"josh",
+    //       player2:"andrew"
+    //     }
+    //   ]
+    // }
+
     this.getBracket = this.getBracket.bind(this);
   }
-
-  //TODO
-  // onViewBracket = (bracket) => {
-  //   this.props.navigation.navigate('BracketDetail',)
-  // }
 
   getBracket() {
     this.props.receiveBracket();
   }
 
-  // navigateToHome() {
-  //   this.props.navigator.pop({
-  //     component: HomePage,
-  //     title: 'HomePage',
-  //     navigationBarHidden: true
-  //   });
-  // }
-
   render() {
+    const { matches } = this.props;
+
     return (
       <View style={styles.container}>
         <NavBar/>
@@ -50,9 +56,9 @@ export default class BracketDetail extends Component{
           <Text>Home</Text>
         </TouchableOpacity>
         {/*get match info button*/}
-        <TouchableOpacity onPress={this.getBracket}>
+        {/* <TouchableOpacity onPress={this.getBracket}>
           <Text>Show Bracket</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View style={styles.body}>
           <View style={styles.bracketContainer}>
             <Text>Matches</Text>
@@ -134,10 +140,16 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStatetoProps = ({bracket}) => {
+  return {
+    matches: bracket.matches
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     receiveBracket: () => dispatch(receiveBracket())
   }
 }
 
-module.exports = connect(null, mapDispatchToProps)(BracketDetail);
+module.exports = connect(mapStatetoProps, mapDispatchToProps)(BracketDetail);
