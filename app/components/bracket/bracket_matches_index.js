@@ -26,26 +26,22 @@ export default class BracketMatchesIndex extends Component{
           <Text>Round 1</Text>
           <View style={bracketStyles.match}>
             {/*Match 1*/}
-            <Text>{matches[0].player1}</Text>
-            <Text>{matches[0].player2}</Text>
+            <Text>{matches[0].player1} vs {matches[0].player2}</Text>
           </View>
 
           <View style={bracketStyles.match}>
             {/*Match 2*/}
-            <Text>{matches[1].player1}</Text>
-            <Text>{matches[1].player2}</Text>
+            <Text>{matches[1].player1} vs {matches[1].player2}</Text>
           </View>
 
           <View style={bracketStyles.match}>
             {/*Match 3*/}
-            <Text>{matches[2].player1}</Text>
-            <Text>{matches[2].player2}</Text>
+            <Text>{matches[2].player1} vs {matches[2].player2}</Text>
           </View>
 
           <View style={bracketStyles.match}>
             {/*Match 4*/}
-            <Text>{matches[3].player1}</Text>
-            <Text>{matches[3].player2}</Text>
+            <Text>{matches[3].player1} vs {matches[3].player2}</Text>
           </View>
         </View>
 {/********************************************************************/}
@@ -54,14 +50,12 @@ export default class BracketMatchesIndex extends Component{
           <Text>Round 2</Text>
           <View style={bracketStyles.match}>
             {/*Match 5*/}
-            <Text>pending</Text>
-            <Text>pending</Text>
+            <Text>pending vs pending</Text>
           </View>
 
           <View style={bracketStyles.match}>
             {/*Match 6*/}
-            <Text>pending</Text>
-            <Text>pending</Text>
+            <Text>pending vs pending</Text>
           </View>
         </View>
 {/********************************************************************/}
@@ -70,8 +64,7 @@ export default class BracketMatchesIndex extends Component{
         <View>
           <View style={bracketStyles.match}>
             {/*Match 7*/}
-            <Text>pending</Text>
-            <Text>pending</Text>
+            <Text>pending vs pending</Text>
           </View>
         </View>
 {/********************************************************************/}
@@ -83,8 +76,8 @@ export default class BracketMatchesIndex extends Component{
 const bracketStyles = StyleSheet.create({
   bracketContainer: {
     backgroundColor: 'white',
-    height: 550,
-    width: 420
+    height: 450,
+    width: 400
   },
   match: {
     padding: 10,

@@ -18,7 +18,6 @@ import BracketMatchesIndex from './bracket_matches_index';
 export default class Bracket extends Component{
   constructor(props) {
     super(props);
-    this.state = { text: 'BracketRunner!' };
 
     this.navigateToHome = this.navigateToHome.bind(this);
     this.getBracket = this.getBracket.bind(this);
@@ -39,7 +38,7 @@ export default class Bracket extends Component{
   render() {
     return (
       <View style={bracketStyles.container}>
-        <NavBar text={this.state.text}/>
+        <NavBar/>
         {/*link to home button*/}
         <TouchableOpacity onPress={this.navigateToHome}>
           <Text>Home</Text>
@@ -64,7 +63,7 @@ const bracketStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    width: 420,
+    width: 400,
     paddingTop: 25
   },
   body: {
