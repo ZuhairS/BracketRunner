@@ -1,7 +1,7 @@
 import axiosnp from 'axios';
 import Keychain from 'react-native-keychain';
 
-import {BRACKET_URL} from '../api';
+import {BRACKET_URL} from '../util';
 
 //constants
 

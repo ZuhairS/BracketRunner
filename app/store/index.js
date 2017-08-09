@@ -2,7 +2,7 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 // import {AsyncStorage} from 'react-native';
 // import {persistStore, autoRehydrate} from 'redux-persist';
-import reducer from '../reducers/index';
+import reducer from '../reducers/root_reducer';
 
 var defaultState = {
   bracket: {

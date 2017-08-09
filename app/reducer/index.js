@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 
-import bracketReducer from './bracket_reducer';
+import bracketReducer from './bracketReducer';
+
 
 module.exports = combineReducers({
   bracket: bracketReducer

@@ -11,6 +11,7 @@ import {
 
 import TextComponent from './text';
 import Bracket from './bracket';
+import Auth from './auth';
 
 const Home = React.createClass({
   getInitialState: function() {
@@ -25,13 +26,23 @@ const Home = React.createClass({
       navigationBarHidden: true
     });
   },
+  navigateToAuth: function() {
+    this.props.navigator.push({
+      component: Auth,
+      title: 'Auth',
+      navigationBarHidden: true
+    });
+  },
   render() {
     return (
       <View style={HomeStyles.container}>
         <TextComponent text={this.state.text}/>
         <View style={HomeStyles.body}>
           <TouchableOpacity onPress={this.navigateToBracket}>
-            <Text>Go to Bracket</Text>
+            <Text>Go to Bracket </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.navigateToAuth}>
+            <Text>Go to Auth</Text>
           </TouchableOpacity>
         </View>
 
