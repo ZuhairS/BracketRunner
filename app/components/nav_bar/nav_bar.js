@@ -1,11 +1,14 @@
+//modules
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   TouchableOpacity
 } from 'react-native';
+
+//components
+import { DropDownMenu } from './drop_down_menu';
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -14,13 +17,13 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <View style={HomePageStyles.containerFlex}>
-        <View style={HomePageStyles.container}>
+      <View style={styles.containerFlex}>
+        <View style={styles.container}>
           <Text>
             BracketRunner!
           </Text>
-          <TouchableOpacity style={HomePageStyles.dropDownMenu}>
-            <Text>Menu</Text>
+          <TouchableOpacity style={styles.dropDownMenu}>
+            <DropDownMenu />
           </TouchableOpacity>
         </View>
       </View>
@@ -28,7 +31,7 @@ export default class NavBar extends Component {
   }
 }
 
-const HomePageStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   containerFlex: {
     flex: .7,
     flexDirection: 'row',
@@ -44,8 +47,6 @@ const HomePageStyles = StyleSheet.create({
   dropDownMenu: {
     position: 'absolute',
     right: -100,
-    borderWidth: 1,
-    padding: 2
   }
 });
 

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import {AppRegistry,
+import {
+  AppRegistry,
   StyleSheet,
   Text,
   View,
   NavigatorIOS} from 'react-native';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 
 import HomePage from './app/components/home_page';
-import {configureStore} from './app/store/store';
+import { configureStore } from './app/store/store';
 
 export default class BracketRunner extends Component {
   render() {

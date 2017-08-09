@@ -9,40 +9,27 @@ import {
   NavigatorIOS
 } from 'react-native';
 //imported components
-import NavBar from './nav_bar';
+import NavBar from './nav_bar/nav_bar';
 import BracketPage from './bracket/bracket_page';
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
-
-    this.navigateToBracket = this.navigateToBracket.bind(this);
-  }
-
-  navigateToBracket() {
-    this.props.navigator.push({
-      component: BracketPage,
-      title: 'BracketPage',
-      navigationBarHidden: true
-    });
   }
 
   render() {
     return (
-      <View style={HomeStyles.container}>
+      <View style={styles.container}>
         <NavBar/>
-        <View style={HomeStyles.body}>
-          <TouchableOpacity onPress={this.navigateToBracket}>
-            <Text>Go to Bracket </Text>
-          </TouchableOpacity>
+        <View style={styles.body}>
+          <Text>Home Page</Text>
         </View>
-
       </View>
     );
   }
 }
 
-const HomeStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',

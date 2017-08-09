@@ -12,10 +12,11 @@ import {
 
 //components
 import HomePage from '../home_page';
-import NavBar from '../nav_bar';
+import NavBar from '../nav_bar/nav_bar';
 import BracketMatchesIndex from './bracket_matches_index';
+import { DropDownMenu } from '../nav_bar/drop_down_menu';
 
-export default class Bracket extends Component{
+export default class BracketPage extends Component{
   constructor(props) {
     super(props);
 
@@ -37,7 +38,7 @@ export default class Bracket extends Component{
 
   render() {
     return (
-      <View style={bracketStyles.container}>
+      <View style={styles.container}>
         <NavBar/>
         {/*link to home button*/}
         <TouchableOpacity onPress={this.navigateToHome}>
@@ -47,17 +48,15 @@ export default class Bracket extends Component{
         <TouchableOpacity onPress={this.getBracket}>
           <Text>Show Bracket</Text>
         </TouchableOpacity>
-        <View style={bracketStyles.body}>
-
-        <BracketMatchesIndex/>
-
+        <View style={styles.body}>
+          <BracketMatchesIndex/>
         </View>
       </View>
     );
   }//render
 }//Bracket
 
-const bracketStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -86,4 +85,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-module.exports = connect(null, mapDispatchToProps)(Bracket);
+module.exports = connect(null, mapDispatchToProps)(BracketPage);
