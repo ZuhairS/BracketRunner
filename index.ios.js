@@ -10,13 +10,13 @@ import { Provider } from 'react-redux';
 //components
 import HomePage from './app/components/home_page';
 import { configureStore } from './app/store/store';
-import { Tabs } from './app/components/config/router';
+import { Root } from './app/components/config/router';
 
 export default class BracketRunner extends Component {
   render() {
     return (
       <Provider store={configureStore()}>
-        <Tabs />
+        <Root />
       </Provider>
     );
   }

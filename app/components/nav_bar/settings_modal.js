@@ -15,7 +15,7 @@ import {
 //components
 import BracketFeed from '../bracket/bracket_feed';
 
-export class DropDownMenu extends Component {
+export default class SettingsModal extends Component {
   constructor(props) {
     super(props);
 
@@ -74,6 +74,12 @@ export class DropDownMenu extends Component {
 
               <TouchableOpacity style={styles.modalButton}>
                 <Text style={styles.modalButtonText}>
+                  About
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.modalButton}>
+                <Text style={styles.modalButtonText}>
                   Log Out
                 </Text>
               </TouchableOpacity>
@@ -90,7 +96,7 @@ export class DropDownMenu extends Component {
         </Modal>
 
         <TouchableOpacity onPress={this._setModalVisible.bind(this, true)}>
-          <Text>Menu</Text>
+          <Text>Settings</Text>
         </TouchableOpacity>
       </View>
     );
@@ -119,3 +125,5 @@ var styles = StyleSheet.create({
     textAlign: 'center',
   }
 });
+
+module.exports = SettingsModal;

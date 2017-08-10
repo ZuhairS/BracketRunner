@@ -14,7 +14,7 @@ import {
 import HomePage from '../home_page';
 import NavBar from '../nav_bar/nav_bar';
 import BracketFeed from './bracket_feed';
-import { DropDownMenu } from '../nav_bar/drop_down_menu';
+import { SettingsModal } from '../nav_bar/settings_modal';
 
 export default class BracketDetail extends Component{
   constructor(props) {

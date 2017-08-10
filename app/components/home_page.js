@@ -6,26 +6,34 @@ import {
   Text,
   View,
   TouchableOpacity,
-  NavigatorIOS
+  ScrollView
 } from 'react-native';
 //imported components
-import NavBar from './nav_bar/nav_bar';
+import SettingsModal from './nav_bar/settings_modal';
 import BracketFeed from './bracket/bracket_feed';
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
+
+    this.handleSettingsPress = this.handleSettingsPress.bind(this);
+  }
+
+  handleSettingsPress() {
+    this.props.navigation.navigate('SettingsModal');
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <NavBar/>
-        <View style={styles.body}>
+      <ScrollView>
+        <View style={styles.container}>
+          <SettingsModal/>
+          <View style={styles.body}>
+
+          </View>
 
         </View>
-
-      </View>
+      </ScrollView>
     );
   }
 }

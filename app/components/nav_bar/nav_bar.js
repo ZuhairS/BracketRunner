@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 //components
-import { DropDownMenu } from './drop_down_menu';
+import SettingsModal from './settings_modal';
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -22,8 +22,8 @@ export default class NavBar extends Component {
           <Text style={styles.navHeader}>
             BracketRunner!
           </Text>
-          <TouchableOpacity style={styles.dropDownMenu}>
-            <DropDownMenu />
+          <TouchableOpacity style={styles.settings}>
+            <SettingsModal />
           </TouchableOpacity>
         </View>
       </View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   navHeader: {
     fontWeight: 'bold'
   },
-  dropDownMenu: {
+  settings: {
     position: 'absolute',
     right: -100,
   }
