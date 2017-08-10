@@ -1,7 +1,7 @@
 //modules
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { signUpUser } from '../actions/auth_actions'
+import { signUpUser, logInUser } from '../actions/auth_actions'
 import { connect } from 'react-redux';
 
 //components
@@ -28,13 +28,13 @@ Auth = class Auth extends Component{
 
   signUp(values){
     console.log('submitting form', values);
-    console.log('submitting form', values);
     console.log(this.props);
     this.props.signUpUser(values);
   }
 
   logIn(values){
     console.log('submitting form', values)
+    this.props.logInUser(values);
   }
 
   render() {
@@ -45,6 +45,8 @@ Auth = class Auth extends Component{
             Email:
           </Text>
           <Field name="email" component={renderInput} />
+          <Text>Username:</Text>
+          <Field name="username" component={renderInput} />
           <Text>Password:</Text>
           <Field name="password" component={renderInput} />
           <TouchableOpacity onPress={this.props.handleSubmit(this.signUp)}>
@@ -99,6 +101,8 @@ const renderInput = ({ input: { onChange, ...restInput }}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signUpUser: user => dispatch(signUpUser(user)),
+    logInUser: user => dispatch(logInUser(user))
+
   };
 };
 

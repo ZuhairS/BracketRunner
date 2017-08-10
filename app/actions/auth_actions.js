@@ -9,28 +9,27 @@ export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
 
 
-exports.logInUser = (email, password) => {
+exports.logInUser = ({email, username, password}) => {
   return function(dispatch) {
-    return axios.post(SIGNIN_URL, {email, password}).then((response) => {
+    return axios.post(SIGNIN_URL, {email, username, password}).then((response) => {
       var {user_id, token} = response.data;
       dispatch(addAlert(token));
       dispatch(authUser(user_id));
     }).catch((error) => {
-      dispatch(addAlert("Could not sign up."));
+      dispatch(addAlert("Could not sign in"));
     });
   }
 }
 
 
-exports.signUpUser = ({email, password}) => {
+exports.signUpUser = ({email, username, password}) => {
   return function(dispatch) {
-    console.log({email, password});
-    return axios.post(SIGNUP_URL, {email, password}).then((response) => {
+    return axios.post(SIGNUP_URL, {email, username, password}).then((response) => {
       var {user_id, token} = response.data;
       dispatch(addAlert(token));
       dispatch(authUser(user_id));
     }).catch((error) => {
-      dispatch(addAlert("Could not sign up!!"));
+      dispatch(addAlert("Could not sign up"));
     });
   }
 }
