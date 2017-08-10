@@ -15,8 +15,8 @@ import Auth from './auth';
 const Home = React.createClass({
   getInitialState: function() {
     return {
-      text: "BracketRunner!"
-    }
+      text: 'BracketRunner!'
+    };
   },
   navigateToAuth: function() {
     this.props.navigator.push({
@@ -37,7 +37,7 @@ const Home = React.createClass({
           </TouchableOpacity>
         </View>
 
-        
+
         <View>
           <AlertContainer />
         </View>
@@ -64,13 +64,13 @@ const HomeStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     paddingTop: 50
-  },
+  }
 });
 
-var mapStatetoProps = (bracket) => {
+var mapStatetoProps = bracket => {
   return {
     matches: bracket.matches
-  }
-}
+  };
+};
 
 module.exports = connect(mapStatetoProps)(Home);

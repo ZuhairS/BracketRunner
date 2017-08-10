@@ -4,10 +4,29 @@ import {createStore, compose, applyMiddleware} from 'redux';
  import reducer from '../reducers/root_reducer';
  import thunk from 'redux-thunk';
  var defaultState = {
-
+   bracket: {
+     matches: [
+       {
+         player1: 'pending',
+         player2: 'pending'
+       },
+       {
+         player1: 'pending',
+         player2: 'pending'
+       },
+       {
+         player1: 'pending',
+         player2: 'pending'
+       },
+       {
+         player1: 'pending',
+         player2: 'pending'
+       }
+     ]
+   }
  };
 
- export var configureStore = (initialState=defaultState) => {
+ export var configureStore = (initialState = defaultState) => {
    return createStore(reducer, initialState, compose(
      applyMiddleware(thunk)))
  }

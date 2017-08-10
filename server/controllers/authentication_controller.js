@@ -22,30 +22,37 @@ exports.signin = function(req, res, next) {
 
 exports.signup = function(req, res, next) {
   var email = req.body.email;
+  var username = req.body.username;
   var password = req.body.password;
-  if (!email || !password) {
+  if (!email || !username || !password) {
     return res
       .status(422)
-      .json({ error: 'You must provide an email and password' });
+      .json({ error: 'You must provide an email, username and password' });
   }
 
   // Check if user already exists, send error if they do
-  User.findOne({ email: email }, function(err, existingUser) {
-    if (err) {
-      return next(err);
-    }
-    if (existingUser) {
-      return res.status(422).json({ error: 'Email taken' });
-    }
-    var user = new User({
-      email: email,
-      password: password
-    });
-    user.save(function(error) {
-      if (error) {
-        return next(error);
+  User.findOne(
+    {
+      $or: [{ email: email }, { username: username }]
+    },
+    function(err, existingUser) {
+      if (err) {
+        return next(err);
       }
-      res.json({ user_id: user._id, token: tokenForUser(user) });
-    });
-  });
+      if (existingUser) {
+        return res.status(422).json({ error: 'Email/Username taken' });
+      }
+      var user = new User({
+        email: email,
+        username: username,
+        password: password
+      });
+      user.save(function(error) {
+        if (error) {
+          return next(error);
+        }
+        res.json({ user_id: user._id, token: tokenForUser(user) });
+      });
+    }
+  );
 };
