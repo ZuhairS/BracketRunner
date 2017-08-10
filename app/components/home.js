@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import AlertContainer from './alerts/alert_container';
 import {
   AppRegistry,
   StyleSheet,
@@ -9,8 +10,6 @@ import {
   NavigatorIOS
 } from 'react-native';
 
-import TextComponent from './text';
-import Bracket from './bracket';
 import Auth from './auth';
 
 const Home = React.createClass({
@@ -18,13 +17,6 @@ const Home = React.createClass({
     return {
       text: "BracketRunner!"
     }
-  },
-  navigateToBracket: function() {
-    this.props.navigator.push({
-      component: Bracket,
-      title: 'Bracket',
-      navigationBarHidden: true
-    });
   },
   navigateToAuth: function() {
     this.props.navigator.push({
@@ -36,7 +28,6 @@ const Home = React.createClass({
   render() {
     return (
       <View style={HomeStyles.container}>
-        <TextComponent text={this.state.text}/>
         <View style={HomeStyles.body}>
           <TouchableOpacity onPress={this.navigateToBracket}>
             <Text>Go to Bracket </Text>
@@ -44,6 +35,11 @@ const Home = React.createClass({
           <TouchableOpacity onPress={this.navigateToAuth}>
             <Text>Go to Auth</Text>
           </TouchableOpacity>
+        </View>
+
+        
+        <View>
+          <AlertContainer />
         </View>
 
       </View>

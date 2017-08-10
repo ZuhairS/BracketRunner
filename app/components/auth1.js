@@ -1,8 +1,10 @@
+//modules
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { signUpUser } from '../actions/auth_actions'
 import { connect } from 'react-redux';
 
+//component
 import {
   StyleSheet,
   Text,

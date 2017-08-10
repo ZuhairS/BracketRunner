@@ -7,7 +7,7 @@ import {AppRegistry,
 import {Provider} from 'react-redux';
 
 import Home from './app/components/home';
-import {configureStore} from './app/store';
+import {configureStore} from './app/store/store';
 
 export default class BracketRunner extends Component {
   render() {
