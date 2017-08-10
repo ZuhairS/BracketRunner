@@ -13,7 +13,13 @@ import SettingsModal from './settings_modal';
 export default class NavBar extends Component {
   constructor(props) {
     super(props)
+
+    // this.handleSettingsPress = this.handleSettingsPress.bind(this);
   }
+
+  // handleSettingsPress() {
+  //   this.props.navigation.navigate('SettingsModal');
+  // }
 
   render() {
     return (
