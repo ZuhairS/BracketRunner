@@ -27,7 +27,8 @@ var Auth = React.createClass({
     });
   },
   signUp: function(values){
-    console.log('submitting form', values)
+    console.log('submitting form', values);
+      console.log('submitting form', values);
     console.log(this.props);
     this.props.signUpUser(values);
   },
