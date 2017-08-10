@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   AppRegistry,
   StyleSheet,
@@ -16,8 +16,8 @@ import Auth from './auth';
 const Home = React.createClass({
   getInitialState: function() {
     return {
-      text: "BracketRunner!"
-    }
+      text: 'BracketRunner!'
+    };
   },
   navigateToBracket: function() {
     this.props.navigator.push({
@@ -36,7 +36,7 @@ const Home = React.createClass({
   render() {
     return (
       <View style={HomeStyles.container}>
-        <TextComponent text={this.state.text}/>
+        <TextComponent text={this.state.text} />
         <View style={HomeStyles.body}>
           <TouchableOpacity onPress={this.navigateToBracket}>
             <Text>Go to Bracket </Text>
@@ -45,7 +45,6 @@ const Home = React.createClass({
             <Text>Go to Auth</Text>
           </TouchableOpacity>
         </View>
-
       </View>
     );
   }
@@ -68,13 +67,13 @@ const HomeStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     paddingTop: 50
-  },
+  }
 });
 
-var mapStatetoProps = (bracket) => {
+var mapStatetoProps = bracket => {
   return {
     matches: bracket.matches
-  }
-}
+  };
+};
 
 module.exports = connect(mapStatetoProps)(Home);

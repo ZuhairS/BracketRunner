@@ -1,26 +1,22 @@
+//modules
 import React, { Component } from 'react';
-import {AppRegistry,
+import {
+  AppRegistry,
   StyleSheet,
   Text,
-  View,
-  NavigatorIOS} from 'react-native';
-import {Provider} from 'react-redux';
+  View } from 'react-native';
+import { Provider } from 'react-redux';
 
-import Home from './app/components/home';
-import {configureStore} from './app/store';
+//components
+import HomePage from './app/components/home_page';
+import { configureStore } from './app/store/store';
+import { Root } from './app/components/config/router';
 
 export default class BracketRunner extends Component {
   render() {
     return (
       <Provider store={configureStore()}>
-        <NavigatorIOS
-          initialRoute={{
-            component: Home,
-            title: 'Home',
-            navigationBarHidden: true
-          }}
-          style={{flex: 1}}
-        />
+        <Root />
       </Provider>
     );
   }

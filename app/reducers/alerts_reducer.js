@@ -1,14 +1,11 @@
 import uuid from 'uuid';
 
-import {
-  ADD_ALERT,
-  REMOVE_ALERT
-} from '../actions/alerts_actions';
+import { ADD_ALERT, REMOVE_ALERT } from '../actions/alerts_actions';
 
 var defaultState = [];
 
-module.exports = (state=defaultState, action) => {
-  switch(action.type) {
+module.exports = (state = defaultState, action) => {
+  switch (action.type) {
     case 'ADD_ALERT':
       return [
         ...state,
@@ -19,7 +16,7 @@ module.exports = (state=defaultState, action) => {
       ];
 
     case 'REMOVE_ALERT':
-      return state.filter((alert) => {
+      return state.filter(alert => {
         if (alert.id === action.id) {
           return false;
         } else {
@@ -30,4 +27,4 @@ module.exports = (state=defaultState, action) => {
     default:
       return state;
   }
-}
+};
