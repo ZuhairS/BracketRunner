@@ -1,8 +1,10 @@
-import React from 'react';
+//modules
+import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { signUpUser } from '../actions/auth_actions'
 import { connect } from 'react-redux';
 
+//components
 import {
   StyleSheet,
   Text,
@@ -16,26 +18,28 @@ import MyTextInput from './my_text_input';
 
 import Home from './home';
 
-var Auth = React.createClass({
-  navigateToHome: function() {
-    this.props.navigator.pop({
-      component: Home,
-      title: 'Home',
-      navigationBarHidden: true
-    });
-  },
-  signUp: function(values){
-    console.log('submitting form', values)
+Auth = class Auth extends Component{
+  constructor(props) {
+   super(props);
+
+   this.signUp = this.signUp.bind(this);
+   this.logIn = this.logIn.bind(this);
+ }
+
+  signUp(values){
+    console.log('submitting form', values);
+    console.log('submitting form', values);
     console.log(this.props);
     this.props.signUpUser(values);
-  },
-  logIn: function(values){
+  }
+
+  logIn(values){
     console.log('submitting form', values)
-  },
+  }
+
   render() {
     return (
       <View style={styles.container}>
-
         <View style={styles.titleContainer}>
           <Text sytle={styles.title}>
             Email:
@@ -49,15 +53,13 @@ var Auth = React.createClass({
           <TouchableOpacity onPress={this.props.handleSubmit(this.logIn)}>
             <Text style={styles.button}>Log In</Text>
           </TouchableOpacity>
-
         </View>
-
-
       <AlertContainer />
       </View>
     );
   }
-});
+
+};
 
 
 const styles = StyleSheet.create({
