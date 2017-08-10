@@ -1,12 +1,23 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
-var validateEmail = email => {
+const validateEmail = email => {
   return /\S+@\S+\.\S+/.test(email);
 };
 
-var userSchema = new Schema({
+const validateUsername = username => {
+  const user = User.findOne({ username: username.toLowerCase() });
+};
+
+const userSchema = new Schema({
+  username: {
+    type: String,
+    unique: true,
+    required: 'Username is required',
+    uniqueCaseInsensitive: true
+  },
   email: {
     type: String,
     unique: true,
@@ -19,8 +30,11 @@ var userSchema = new Schema({
   }
 });
 
+// Apply the uniqueValidator plugin to userSchema.
+userSchema.plugin(uniqueValidator);
+
 userSchema.pre('save', function(next) {
-  var user = this;
+  let user = this;
   if (user.isNew || user.isModified('password')) {
     bcrypt.genSalt(10, function(err, salt) {
       if (err) {
