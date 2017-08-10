@@ -59,10 +59,31 @@ export class DropDownMenu extends Component {
           >
           <View style={[styles.container, modalBackgroundStyle]}>
             <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
+
+              <TouchableOpacity style={styles.modalButton}>
+                <Text style={styles.modalButtonText}>
+                  Create Bracket
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.modalButton}>
+                <Text style={styles.modalButtonText}>
+                  Settings
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.modalButton}>
+                <Text style={styles.modalButtonText}>
+                  Log Out
+                </Text>
+              </TouchableOpacity>
+
               <TouchableOpacity
                 onPress={this._setModalVisible.bind(this, false)}
                 style={styles.modalButton}>
-                <Text>Close</Text>
+                <Text style={styles.modalButtonText}>
+                  Close
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -80,13 +101,21 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
   },
   innerContainer: {
-    borderRadius: 10,
+    borderRadius: 4,
+    width: 200,
     alignItems: 'center',
   },
   modalButton: {
     marginTop: 10,
+    width: 180,
+    height: 40,
+    // borderBottomWidth: .3
+  },
+  modalButtonText: {
+    textAlign: 'center',
   }
 });

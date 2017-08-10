@@ -4,8 +4,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View,
-  NavigatorIOS} from 'react-native';
+  View } from 'react-native';
 import { Provider } from 'react-redux';
 
 //components

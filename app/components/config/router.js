@@ -7,6 +7,7 @@ import { Icon } from 'react-native-elements';
 // Tab Screens
 import HomePage from '../home_page';
 import BracketFeed from '../bracket/bracket_feed';
+import ProfilePage from '../user/profile_page';
 
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
@@ -33,6 +34,14 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
+    }
+  },
+
+  Profile: {
+    screen: ProfilePage,
+    navigationOptions: {
+      tabBarLabel: 'Profile Page',
+      tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
     }
   },
 

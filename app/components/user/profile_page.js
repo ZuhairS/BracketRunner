@@ -9,10 +9,9 @@ import {
   NavigatorIOS
 } from 'react-native';
 //imported components
-import NavBar from './nav_bar/nav_bar';
-import BracketFeed from './bracket/bracket_feed';
+import NavBar from '../nav_bar/nav_bar';
 
-export default class HomePage extends Component {
+export default class ProfilePage extends Component {
   constructor(props) {
     super(props);
   }
@@ -22,9 +21,8 @@ export default class HomePage extends Component {
       <View style={styles.container}>
         <NavBar/>
         <View style={styles.body}>
-
+          
         </View>
-
       </View>
     );
   }
@@ -49,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = HomePage;
+module.exports = ProfilePage;

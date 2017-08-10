@@ -19,7 +19,7 @@ export default class NavBar extends Component {
     return (
       <View style={styles.containerFlex}>
         <View style={styles.container}>
-          <Text>
+          <Text style={styles.navHeader}>
             BracketRunner!
           </Text>
           <TouchableOpacity style={styles.dropDownMenu}>
@@ -33,16 +33,17 @@ export default class NavBar extends Component {
 
 const styles = StyleSheet.create({
   containerFlex: {
-    flex: .7,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 1,
     backgroundColor: '#DEDFE5',
-    width: 400
+    width: 400,
+    height: 50
   },
-  container: {
-
+  navHeader: {
+    fontWeight: 'bold'
   },
   dropDownMenu: {
     position: 'absolute',

@@ -20,24 +20,6 @@ export default class BracketDetail extends Component{
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   matches:[
-    //     {
-    //       player1:"nick",
-    //       player2:"zuhair"
-    //     }, {
-    //       player1:"zach",
-    //       player2:"ali"
-    //     }, {
-    //       player1:"younis",
-    //       player2:"chris"
-    //     }, {
-    //       player1:"josh",
-    //       player2:"andrew"
-    //     }
-    //   ]
-    // }
-
     this.getBracket = this.getBracket.bind(this);
   }
 
@@ -46,71 +28,94 @@ export default class BracketDetail extends Component{
   }
 
   render() {
-    const { matches } = this.props;
+    let { matches } = this.props;
 
     return (
       <View style={styles.container}>
-        <NavBar/>
-        {/*link to home button*/}
-        <TouchableOpacity onPress={this.navigateToHome}>
-          <Text>Home</Text>
-        </TouchableOpacity>
-        {/*get match info button*/}
-        {/* <TouchableOpacity onPress={this.getBracket}>
-          <Text>Show Bracket</Text>
-        </TouchableOpacity> */}
+        <View style={styles.navBar}>
+          <NavBar />
+        </View>
+
         <View style={styles.body}>
-          <View style={styles.bracketContainer}>
-            <Text>Matches</Text>
-    {/********************************************************************/}
-    {/*Round 1*/}
-            <View>
-              <Text>Round 1</Text>
-              <View style={styles.match}>
-                {/*Match 1*/}
-                <Text>{matches[0].player1} vs {matches[0].player2}</Text>
-              </View>
+          <ScrollView>
+            <View style={styles.bracketContainer}>
+              <Text style={styles.header}>Tournament Name</Text>
+{/********************************************************************/}
+{/*Round 1*/}
+              <View>
+                <Text style={styles.round}>Round 1</Text>
 
-              <View style={styles.match}>
-                {/*Match 2*/}
-                <Text>{matches[1].player1} vs {matches[1].player2}</Text>
-              </View>
+                <View style={styles.match}>
+                  {/*Match 1*/}
+                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <Text style={styles.matchup}>
+                    {matches[0].player1} vs {matches[0].player2}
+                  </Text>
+                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                </View>
 
-              <View style={styles.match}>
-                {/*Match 3*/}
-                <Text>{matches[2].player1} vs {matches[2].player2}</Text>
-              </View>
+                <View style={styles.match}>
+                  {/*Match 2*/}
+                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <Text style={styles.matchup}>
+                    {matches[1].player1} vs {matches[1].player2}
+                  </Text>
+                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                </View>
 
-              <View style={styles.match}>
-                {/*Match 4*/}
-                <Text>{matches[3].player1} vs {matches[3].player2}</Text>
+                <View style={styles.match}>
+                  {/*Match 3*/}
+                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <Text style={styles.matchup}>
+                    {matches[2].player1} vs {matches[2].player2}
+                  </Text>
+                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                </View>
+
+                <View style={styles.match}>
+                  {/*Match 4*/}
+                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <Text style={styles.matchup}>
+                    {matches[3].player1} vs {matches[3].player2}
+                  </Text>
+                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                </View>
+
               </View>
+{/********************************************************************/}
+{/*Round 2*/}
+              <View>
+                <Text style={styles.round}>Round 2</Text>
+
+                <View style={styles.match}>
+                  {/*Match 5*/}
+                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <Text style={styles.matchup}>pending vs pending</Text>
+                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                </View>
+
+                <View style={styles.match}>
+                  {/*Match 6*/}
+                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <Text style={styles.matchup}>pending vs pending</Text>
+                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                </View>
+
+              </View>
+{/********************************************************************/}
+{/*Round 3*/}
+              <Text style={styles.round}>Round 3</Text>
+              <View>
+                <View style={styles.match}>
+                  {/*Match 7*/}
+                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <Text style={styles.matchup}>pending vs pending</Text>
+                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                </View>
+              </View>
+{/********************************************************************/}
             </View>
-    {/********************************************************************/}
-    {/*Round 2*/}
-            <View>
-              <Text>Round 2</Text>
-              <View style={styles.match}>
-                {/*Match 5*/}
-                <Text>pending vs pending</Text>
-              </View>
-
-              <View style={styles.match}>
-                {/*Match 6*/}
-                <Text>pending vs pending</Text>
-              </View>
-            </View>
-    {/********************************************************************/}
-    {/*Round 3*/}
-            <Text>Round 3</Text>
-            <View>
-              <View style={styles.match}>
-                {/*Match 7*/}
-                <Text>pending vs pending</Text>
-              </View>
-            </View>
-    {/********************************************************************/}
-          </View>
+          </ScrollView>
         </View>
       </View>
     );
@@ -122,14 +127,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'white',
     width: 400,
     paddingTop: 25
   },
+  navBar: {
+    height: 60
+  },
   body: {
-    flex: 9,
     alignSelf: 'stretch',
-    backgroundColor: '#eee',
+    backgroundColor: 'white',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -137,10 +144,45 @@ const styles = StyleSheet.create({
   },
   showBracketButton: {
     paddingTop: 20
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    paddingBottom: 20,
+    textAlign: 'center'
+  },
+  round: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingBottom: 15,
+    paddingTop: 25,
+    textAlign: 'center'
+  },
+  match: {
+    borderColor: 'black',
+    borderRadius: 4,
+    height: 70,
+    width: 400,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  matchup: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    paddingLeft: 50,
+    paddingRight: 50
+  },
+  playerPicture: {
+    borderWidth: 1,
+    borderRadius: 25,
+    alignSelf: 'center',
+    width: 50,
+    height: 50,
   }
 });
 
-const mapStatetoProps = ({bracket}) => {
+const mapStatetoProps = ({ bracket }) => {
   return {
     matches: bracket.matches
   }
