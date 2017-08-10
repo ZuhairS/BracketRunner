@@ -8,9 +8,9 @@ import {
   Switch,
   Text,
   TouchableOpacity,
-  View,
-  NavigatorIOS
+  View
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 //components
 import BracketFeed from '../bracket/bracket_feed';
@@ -19,85 +19,50 @@ export default class SettingsModal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      modalVisible: false,
-      transparent: true
-    }
-
-    this._setModalVisible = this._setModalVisible.bind(this);
-    this._toggleTransparent = this._toggleTransparent.bind(this);
-  }
-
-  _setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
-
-  _toggleTransparent() {
-    this.setState({transparent: !this.state.transparent});
   }
 
   render() {
-    const modalBackgroundStyle = {
-      backgroundColor: this.state.transparent
-      ? 'rgba(0, 0, 0, 0.5)'
-      : '#f5fcff',
-    };
-    const innerContainerTransparentStyle = this.state.transparent
-      ? {backgroundColor: '#fff', padding: 20}
-      : null;
-    const activeTouchableOpacityStyle = {
-      backgroundColor: '#ddd'
-    };
 
     return (
-      <View>
-        <Modal
-          animationType='none'
-          transparent={this.state.transparent}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {this._setModalVisible(false)}}
-          >
-          <View style={[styles.container, modalBackgroundStyle]}>
-            <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
-
-              <TouchableOpacity style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>
-                  Create Bracket
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>
-                  Settings
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>
-                  About
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>
-                  Log Out
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={this._setModalVisible.bind(this, false)}
-                style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>
-                  Close
-                </Text>
-              </TouchableOpacity>
+      <View style={styles.container}>
+        <View style={styles.innerContainer}>
+          <TouchableOpacity style={styles.modalButton}>
+            <Text style={styles.modalButtonText}>
+              Create Bracket
+            </Text>
+            <View>
+              <Icon name="chevron-right" size={30} color='lightgrey' />
             </View>
-          </View>
-        </Modal>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={this._setModalVisible.bind(this, true)}>
-          <Text>Settings</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.modalButton}>
+            <Text style={styles.modalButtonText}>
+              Settings
+            </Text>
+            <View>
+              <Icon name="chevron-right" size={30} color='lightgrey' />
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.modalButton}>
+            <Text style={styles.modalButtonText}>
+              About
+            </Text>
+            <View>
+              <Icon name="chevron-right" size={30} color='lightgrey' />
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.modalButtonLogOut}>
+            <Text style={styles.modalButtonText}>
+              Log Out
+            </Text>
+            <View>
+              <Icon name="chevron-right" size={30} color='lightgrey' />
+            </View>
+          </TouchableOpacity>
+
+        </View>
       </View>
     );
   }
@@ -106,23 +71,29 @@ export default class SettingsModal extends Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
   },
   innerContainer: {
-    borderRadius: 4,
-    width: 200,
-    alignItems: 'center',
+    marginTop: 20,
   },
   modalButton: {
-    marginTop: 10,
-    width: 180,
+    backgroundColor: 'white',
     height: 40,
-    // borderBottomWidth: .3
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginTop: 2,
+    flexDirection: 'row'
+  },
+  modalButtonLogOut: {
+    backgroundColor: 'white',
+    height: 40,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginTop: 7,
+    flexDirection: 'row'
   },
   modalButtonText: {
-    textAlign: 'center',
+    paddingLeft: 20,
+    width: 320,
   }
 });
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { Image, StyleSheet } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-// import { list, home } from 'react-native-vector-icons';
 
 // Tab Screens
 import HomePage from '../home_page';
@@ -12,6 +11,27 @@ import ProfilePage from '../user/profile_page';
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
 import SettingsModal from '../nav_bar/settings_modal';
+import NavBar from '../nav_bar/nav_bar';
+
+
+
+export const HomePageStack = StackNavigator({
+  Home: {
+    screen: HomePage,
+    navigationOptions: {
+      title: 'Home',
+    }
+  }
+});
+
+export const ProfilePageStack = StackNavigator({
+  ProfilePage: {
+    screen: ProfilePage,
+    navigationOptions: {
+      title: 'Profile Page',
+    }
+  }
+});
 
 export const bracketStack = StackNavigator({
   BracketFeed: {
@@ -30,7 +50,7 @@ export const bracketStack = StackNavigator({
 
 export const Tabs = TabNavigator({
   Home: {
-    screen: HomePage,
+    screen: HomePageStack,
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
@@ -38,7 +58,7 @@ export const Tabs = TabNavigator({
   },
 
   Profile: {
-    screen: ProfilePage,
+    screen: ProfilePageStack,
     navigationOptions: {
       tabBarLabel: 'Profile Page',
       tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
@@ -72,5 +92,5 @@ export const Root = StackNavigator({
   }
 }, {
   mode: 'modal',
-  headerModal: 'none'
+  headerMode: 'none'
 });

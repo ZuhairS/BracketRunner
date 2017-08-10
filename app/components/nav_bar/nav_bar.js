@@ -13,6 +13,7 @@ import SettingsModal from './settings_modal';
 export default class NavBar extends Component {
   constructor(props) {
     super(props)
+
   }
 
   render() {
@@ -22,9 +23,9 @@ export default class NavBar extends Component {
           <Text style={styles.navHeader}>
             BracketRunner!
           </Text>
-          <TouchableOpacity style={styles.settings}>
-            <SettingsModal />
-          </TouchableOpacity>
+          {/* <TouchableOpacity style={styles.settings}>
+            <Text>Settings</Text>
+          </TouchableOpacity> */}
         </View>
       </View>
     );

@@ -1,3 +1,4 @@
+//modules
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -9,9 +10,12 @@ import {
   NavigatorIOS
 } from 'react-native';
 
+//components
 import TextComponent from './text';
 import Bracket from './bracket';
 import Auth from './auth';
+import SettingsModal from './nav_bar/settings_modal';
+import BracketFeed from './bracket/bracket_feed';
 
 const Home = React.createClass({
   getInitialState: function() {

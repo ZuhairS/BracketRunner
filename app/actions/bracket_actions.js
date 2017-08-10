@@ -1,7 +1,7 @@
 import axiosnp from 'axios';
 import Keychain from 'react-native-keychain';
 
-import { BRACKET_URL } from '../util/bracket_api_util';
+// import { BRACKET_URL } from '../util/bracket_api_util';
 
 //constants
 export const RECEIVE_BRACKET = 'RECEIVE_BRACKET';

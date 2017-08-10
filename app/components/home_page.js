@@ -25,15 +25,11 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <SettingsModal/>
-          <View style={styles.body}>
-
-          </View>
-
-        </View>
-      </ScrollView>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => this.handleSettingsPress()}>
+          <Text>Settings</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -44,17 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    width: 400,
-    paddingTop: 25
-  },
-  body: {
-    flex: 9,
-    alignSelf: 'stretch',
-    backgroundColor: 'white',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start'
-  },
+  }
 });
 
 module.exports = HomePage;

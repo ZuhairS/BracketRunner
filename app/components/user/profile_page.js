@@ -19,9 +19,9 @@ export default class ProfilePage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavBar/>
+        {/* <NavBar/> */}
         <View style={styles.body}>
-          
+
         </View>
       </View>
     );
