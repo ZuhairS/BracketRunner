@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 //components
-import SettingsModal from './settings_modal';
+import Menu from './menu';
 
 export default class NavBar extends Component {
   constructor(props) {

@@ -11,16 +11,18 @@ import {
 } from 'react-native';
 
 //components
-import HomePage from '../home_page';
-import NavBar from '../nav_bar/nav_bar';
-import BracketFeed from './bracket_feed';
-import { SettingsModal } from '../nav_bar/settings_modal';
+import PlayerModal from './player_modal';
 
 export default class BracketDetail extends Component{
   constructor(props) {
     super(props);
 
     this.getBracket = this.getBracket.bind(this);
+    this.onLearnMore = this.onLearnMore.bind(this);
+  }
+
+  onLearnMore() {
+    this.props.navigation.navigate('PlayerModal');
   }
 
   getBracket() {
@@ -32,9 +34,9 @@ export default class BracketDetail extends Component{
 
     return (
       <View style={styles.container}>
-        <View style={styles.navBar}>
+        {/* <View style={styles.navBar}>
           <NavBar />
-        </View>
+        </View> */}
 
         <View style={styles.body}>
           <ScrollView>
@@ -47,38 +49,54 @@ export default class BracketDetail extends Component{
 
                 <View style={styles.match}>
                   {/*Match 1*/}
-                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
                   <Text style={styles.matchup}>
                     {matches[0].player1} vs {matches[0].player2}
                   </Text>
-                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
 
                 <View style={styles.match}>
                   {/*Match 2*/}
-                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
                   <Text style={styles.matchup}>
                     {matches[1].player1} vs {matches[1].player2}
                   </Text>
-                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
 
                 <View style={styles.match}>
                   {/*Match 3*/}
-                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
                   <Text style={styles.matchup}>
                     {matches[2].player1} vs {matches[2].player2}
                   </Text>
-                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
 
                 <View style={styles.match}>
                   {/*Match 4*/}
-                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
                   <Text style={styles.matchup}>
                     {matches[3].player1} vs {matches[3].player2}
                   </Text>
-                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
 
               </View>
@@ -89,16 +107,24 @@ export default class BracketDetail extends Component{
 
                 <View style={styles.match}>
                   {/*Match 5*/}
-                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
                   <Text style={styles.matchup}>pending vs pending</Text>
-                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
 
                 <View style={styles.match}>
                   {/*Match 6*/}
-                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
                   <Text style={styles.matchup}>pending vs pending</Text>
-                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
 
               </View>
@@ -108,9 +134,13 @@ export default class BracketDetail extends Component{
               <View>
                 <View style={styles.match}>
                   {/*Match 7*/}
-                  <View style={styles.playerPicture}>{/* player 1 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
                   <Text style={styles.matchup}>pending vs pending</Text>
-                  <View style={styles.playerPicture}>{/* player 2 profile pic */}</View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
               </View>
 {/********************************************************************/}

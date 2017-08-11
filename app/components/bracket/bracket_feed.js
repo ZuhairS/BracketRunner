@@ -23,6 +23,7 @@ export default class BracketFeed extends Component{
     const { bracket } = this.props;
     return (
       <View style={styles.bracketContainer}>
+        <Text style={styles.searchBar}>Search Bar Goes Here</Text>
         <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
           <Text>Bracket 1</Text>
         </TouchableOpacity>
@@ -45,6 +46,9 @@ const styles = StyleSheet.create({
     height: 450,
     width: 400,
     padding: 20
+  },
+  searchBar: {
+    marginBottom: 40
   },
   bracketButton: {
     padding: 10,

@@ -3,30 +3,29 @@
 import React, { Component } from 'react';
 import {
   ReactNative,
-  Modal,
   StyleSheet,
-  Switch,
   Text,
   TouchableOpacity,
   View
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-//components
-import BracketFeed from '../bracket/bracket_feed';
-
-export default class SettingsModal extends Component {
+export default class Menu extends Component {
   constructor(props) {
     super(props);
 
+    this.onCreateBracketPress = this.onCreateBracketPress.bind(this);
+  }
+
+  onCreateBracketPress() {
+    this.props.navigation.navigate('CreateBracket');
   }
 
   render() {
-
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-          <TouchableOpacity style={styles.modalButton}>
+          <TouchableOpacity style={styles.modalButton} onPress={() => this.onCreateBracketPress()}>
             <Text style={styles.modalButtonText}>
               Create Bracket
             </Text>
@@ -97,4 +96,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = SettingsModal;
+module.exports = Menu;

@@ -1,3 +1,4 @@
+//components
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -8,27 +9,31 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-//imported components
-import SettingsModal from './nav_bar/settings_modal';
+import { Icon } from 'react-native-elements';
+
+//components
+import Menu from './nav_bar/menu';
 import BracketFeed from './bracket/bracket_feed';
+
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSettingsPress = this.handleSettingsPress.bind(this);
+    this.handleMenuPress = this.handleMenuPress.bind(this);
   }
 
-  handleSettingsPress() {
-    this.props.navigation.navigate('SettingsModal');
+  handleMenuPress() {
+    this.props.navigation.navigate('Menu');
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => this.handleSettingsPress()}>
-          <Text>Settings</Text>
+        <TouchableOpacity style={styles.menuButton} onPress={() => this.handleMenuPress()}>
+          <Text>Menu</Text>
         </TouchableOpacity>
+        <Text style={styles.searchBar}>Search Bar Goes Here</Text>
       </View>
     );
   }
@@ -37,9 +42,18 @@ export default class HomePage extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+  menuButton: {
+    position: 'absolute',
+    top: 10,
+    right: 30
+  },
+  searchBar: {
+    marginTop: 60,
+    marginBottom: 40
   }
 });
 

@@ -10,16 +10,16 @@ import ProfilePage from '../user/profile_page';
 
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
-import SettingsModal from '../nav_bar/settings_modal';
+import Menu from '../nav_bar/menu';
 import NavBar from '../nav_bar/nav_bar';
-
-
+import BracketForm from '../bracket/bracket_form';
+import PlayerModal from '../bracket/player_modal';
 
 export const HomePageStack = StackNavigator({
   Home: {
     screen: HomePage,
     navigationOptions: {
-      title: 'Home',
+      title: 'Home'
     }
   }
 });
@@ -28,22 +28,40 @@ export const ProfilePageStack = StackNavigator({
   ProfilePage: {
     screen: ProfilePage,
     navigationOptions: {
-      title: 'Profile Page',
+      title: 'Profile Page'
     }
   }
 });
 
-export const bracketStack = StackNavigator({
-  BracketFeed: {
-    screen: BracketFeed,
-    navigationOptions: {
-      title: 'Bracket Feed',
-    }
-  },
+export const BracketDetailStack = StackNavigator({
   BracketDetail: {
     screen: BracketDetail,
     navigationOptions: {
-      title: 'Bracket Detail'/*({ state }) => `${state.params.name.toUpperCase()}`*/
+      title: 'Bracket Detail'
+    }
+  },
+  PlayerModal: {
+    screen: PlayerModal,
+    navigationOptions: {
+      title: 'Player Modal'
+    }
+  }
+}, {
+  mode: 'modal',
+  headerMode: 'none'
+});
+
+export const BracketStack = StackNavigator({
+  BracketFeed: {
+    screen: BracketFeed,
+    navigationOptions: {
+      title: 'Bracket Feed'
+    }
+  },
+  BracketDetail: {
+    screen: BracketDetailStack,
+    navigationOptions: {
+      title: 'Bracket Detail'
     }
   }
 });
@@ -57,7 +75,7 @@ export const Tabs = TabNavigator({
     }
   },
 
-  Profile: {
+  ProfilePage: {
     screen: ProfilePageStack,
     navigationOptions: {
       tabBarLabel: 'Profile Page',
@@ -66,7 +84,7 @@ export const Tabs = TabNavigator({
   },
 
   BracketFeed: {
-    screen: bracketStack,
+    screen: BracketStack,
     navigationOptions: {
       tabBarLabel: 'Bracket Feed',
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
@@ -74,11 +92,17 @@ export const Tabs = TabNavigator({
   }
 });
 
-export const SettingsStack = StackNavigator({
-  SettingsModal: {
-    screen: SettingsModal,
+export const MenuStack = StackNavigator({
+  Menu: {
+    screen: Menu,
     navigationOptions: {
-      title: 'Settings'
+      title: 'Menu'
+    }
+  },
+  CreateBracket: {
+    screen: BracketForm,
+    navigationOptions: {
+      title: 'Create Bracket'
     }
   }
 });
@@ -87,8 +111,8 @@ export const Root = StackNavigator({
   Tabs: {
     screen: Tabs
   },
-  SettingsModal: {
-    screen: SettingsStack
+  Menu: {
+    screen: MenuStack
   }
 }, {
   mode: 'modal',
