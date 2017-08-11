@@ -8,7 +8,7 @@ const validateEmail = email => {
 };
 
 const validateUsername = username => {
-  const user = User.findOne({ username: username.toLowerCase() });
+  return /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/.test(username);
 };
 
 const userSchema = new Schema({
@@ -16,7 +16,11 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     required: 'Username is required',
-    uniqueCaseInsensitive: true
+    uniqueCaseInsensitive: true,
+    validate: [
+      validateUsername,
+      'Please enter only alphanumeric characters, underscores and hyphens'
+    ]
   },
   email: {
     type: String,

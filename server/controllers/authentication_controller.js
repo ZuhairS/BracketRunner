@@ -31,6 +31,7 @@ exports.signup = function(req, res, next) {
   // Check if user already exists, send error if they do
   User.findOne(
     {
+      // Check by either email or username
       $or: [{ email: email }, { username: username }]
     },
     function(err, existingUser) {
