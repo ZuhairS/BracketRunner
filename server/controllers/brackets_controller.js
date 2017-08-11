@@ -22,21 +22,21 @@ exports.create = function(req, res, next) {
 // };
 
 // Display list of Brackets through GET
-exports.bracket_list = function(req, res) {
+exports.bracketList = function(req, res) {
     res.send('TODO: bracket list');
 };
 
 // Display specific Bracket through GET
-exports.bracket_show = function(req, res) {
+exports.show = function(req, res) {
     res.send('TODO: bracket detail: ' + req.params.id);
 };
 
 // Delete a bracket through DELETE
-exports.bracket_delete = function(req, res) {
+exports.delete = function(req, res) {
     res.send('TODO: bracket delete');
 };
 
 // Update Bracket through PUT
-exports.bracket_update = function(req, res) {
+exports.edit = function(req, res) {
     res.send('TODO: bracket update ');
 };
