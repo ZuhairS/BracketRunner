@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {SIGNIN_URL, SIGNUP_URL} from '../util/auth_api_util';
+import {SIGNIN_URL, SIGNUP_URL, EDIT_URL} from '../util/auth_api_util';
 // import * as APIUtil from '../util/auth_api_util';
 // if we get this to work lets refactor it will this better style
 import {addAlert} from './alerts_actions';
@@ -30,6 +30,19 @@ exports.signUpUser = ({email, username, password}) => {
       dispatch(authUser(user_id));
     }).catch((error) => {
       dispatch(addAlert("Could not sign up"));
+    });
+  }
+}
+
+
+exports.editUser = ({picture, twitter, twitch, youTube, sponsor, sponsor_picture, about}) => {
+  return function(dispatch) {
+    return axios.patch(EDIT_URL, {picture, twitter, twitch, youTube, sponsor, sponsor_picture, about}).then((response) => {
+      var {user_id, token} = response.data;
+      dispatch(addAlert(token));
+      dispatch(editUser(user_id));
+    }).catch((error) => {
+      dispatch(addAlert("Could update profile"));
     });
   }
 }

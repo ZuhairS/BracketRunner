@@ -1,12 +1,13 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import { Icon } from 'react-native-elements';
+// import { Icon } from 'react-native-elements';
 
 // Tab Screens
 import HomePage from '../home_page';
 import BracketFeed from '../bracket/bracket_feed';
 import ProfilePage from '../user/profile_page';
+import AuthPage from '../user/auth';
 
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
@@ -82,11 +83,25 @@ export const Tabs = TabNavigator({
     }
   },
 
+  Auth: {
+    screen: AuthPage,
+    navigationOptions: {
+      tabBarLabel: 'Auth Page',
+      // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
+    }
+  },
+
   BracketFeed: {
     screen: BracketStack,
     navigationOptions: {
       tabBarLabel: 'Bracket Feed',
       // tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+    }
+  },
+  CreateBracket: {
+    screen: BracketForm,
+    navigationOptions: {
+      title: 'Create Bracket'
     }
   }
 });
@@ -103,8 +118,29 @@ export const MenuStack = StackNavigator({
     navigationOptions: {
       title: 'Create Bracket'
     }
+  },
+  CreateBracket: {
+    screen: BracketForm,
+    navigationOptions: {
+      title: 'Create Bracket'
+    }
   }
 });
+
+// export const MenuStack = StackNavigator({
+//   Menu: {
+//     screen: Menu,
+//     navigationOptions: {
+//       title: 'Menu'
+//     }
+//   },
+//   CreateBracket: {
+//     screen: BracketForm,
+//     navigationOptions: {
+//       title: 'Create Bracket'
+//     }
+//   }
+// });
 
 export const Root = StackNavigator({
   Tabs: {
