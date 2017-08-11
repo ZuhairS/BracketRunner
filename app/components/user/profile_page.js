@@ -9,7 +9,7 @@ import {
   NavigatorIOS
 } from 'react-native';
 //imported components
-
+import NavBar from '../nav_bar/nav_bar';
 
 export default class ProfilePage extends Component {
   constructor(props) {
@@ -20,9 +20,7 @@ export default class ProfilePage extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={styles.body}>
 
-        </View>
       </View>
     );
   }

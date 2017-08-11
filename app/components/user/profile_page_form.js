@@ -1,4 +1,3 @@
-//modules
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -12,59 +11,41 @@ import {
 } from 'react-native';
 //imported components
 import AlertContainer from '../alerts/alert_container';
-import MyTextInput from '../user/my_text_input';
+import MyTextInput from './my_text_input';
 import { Field, reduxForm } from 'redux-form';
 
 
 
-BracketForm = class BracketForm extends Component {
+ProfilePage = class ProfilePage extends Component {
   constructor(props) {
     super(props);
-
-    this.date = Date.now();
   }
 
-  createBracket(values){
+  updateUser(values){
     console.log('submitting form', values);
     // this.props.updateUser(values);
   }
 
-  renderInput({ input: { onChange, ...restInput }}) {
-    return (
-      <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
-    );
-  }
-
-  submit(values) {
-    console.log('submitting form', values)
-  }
-
   render() {
-    const { handleSubmit } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text >Bracket Name:</Text>
-          <Field name="bracket_name" component={renderInput} />
-          <Text >Player 1:</Text>
-          <Field name="player1" component={renderInput} />
-          <Text>Player 2:</Text>
-          <Field name="player2" component={renderInput} />
-          <Text>Player 3:</Text>
-          <Field name="player3" component={renderInput} />
-          <Text>Player 4:</Text>
-          <Field name="player4" component={renderInput} />
-          <Text>Player 5:</Text>
-          <Field name="player5" component={renderInput} />
-          <Text>Player 6:</Text>
-          <Field name="player6" component={renderInput} />
-          <Text>Player 7:</Text>
-          <Field name="player7" component={renderInput} />
-          <Text>Player 8:</Text>
-          <Field name="player8" component={renderInput} />
-
-          <TouchableOpacity onPress={this.props.handleSubmit(this.createBracket)}>
-            <Text style={styles.button}>Create Bracket</Text>
+          <Text >Picture:</Text>
+          <Field name="picture" component={renderInput} />
+          <Text >Twitter:</Text>
+          <Field name="twitter" component={renderInput} />
+          <Text>Twitch:</Text>
+          <Field name="twitch" component={renderInput} />
+          <Text>YouTube:</Text>
+          <Field name="youTube" component={renderInput} type="text" />
+          <Text>Sponsor:</Text>
+          <Field name="sponsor" component={renderInput} />
+          <Text>Sponsor Picture:</Text>
+          <Field name="sponsor_picture" component={renderInput} />
+          <Text>About:</Text>
+          <Field name="about" component={renderMultiLineInput} />
+          <TouchableOpacity onPress={this.props.handleSubmit(this.updateUser)}>
+            <Text style={styles.button}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       <AlertContainer />
@@ -76,6 +57,10 @@ BracketForm = class BracketForm extends Component {
 
 const renderInput = ({ input: { onChange, ...restInput }}) => {
   return <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
+}
+
+const renderMultiLineInput = ({ input: { onChange, ...restInput }}) => {
+  return <TextInput multiline = {true} numberOfLines = {4} style={styles.inputs} onChangeText={onChange} {...restInput} />
 }
 
 const styles = StyleSheet.create({
@@ -119,6 +104,9 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    signUpUser: user => dispatch(signUpUser(user)),
+    logInUser: user => dispatch(logInUser(user))
+
   };
 };
 
@@ -135,13 +123,13 @@ const validate = (formProps) => {
 }
 
 
-BracketForm = connect(
+ProfilePage = connect(
     mapStateToProps,
     mapDispatchToProps
-)(BracketForm);
+)(ProfilePage);
 
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password'],
   validate: validate
-})(BracketForm)
+})(ProfilePage)
