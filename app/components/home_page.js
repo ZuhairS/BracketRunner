@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+// import { Icon } from 'react-native-elements';
 
 //components
 import Menu from './modals/menu';

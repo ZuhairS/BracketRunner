@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+// import { Icon } from 'react-native-elements';
 
 //components
 import BracketFeed from '../bracket/bracket_feed';

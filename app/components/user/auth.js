@@ -31,6 +31,7 @@ Auth = class Auth extends Component{
 
   logIn(values){
     console.log('submitting form', values)
+    console.log(this.props);
     this.props.logInUser(values);
   }
 

@@ -12,6 +12,7 @@ module.exports = (state = defaultState, action) => {
       };
 
     case 'UNAUTH_USER':
+      console.log("hits the reducer");
       return {
         user_id: undefined
       };
