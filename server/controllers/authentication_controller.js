@@ -14,6 +14,8 @@ function tokenForUser(user) {
 }
 
 exports.signin = function(req, res, next) {
+  console.log("from the controller");
+  console.log(req.body);
   var user = req.user;
   res.send({ token: tokenForUser(user), user_id: user._id });
 };
@@ -31,6 +33,7 @@ exports.signup = function(req, res, next) {
   // Check if user already exists, send error if they do
   User.findOne(
     {
+      // Check by either email or username
       $or: [{ email: email }, { username: username }]
     },
     function(err, existingUser) {
