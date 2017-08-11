@@ -8,7 +8,8 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import HomePage from '../home_page';
 import BracketFeed from '../bracket/bracket_feed';
 import ProfilePage from '../user/profile_page';
-import AuthPage from '../user/auth'
+import AuthPage from '../user/auth';
+import BracketForm from '../bracket/bracket_form';
 
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
@@ -38,19 +39,18 @@ export const Tabs = TabNavigator({
     }
   },
 
+  Profile: {
+    screen: ProfilePage,
+    navigationOptions: {
+      tabBarLabel: 'Profile Page',
+      // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
+    }
+  },
 
   Auth: {
     screen: AuthPage,
     navigationOptions: {
       tabBarLabel: 'Auth Page',
-      // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
-    }
-  },
-
-  Profile: {
-    screen: ProfilePage,
-    navigationOptions: {
-      tabBarLabel: 'Profile Page',
       // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
     }
   },
@@ -61,6 +61,12 @@ export const Tabs = TabNavigator({
       tabBarLabel: 'Bracket Feed',
       // tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
     }
+  },
+  CreateBracket: {
+    screen: BracketForm,
+    navigationOptions: {
+      title: 'Create Bracket'
+    }
   }
 });
 
@@ -70,8 +76,29 @@ export const SettingsStack = StackNavigator({
     navigationOptions: {
       title: 'Settings'
     }
+  },
+  CreateBracket: {
+    screen: BracketForm,
+    navigationOptions: {
+      title: 'Create Bracket'
+    }
   }
 });
+
+// export const MenuStack = StackNavigator({
+//   Menu: {
+//     screen: Menu,
+//     navigationOptions: {
+//       title: 'Menu'
+//     }
+//   },
+//   CreateBracket: {
+//     screen: BracketForm,
+//     navigationOptions: {
+//       title: 'Create Bracket'
+//     }
+//   }
+// });
 
 export const Root = StackNavigator({
   Tabs: {

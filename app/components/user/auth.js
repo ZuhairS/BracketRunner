@@ -10,7 +10,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ScrollView,
   TextInput,
 } from 'react-native';
 import AlertContainer from '../alerts/alert_container';
@@ -27,7 +26,6 @@ Auth = class Auth extends Component{
 
   signUp(values){
     console.log('submitting form', values);
-    console.log(this.props);
     this.props.signUpUser(values);
   }
 
