@@ -27,11 +27,8 @@
     "react-tournament-bracket": "^0.1.0",
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",
-<<<<<<< HEAD
-=======
     "redux-thunk": "^2.2.0",
     "snapshot": "0.0.0",
->>>>>>> 1ed9f4f955b66eee1e6df6347af2d54c61441ba4
     "uuid": "^3.1.0"
   },
   "devDependencies": {
