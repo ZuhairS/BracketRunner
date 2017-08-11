@@ -1,7 +1,7 @@
 //modules
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { signUpUser, logInUser } from '../actions/auth_actions'
+import { signUpUser, logInUser } from '../../actions/auth_actions'
 import { connect } from 'react-redux';
 
 //components
@@ -13,10 +13,9 @@ import {
   ScrollView,
   TextInput,
 } from 'react-native';
-import AlertContainer from './alerts/alert_container';
+import AlertContainer from '../alerts/alert_container';
 import MyTextInput from './my_text_input';
 
-import Home from './home';
 
 Auth = class Auth extends Component{
   constructor(props) {

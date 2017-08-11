@@ -8,6 +8,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation';
 import HomePage from '../home_page';
 import BracketFeed from '../bracket/bracket_feed';
 import ProfilePage from '../user/profile_page';
+import AuthPage from '../user/auth'
 
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
@@ -34,6 +35,15 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Home',
       // tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
+    }
+  },
+
+
+  Auth: {
+    screen: AuthPage,
+    navigationOptions: {
+      tabBarLabel: 'Auth Page',
+      // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
     }
   },
 
