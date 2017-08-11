@@ -10,10 +10,9 @@ import ProfilePage from '../user/profile_page';
 
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
-import Menu from '../nav_bar/menu';
-import NavBar from '../nav_bar/nav_bar';
+import Menu from '../modals/menu';
 import BracketForm from '../bracket/bracket_form';
-import PlayerModal from '../bracket/player_modal';
+import PlayerModal from '../modals/player_modal';
 
 export const HomePageStack = StackNavigator({
   Home: {

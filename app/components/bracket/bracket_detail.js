@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 //components
-import PlayerModal from './player_modal';
+import PlayerModal from '../modals/player_modal';
 
 export default class BracketDetail extends Component{
   constructor(props) {

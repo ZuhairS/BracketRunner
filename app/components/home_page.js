@@ -12,7 +12,7 @@ import {
 import { Icon } from 'react-native-elements';
 
 //components
-import Menu from './nav_bar/menu';
+import Menu from './modals/menu';
 import BracketFeed from './bracket/bracket_feed';
 
 
