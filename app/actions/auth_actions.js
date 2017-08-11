@@ -8,7 +8,6 @@ import {addAlert} from './alerts_actions';
 export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
 
-
 exports.logInUser = ({email, username, password}) => {
   return function(dispatch) {
     return axios.post(SIGNIN_URL, {email, username, password}).then((response) => {
