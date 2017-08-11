@@ -31,12 +31,12 @@ exports.show = function(req, res) {
     res.send('TODO: bracket detail: ' + req.params.id);
 };
 
-// Delete a bracket through DELETE
-exports.delete = function(req, res) {
-    res.send('TODO: bracket delete');
-};
-
 // Update Bracket through PUT
 exports.edit = function(req, res) {
     res.send('TODO: bracket update ');
+};
+
+// Delete a bracket through DELETE
+exports.delete = function(req, res) {
+    res.send('TODO: bracket delete');
 };
