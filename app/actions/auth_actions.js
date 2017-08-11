@@ -39,7 +39,7 @@ exports.signOutUser = ({user_id}) => {
   console.log("dispatch action");
   console.log({user_id});
   return function(dispatch) {
-    return axios.post(SIGNOUT_URL, {user_id}).then((response) => {
+    return axios.delete(SIGNOUT_URL, {user_id}).then((response) => {
       var {user_id} = response.data;
       dispatch(unauthUser());
     }).catch((error) => {

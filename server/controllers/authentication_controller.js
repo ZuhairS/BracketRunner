@@ -14,10 +14,15 @@ function tokenForUser(user) {
 }
 
 exports.signin = function(req, res, next) {
-  console.log("from the controller");
-  console.log(req.body);
   var user = req.user;
   res.send({ token: tokenForUser(user), user_id: user._id });
+};
+
+exports.signout = function(req, res, next) {
+  console.log("in controllers");
+  console.log(req);
+  var userId = req.userId;
+  res.send({ userId: userId });
 };
 
 exports.signup = function(req, res, next) {
