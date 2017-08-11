@@ -20,33 +20,9 @@ exports.editUser = userProps => {
   };
 };
 
-exports.editUser = ({
-  picture,
-  twitter,
-  twitch,
-  youTube,
-  sponsor,
-  sponsor_picture,
-  about
-}) => {
-  return function(dispatch) {
-    return axios
-      .patch(EDIT_URL, {
-        picture,
-        twitter,
-        twitch,
-        youTube,
-        sponsor,
-        sponsor_picture,
-        about
-      })
-      .then(response => {
-        var { user_id, token } = response.data;
-        dispatch(addAlert(token));
-        dispatch(editUser(user_id));
-      })
-      .catch(error => {
-        dispatch(addAlert('Could update profile'));
-      });
+const receiveUser = user => {
+  return {
+    type: RECEIVE_USER,
+    user
   };
 };

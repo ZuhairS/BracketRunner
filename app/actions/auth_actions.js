@@ -38,10 +38,10 @@ exports.signUpUser = ({ email, username, password }) => {
   };
 };
 
-authUser = user_id => {
+const authUser = userId => {
   return {
     type: AUTH_USER,
-    user_id
+    userId
   };
 };
 
