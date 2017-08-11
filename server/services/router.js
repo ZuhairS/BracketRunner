@@ -13,6 +13,7 @@ const router = require('express').Router();
 // Auth Routes
 router.route('/signup').post(AuthenticationController.signup);
 router.route('/signin').post([requireLogin, AuthenticationController.signin]);
+router.route('/signout').delete(AuthenticationController.signout);
 
 // User Routes
 router.route('/users/:id').get(UserController.show);
