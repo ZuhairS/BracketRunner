@@ -15,8 +15,12 @@ var localStrategy = new LocalStrategy(localOptions, function(
   password,
   done
 ) {
-  // Verify the username and password
-  User.findOne({ email: email.toLowerCase() }, function(err, user) {
+  // Verify the username/email and password
+  var criteria =
+    email.indexOf('@') === -1
+      ? { username: email }
+      : { email: email.toLowerCase() };
+  User.findOne(criteria, function(err, user) {
     if (err) {
       return done(err);
     }
