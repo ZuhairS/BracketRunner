@@ -31,7 +31,20 @@ const userSchema = new Schema({
   },
   password: {
     type: String
-  }
+  },
+  sponserName: String,
+  sponserImageUrl: String,
+  avatarUrl: String,
+  aboutMe: String,
+  gamesPlayed: [
+    {
+      name: String
+    }
+  ],
+  twitterUrl: String,
+  twitchUrl: String,
+  youtubeUrl: String,
+  live: Boolean
 });
 
 // Apply the uniqueValidator plugin to userSchema.
