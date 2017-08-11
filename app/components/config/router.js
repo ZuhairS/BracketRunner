@@ -2,45 +2,81 @@ import React from 'react';
 import { Image, StyleSheet } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation';
 // import { Icon } from 'react-native-elements';
-// import { list, home } from 'react-native-vector-icons';
 
 // Tab Screens
 import HomePage from '../home_page';
 import BracketFeed from '../bracket/bracket_feed';
 import ProfilePage from '../user/profile_page';
 import AuthPage from '../user/auth';
-import BracketForm from '../bracket/bracket_form';
 
 // Stack Screens
 import BracketDetail from '../bracket/bracket_detail';
-import SettingsModal from '../nav_bar/settings_modal';
+import Menu from '../modals/menu';
+import BracketForm from '../bracket/bracket_form';
+import PlayerModal from '../modals/player_modal';
 
-export const bracketStack = StackNavigator({
-  BracketFeed: {
-    screen: BracketFeed,
+export const HomePageStack = StackNavigator({
+  Home: {
+    screen: HomePage,
     navigationOptions: {
-      title: 'Bracket Feed',
+      title: 'Home'
     }
-  },
+  }
+});
+
+export const ProfilePageStack = StackNavigator({
+  ProfilePage: {
+    screen: ProfilePage,
+    navigationOptions: {
+      title: 'Profile Page'
+    }
+  }
+});
+
+export const BracketDetailStack = StackNavigator({
   BracketDetail: {
     screen: BracketDetail,
     navigationOptions: {
-      title: 'Bracket Detail'/*({ state }) => `${state.params.name.toUpperCase()}`*/
+      title: 'Bracket Detail'
+    }
+  },
+  PlayerModal: {
+    screen: PlayerModal,
+    navigationOptions: {
+      title: 'Player Modal'
+    }
+  }
+}, {
+  mode: 'modal',
+  headerMode: 'none'
+});
+
+export const BracketStack = StackNavigator({
+  BracketFeed: {
+    screen: BracketFeed,
+    navigationOptions: {
+      title: 'Bracket Feed'
+    }
+  },
+  BracketDetail: {
+    screen: BracketDetailStack,
+    navigationOptions: {
+      title: 'Bracket Detail'
     }
   }
 });
 
 export const Tabs = TabNavigator({
   Home: {
-    screen: HomePage,
+    screen: HomePageStack,
     navigationOptions: {
       tabBarLabel: 'Home',
       // tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
     }
   },
 
-  Profile: {
-    screen: ProfilePage,
+  ProfilePage: {
+    screen: ProfilePageStack,
     navigationOptions: {
       tabBarLabel: 'Profile Page',
       // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
@@ -56,7 +92,7 @@ export const Tabs = TabNavigator({
   },
 
   BracketFeed: {
-    screen: bracketStack,
+    screen: BracketStack,
     navigationOptions: {
       tabBarLabel: 'Bracket Feed',
       // tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
@@ -70,11 +106,17 @@ export const Tabs = TabNavigator({
   }
 });
 
-export const SettingsStack = StackNavigator({
-  SettingsModal: {
-    screen: SettingsModal,
+export const MenuStack = StackNavigator({
+  Menu: {
+    screen: Menu,
     navigationOptions: {
-      title: 'Settings'
+      title: 'Menu'
+    }
+  },
+  CreateBracket: {
+    screen: BracketForm,
+    navigationOptions: {
+      title: 'Create Bracket'
     }
   },
   CreateBracket: {
@@ -104,10 +146,10 @@ export const Root = StackNavigator({
   Tabs: {
     screen: Tabs
   },
-  SettingsModal: {
-    screen: SettingsStack
+  Menu: {
+    screen: MenuStack
   }
 }, {
   mode: 'modal',
-  headerModal: 'none'
+  headerMode: 'none'
 });
