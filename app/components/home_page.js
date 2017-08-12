@@ -9,12 +9,11 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+// import { Icon } from 'react-native-elements';
 
 //components
 import Menu from './modals/menu';
 import BracketFeed from './bracket/bracket_feed';
-
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -30,7 +29,10 @@ export default class HomePage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.menuButton} onPress={() => this.handleMenuPress()}>
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => this.handleMenuPress()}
+        >
           <Text>Menu</Text>
         </TouchableOpacity>
         <Text style={styles.searchBar}>Search Bar Goes Here</Text>
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   menuButton: {
     position: 'absolute',

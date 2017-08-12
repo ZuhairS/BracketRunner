@@ -1,29 +1,25 @@
+import {
+  RECEIVE_SELECTED_BRACKET,
+  RECEIVE_FEATURED_BRACKET,
+  RECEIVE_LIVE_BRACKETS
+} from '../actions/bracket_actions';
+
 var defaultState = {
-  matches: [
-    {
-      player1: 'nick',
-      player2: 'zuhair'
-    },
-    {
-      player1: 'zach',
-      player2: 'ali'
-    },
-    {
-      player1: 'younis',
-      player2: 'chris'
-    },
-    {
-      player1: 'josh',
-      player2: 'andrew'
-    }
-  ]
+  selectedBracket: {},
+  featuredBracket: {},
+  liveBrackets: {}
 };
 
 module.exports = (state = defaultState, action) => {
   switch (action.type) {
-    case 'RECEIVE_BRACKET':
-      return defaultState;
-    // return Object.assign({}, state, {bracket: action.bracket});
+    case RECEIVE_SELECTED_BRACKET:
+      return Object.assign({}, state, { selectedBracket: action.bracket });
+
+    case RECEIVE_FEATURED_BRACKET:
+      return Object.assign({}, state, { featuredBracket: action.bracket });
+
+    case RECEIVE_LIVE_BRACKETS:
+      return Object.assign({}, state, { liveBrackets: action.brackets });
 
     default:
       return state;
