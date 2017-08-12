@@ -1,5 +1,5 @@
 import {
-  RECEIVE_USER,
+  RECEIVE_BRACKET,
   RECEIVE_ALL_BRACKETS,
   RECEIVE_LIVE_BRACKETS
 } from '../actions/bracket_actions';
