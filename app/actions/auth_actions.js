@@ -20,7 +20,6 @@ exports.logInUser = ({email, username, password}) => {
   }
 }
 
-
 exports.signUpUser = ({email, username, password}) => {
   return function(dispatch) {
     return axios.post(SIGNUP_URL, {email, username, password}).then((response) => {
@@ -32,7 +31,6 @@ exports.signUpUser = ({email, username, password}) => {
     });
   }
 }
-
 
 authUser = (user_id) => {
   return {

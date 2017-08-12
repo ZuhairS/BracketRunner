@@ -70,7 +70,7 @@ export const Tabs = TabNavigator({
     screen: HomePageStack,
     navigationOptions: {
       tabBarLabel: 'Home',
-      // tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
     }
   },
 
@@ -78,7 +78,7 @@ export const Tabs = TabNavigator({
     screen: ProfilePageStack,
     navigationOptions: {
       tabBarLabel: 'Profile Page',
-      // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
     }
   },
 
@@ -86,7 +86,7 @@ export const Tabs = TabNavigator({
     screen: BracketStack,
     navigationOptions: {
       tabBarLabel: 'Bracket Feed',
-      // tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
     }
   }
 });
