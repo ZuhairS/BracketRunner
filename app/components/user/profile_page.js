@@ -5,11 +5,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
-  NavigatorIOS
+  TouchableOpacity
 } from 'react-native';
-//imported components
-
 
 export default class ProfilePage extends Component {
   constructor(props) {
@@ -20,9 +17,7 @@ export default class ProfilePage extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={styles.body}>
 
-        </View>
       </View>
     );
   }

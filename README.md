@@ -105,4 +105,4 @@ Our shared responsibilities include:
 
 
 ### Plan for getting users and reviews
-Both Nick and Zach will send the app to Smash and Magic communities to solicit use
+Both Nick and Zach will send the app to Smash and Magic communities to solicit use.
