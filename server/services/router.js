@@ -20,10 +20,13 @@ router.route('/users/:id').get(UserController.show);
 router.route('/users/:id').put(UserController.edit);
 router.route('/users/:id').delete(UserController.delete);
 
-// // Bracket Routes
+// Bracket Routes
 router.route('/brackets/create').post(BracketsController.create);
 router.route('/brackets/:bracket_id').get(BracketsController.show);
 router.route('/brackets/:bracket_id').put(BracketsController.edit);
 router.route('/brackets/:bracket_id').delete(BracketsController.delete);
+
+// Featured Bracket Route
+router.route('/featured_bracket').get(BracketsController.showFeatured);
 
 module.exports = router;
