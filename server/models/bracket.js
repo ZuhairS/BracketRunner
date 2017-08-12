@@ -31,7 +31,6 @@ let bracketSchema = new Schema({
     type: String,
     required: [true, 'Need a location!']
   },
-
   // matches or rounds with match objects inside?
   matches: [
     {
