@@ -3,7 +3,7 @@ const passportService = require('./passport');
 
 const AuthenticationController = require('../controllers/authentication_controller');
 const UserController = require('../controllers/users_controller');
-const BracketController = require('../controllers/bracket_controller');
+const BracketsController = require('../controllers/brackets_controller');
 
 var requireAuth = passport.authenticate('jwt', { session: false });
 var requireLogin = passport.authenticate('local', { session: false });
@@ -20,10 +20,13 @@ router.route('/users/:id').get(UserController.show);
 router.route('/users/:id').put(UserController.edit);
 router.route('/users/:id').delete(UserController.delete);
 
-// // Bracket Routes
-router.route('/brackets/create').post(BracketController.create);
-router.route('/brackets/:bracket_id').get(BracketController.show);
-router.route('/brackets/:bracket_id').put(BracketController.edit);
-router.route('/brackets/:bracket_id').delete(BracketController.delete);
+// Bracket Routes
+router.route('/brackets/create').post(BracketsController.create);
+router.route('/brackets/:bracket_id').get(BracketsController.show);
+router.route('/brackets/:bracket_id').put(BracketsController.edit);
+router.route('/brackets/:bracket_id').delete(BracketsController.delete);
+
+// Featured Bracket Route
+router.route('/featured_bracket').get(BracketsController.showFeatured);
 
 module.exports = router;

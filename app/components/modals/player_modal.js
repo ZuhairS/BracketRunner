@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+// import { Icon } from 'react-native-elements';
 
 //components
 import BracketFeed from '../bracket/bracket_feed';
@@ -21,7 +21,6 @@ export default class PlayerModal extends Component {
   }
 
   render() {
-
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Username</Text>
@@ -29,8 +28,6 @@ export default class PlayerModal extends Component {
           {/*profile picture goes here*/}
         </View>
         <View style={styles.innerContainer}>
-
-
           <View style={styles.modalButton}>
             <Text style={styles.modalButtonText}>
               {/*sponser image */} Sponser
@@ -38,36 +35,23 @@ export default class PlayerModal extends Component {
           </View>
 
           <View style={styles.modalButton}>
-            <Text style={styles.modalButtonText}>
-
-            </Text>
+            <Text style={styles.modalButtonText} />
           </View>
 
           <View style={styles.links}>
-            <Text style={styles.modalButtonText}>
-              Links:
-            </Text>
+            <Text style={styles.modalButtonText}>Links:</Text>
 
-            <Text style={styles.modalButtonText}>
-              Twitter Url
-            </Text>
+            <Text style={styles.modalButtonText}>Twitter Url</Text>
 
-            <Text style={styles.modalButtonText}>
-              Twitch Url
-            </Text>
+            <Text style={styles.modalButtonText}>Twitch Url</Text>
 
-            <Text style={styles.modalButtonText}>
-              Youtube Url
-            </Text>
+            <Text style={styles.modalButtonText}>Youtube Url</Text>
           </View>
-
         </View>
 
         <View style={styles.viewProfileContainer}>
           <TouchableOpacity style={styles.viewProfile}>
-            <Text style={styles.modalButtonText}>
-              View Profile
-            </Text>
+            <Text style={styles.modalButtonText}>View Profile</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -77,7 +61,7 @@ export default class PlayerModal extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   header: {
     alignItems: 'center',
@@ -91,11 +75,11 @@ var styles = StyleSheet.create({
     marginLeft: 10,
     height: 150,
     width: 150,
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   innerContainer: {
     flex: 7,
-    marginTop: 20,
+    marginTop: 20
   },
   modalButton: {
     backgroundColor: 'white',

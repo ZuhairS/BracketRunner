@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 //imported components
-import NavBar from '../nav_bar/nav_bar';
+// import NavBar from '../nav_bar/nav_bar';
 
 export default class ProfilePage extends Component {
   constructor(props) {
@@ -16,12 +16,7 @@ export default class ProfilePage extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-
-
-      </View>
-    );
+    return <View style={styles.container} />;
   }
 }
 
@@ -41,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
-  },
+  }
 });
 
 module.exports = ProfilePage;
