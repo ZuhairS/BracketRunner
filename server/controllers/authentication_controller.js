@@ -19,8 +19,6 @@ exports.signin = function(req, res, next) {
 };
 
 exports.signout = function(req, res, next) {
-  console.log("in controllers");
-  console.log(req);
   var userId = req.userId;
   res.send({ userId: userId });
 };

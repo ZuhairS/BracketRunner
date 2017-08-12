@@ -5,8 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
-  NavigatorIOS
+  TouchableOpacity
 } from 'react-native';
 //imported components
 // import NavBar from '../nav_bar/nav_bar';
