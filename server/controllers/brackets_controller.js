@@ -20,11 +20,6 @@ exports.create = function(req, res, next) {
   });
 };
 
-
-// exports.show = (req, res, next) => {
-//   res.json({});
-// };
-
 // Display list of Brackets through GET; for the bracket feed
 // exports.bracketList = function(req, res) {
 //     res.send('TODO: bracket list');
