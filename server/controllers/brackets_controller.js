@@ -63,16 +63,13 @@ exports.edit = function(req, res, next) {
       });
 };
 
-Book.findOneAndUpdate({ "_id": bookId }, { "$set": { "name": name, "genre": genre, "author": author, "similar": similar}}).exec(function(err, book){
-  if(err) {
-      console.log(err);
-      res.status(500).send(err);
-  } else {
-           res.status(200).send(book);
-  }
-});
-
 // Delete a bracket through DELETE
-exports.delete = function(req, res) {
-    res.send('TODO: bracket delete');
+exports.delete = function (req, res, next) {
+  Bracket.findByIdAndRemove(req.params.id).exec((err, bracket) => {
+      if (err) {
+        res.send({ error: err });
+        return next(err);
+      }
+      res.json({ message: 'Bracket deleted.'});
+    });
 };
