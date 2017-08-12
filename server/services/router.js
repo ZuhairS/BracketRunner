@@ -27,6 +27,6 @@ router.route('/brackets/:bracket_id').put(BracketsController.edit);
 router.route('/brackets/:bracket_id').delete(BracketsController.delete);
 
 // Featured Bracket Route
-router.route('/featured_bracket').get(BracketsController.showFeatured);
+// router.route('/featured_bracket').get(BracketsController.showFeatured);
 
 module.exports = router;
