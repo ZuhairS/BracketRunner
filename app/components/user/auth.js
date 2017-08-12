@@ -1,7 +1,7 @@
 //modules
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { signUpUser, logInUser } from '../../actions/auth_actions'
+import { signUpUser, logInUser } from '../../actions/auth_actions';
 import { connect } from 'react-redux';
 
 //components
@@ -10,37 +10,34 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput,
+  TextInput
 } from 'react-native';
 import AlertContainer from '../alerts/alert_container';
 import MyTextInput from './my_text_input';
 
-
-Auth = class Auth extends Component{
+Auth = class Auth extends Component {
   constructor(props) {
-   super(props);
+    super(props);
 
-   this.signUp = this.signUp.bind(this);
-   this.logIn = this.logIn.bind(this);
- }
+    this.signUp = this.signUp.bind(this);
+    this.logIn = this.logIn.bind(this);
+  }
 
-  signUp(values){
+  signUp(values) {
     console.log('submitting form', values);
     this.props.signUpUser(values);
   }
 
-  logIn(values){
-    console.log('submitting form', values)
-    this.props.logInUser(values);
+  logIn(values) {
+    console.log('submitting form', values);
+    this.props.logInUser(values).then(() => console.log(this.props.state));
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text sytle={styles.title}>
-            Email:
-          </Text>
+          <Text sytle={styles.title}>Email:</Text>
           <Field name="email" component={renderInput} />
           <Text>Username:</Text>
           <Field name="username" component={renderInput} />
@@ -53,13 +50,11 @@ Auth = class Auth extends Component{
             <Text style={styles.button}>Log In</Text>
           </TouchableOpacity>
         </View>
-      <AlertContainer />
+        <AlertContainer />
       </View>
     );
   }
-
 };
-
 
 const styles = StyleSheet.create({
   button: {
@@ -69,13 +64,13 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     marginTop: 10,
     textAlign: 'center',
-    width: 250,
+    width: 250
   },
   container: {
     backgroundColor: '#C4B585',
-    flex : 1,
+    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   input: {
     color: 'white',
@@ -86,42 +81,39 @@ const styles = StyleSheet.create({
     height: 37,
     width: 250
   },
-  title:{
+  title: {
     color: '#2D3336'
   }
-})
+});
 
-const renderInput = ({ input: { onChange, ...restInput }}) => {
-  return <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
-}
+const renderInput = ({ input: { onChange, ...restInput } }) => {
+  return (
+    <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
+  );
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     signUpUser: user => dispatch(signUpUser(user)),
     logInUser: user => dispatch(logInUser(user))
-
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     state
   };
 };
 
-const validate = (formProps) => {
+const validate = formProps => {
   var errors = {};
   return errors;
-}
+};
 
-
-Auth = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Auth);
+Auth = connect(mapStateToProps, mapDispatchToProps)(Auth);
 
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password'],
   validate: validate
-})(Auth)
+})(Auth);
