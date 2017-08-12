@@ -20,20 +20,24 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    this.handleMenuPress = this.handleMenuPress.bind(this);
+    this.onCreateBracketPress = this.onCreateBracketPress.bind(this);
+    // this.handleMenuPress = this.handleMenuPress.bind(this);
   }
 
-  handleMenuPress() {
-    this.props.navigation.navigate('Menu');
+  onCreateBracketPress() {
+    this.props.navigation.navigate('BracketForm');
   }
+
+  // handleMenuPress() {
+  //   this.props.navigation.navigate('Menu');
+  // }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.menuButton} onPress={() => this.handleMenuPress()}>
-          <Text>Menu</Text>
+        <TouchableOpacity style={styles.createBracketButton} onPress={() => this.onCreateBracketPress()}>
+          <Text style={styles.createBracketButtonText}>Create Bracket</Text>
         </TouchableOpacity>
-        <Text style={styles.searchBar}>Search Bar Goes Here</Text>
       </View>
     );
   }
@@ -46,10 +50,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  menuButton: {
-    position: 'absolute',
-    top: 10,
-    right: 30
+  createBracketButton: {
+    borderWidth: 1,
+    borderRadius: 10,
+    width: 200,
+    marginTop: 100,
+  },
+  createBracketButtonText: {
+    fontSize: 20,
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 8,
+
   },
   searchBar: {
     marginTop: 60,

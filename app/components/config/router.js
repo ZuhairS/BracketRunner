@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation';
-// import { Icon } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 
 // Tab Screens
 import HomePage from '../home_page';
@@ -74,7 +74,6 @@ export const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="home" size={35} color={tintColor} />
     }
   },
-
   ProfilePage: {
     screen: ProfilePageStack,
     navigationOptions: {
@@ -82,15 +81,6 @@ export const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
     }
   },
-
-  Auth: {
-    screen: AuthPage,
-    navigationOptions: {
-      tabBarLabel: 'Auth Page',
-      // tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
-    }
-  },
-
   BracketFeed: {
     screen: BracketStack,
     navigationOptions: {
@@ -98,56 +88,29 @@ export const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
     }
   },
-  CreateBracket: {
+  // Auth: {
+  //   screen: AuthPage,
+  // },
+});
+
+export const BracketFormStack = StackNavigator({
+  BracketForm: {
     screen: BracketForm,
     navigationOptions: {
       title: 'Create Bracket'
     }
   }
 });
-
-export const MenuStack = StackNavigator({
-  Menu: {
-    screen: Menu,
-    navigationOptions: {
-      title: 'Menu'
-    }
-  },
-  CreateBracket: {
-    screen: BracketForm,
-    navigationOptions: {
-      title: 'Create Bracket'
-    }
-  },
-  CreateBracket: {
-    screen: BracketForm,
-    navigationOptions: {
-      title: 'Create Bracket'
-    }
-  }
-});
-
-// export const MenuStack = StackNavigator({
-//   Menu: {
-//     screen: Menu,
-//     navigationOptions: {
-//       title: 'Menu'
-//     }
-//   },
-//   CreateBracket: {
-//     screen: BracketForm,
-//     navigationOptions: {
-//       title: 'Create Bracket'
-//     }
-//   }
-// });
 
 export const Root = StackNavigator({
+  // Auth: {
+  //   screen: AuthPage,
+  // },
   Tabs: {
     screen: Tabs
   },
-  Menu: {
-    screen: MenuStack
+  BracketForm: {
+    screen: BracketFormStack
   }
 }, {
   mode: 'modal',
