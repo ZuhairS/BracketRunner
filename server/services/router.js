@@ -3,7 +3,7 @@ const passportService = require('./passport');
 
 const AuthenticationController = require('../controllers/authentication_controller');
 const UserController = require('../controllers/users_controller');
-const BracketController = require('../controllers/bracket_controller');
+const BracketController = require('../controllers/brackets_controller');
 
 var requireAuth = passport.authenticate('jwt', { session: false });
 var requireLogin = passport.authenticate('local', { session: false });

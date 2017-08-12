@@ -10,25 +10,38 @@ export const UNAUTH_USER = 'UNAUTH_USER';
 
 exports.logInUser = ({ email, username, password }) => {
   return function(dispatch) {
-    return axios.post(SIGNUP_URL, {email, username, password}).then((response) => {
-      var {user_id, token} = response.data;
-      dispatch(addAlert(token));
-      dispatch(authUser(user_id));
-    }).catch((error) => {
-      dispatch(addAlert("Could not sign up"));
-    });
-  }
-}
+    return axios
+      .post(SIGNIN_URL, { email, username, password })
+      .then(response => {
+        var { user_id, token } = response.data;
+        dispatch(addAlert(token));
+        dispatch(authUser(user_id));
+      })
+      .catch(error => {
+        dispatch(addAlert('Could not sign in'));
+      });
+  };
+};
+
+exports.signUpUser = ({ email, username, password }) => {
+  return function(dispatch) {
+    return axios
+      .post(SIGNUP_URL, { email, username, password })
+      .then(response => {
+        var { user_id, token } = response.data;
+        dispatch(addAlert(token));
+        dispatch(authUser(user_id));
+      })
+      .catch(error => {
+        dispatch(addAlert('Could not sign up'));
+      });
+  };
+};
 
 
 exports.signOutUser = ({user_id}) => {
   return function(dispatch) {
-    return axios.delete(SIGNOUT_URL, {user_id}).then((response) => {
-      var {user_id} = response.data;
-      dispatch(unauthUser());
-    }).catch((error) => {
-      dispatch(addAlert("Could not sign out"));
-    });
+    return dispatch(unauthUser());
   }
 }
 

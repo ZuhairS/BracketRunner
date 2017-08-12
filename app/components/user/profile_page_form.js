@@ -23,7 +23,6 @@ ProfilePage = class ProfilePage extends Component {
 
   updateUser(values){
     console.log('submitting form', values);
-    // this.props.updateUser(values);
   }
 
   render() {
