@@ -2,17 +2,8 @@ const Bracket = require('../models/bracket');
 
 // Create new Bracket through POST
 exports.create = function(req, res, next) {
-  var bracket = new Bracket({
-    name: req.body.name,
-    numberOfEntrants: req.body.numberOfEntrants,
-    entrants: req.body.entrants,
-    game: req.body.game,
-    startTime: req.body.startTime,
-    endTime: req.body.endTime,
-    location: req.body.location,
-    rounds: req.body.rounds
-  });
-  bracket.save(function(error) {
+  var bracket = new Bracket(req.body);
+  Bracket.save(bracket, function(error) {
     if (error) {
       return next(error);
     }
@@ -38,18 +29,8 @@ exports.show = function (req, res, next) {
 
 // Update Bracket through PUT
 exports.edit = function(req, res, next) {
-  Bracket.findByIdAndUpdate(req.params.id, { $set: 
-    {
-    name: req.body.name,
-    numberOfEntrants: req.body.numberOfEntrants,
-    entrants: req.body.entrants,
-    game: req.body.game,
-    startTime: req.body.startTime,
-    endTime: req.body.endTime,
-    location: req.body.location,
-    rounds: req.body.rounds
-    }
-  }).exec(function(err, bracket){
+  Bracket.findByIdAndUpdate(req.params.id, { $set: req.body })
+    .exec(function(err, bracket) {
       if (err) {
         res.send({ error: err });
         return next(err);
