@@ -14,8 +14,9 @@ exports.logInUser = ({ email, username, password }) => {
       .post(SIGNIN_URL, { email, username, password })
       .then(response => {
         var { user_id, token } = response.data;
-        dispatch(addAlert(token));
         dispatch(authUser(user_id));
+        dispatch(addAlert(token));
+
       })
       .catch(error => {
         dispatch(addAlert('Could not sign in'));
@@ -46,7 +47,7 @@ exports.signOutUser = ({user_id}) => {
 }
 
 
-authUser = (user_id) => {
+authUser = (userId) => {
   return {
     type: AUTH_USER,
     userId

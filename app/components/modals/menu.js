@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-// import { Icon } from 'react-native-elements';
 
 const Menu = class Menu extends Component {
   constructor(props) {
@@ -34,34 +33,31 @@ const Menu = class Menu extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-          <TouchableOpacity style={styles.modalButton} onPress={() => this.onCreateBracketPress()}>
-            <Text style={styles.modalButtonText}>
-              Create Bracket
-            </Text>
-
+          <TouchableOpacity
+            style={styles.modalButton}
+            onPress={() => this.onCreateBracketPress()}
+          >
+            <Text style={styles.modalButtonText}>Create Bracket</Text>
+            <View />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalButton}>
-            <Text style={styles.modalButtonText}>
-              Settings
-            </Text>
-
+            <Text style={styles.modalButtonText}>Settings</Text>
+            <View />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalButton}>
-            <Text style={styles.modalButtonText}>
-              About
-            </Text>
-
+            <Text style={styles.modalButtonText}>About</Text>
+            <View />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.modalButtonLogOut}>
-            <Text style={styles.modalButtonText} onPress={() => this.onSignOutPress()}>
-              Log Out
-            </Text>
-
+          <TouchableOpacity
+            style={styles.modalButton}
+            onPress={() => this.onSignOutPress()}
+          >
+            <Text style={styles.modalButtonText}>Log Out</Text>
+            <View />
           </TouchableOpacity>
-
         </View>
       </View>
     );
@@ -70,10 +66,10 @@ const Menu = class Menu extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   innerContainer: {
-    marginTop: 20,
+    marginTop: 20
   },
   modalButton: {
     backgroundColor: 'white',
@@ -93,7 +89,7 @@ var styles = StyleSheet.create({
   },
   modalButtonText: {
     paddingLeft: 20,
-    width: 320,
+    width: 320
   }
 });
 
