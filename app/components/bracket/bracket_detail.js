@@ -1,13 +1,15 @@
 //modules
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Swiper from 'react-native-swiper';
 import { receiveBracket } from '../../actions/bracket_actions';
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from 'react-native';
 
 //components
@@ -38,81 +40,79 @@ export default class BracketDetail extends Component{
         <View>
           <Text style={styles.header}>Tournament Name</Text>
         </View>
+        <Swiper style={styles.wrapper} height={500} horizontal={true}>
+          <View style={styles.slide1}>
+              {/*Round 1*/}
+              <View>
+                <Text style={styles.round}>Round 1</Text>
 
-        <View style={styles.body}>
-          <ScrollView>
-    {/********************************************************************/}
-    {/*Round 1*/}
-            <View>
-              <Text style={styles.round}>Round 1</Text>
-
-              <View style={styles.match}>
-                {/*Match 1*/}
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
-                </TouchableOpacity>
-                <View>
-                  <Text style={styles.matchup}>
-                    {matches[0].player1} vs {matches[0].player2}
-                  </Text>
-                  <SetResultsCounter/>
+                <View style={styles.match}>
+                  {/*Match 1*/}
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.matchup}>
+                      {matches[0].player1} vs {matches[0].player2}
+                    </Text>
+                    <SetResultsCounter/>
+                  </View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
-                </TouchableOpacity>
-              </View>
 
-              <View style={styles.match}>
-                {/*Match 2*/}
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
-                </TouchableOpacity>
-                <View>
-                  <Text style={styles.matchup}>
-                    {matches[1].player1} vs {matches[1].player2}
-                  </Text>
-                  <SetResultsCounter/>
+                <View style={styles.match}>
+                  {/*Match 2*/}
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.matchup}>
+                      {matches[1].player1} vs {matches[1].player2}
+                    </Text>
+                    <SetResultsCounter/>
+                  </View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
-                </TouchableOpacity>
-              </View>
 
-              <View style={styles.match}>
-                {/*Match 3*/}
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
-                </TouchableOpacity>
-                <View>
-                  <Text style={styles.matchup}>
-                    {matches[2].player1} vs {matches[2].player2}
-                  </Text>
-                  <SetResultsCounter/>
+                <View style={styles.match}>
+                  {/*Match 3*/}
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.matchup}>
+                      {matches[2].player1} vs {matches[2].player2}
+                    </Text>
+                    <SetResultsCounter/>
+                  </View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
-                </TouchableOpacity>
-              </View>
 
-              <View style={styles.match}>
-                {/*Match 4*/}
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
-                </TouchableOpacity>
-                <View>
-                  <Text style={styles.matchup}>
-                    {matches[3].player1} vs {matches[3].player2}
-                  </Text>
-                  <SetResultsCounter/>
+                <View style={styles.match}>
+                  {/*Match 4*/}
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.matchup}>
+                      {matches[3].player1} vs {matches[3].player2}
+                    </Text>
+                    <SetResultsCounter/>
+                  </View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
-                </TouchableOpacity>
-              </View>
 
-            </View>
-    {/********************************************************************/}
-    {/*Round 2*/}
+              </View>
+          </View>
+          <View style={styles.slide2}>
             <View>
               <Text style={styles.round}>Round 2</Text>
 
@@ -147,31 +147,29 @@ export default class BracketDetail extends Component{
                   {/* player 2 profile pic */}
                 </TouchableOpacity>
               </View>
-
             </View>
-    {/********************************************************************/}
-    {/*Round 3*/}
+          </View>
+          <View style={styles.slide3}>
             <Text style={styles.round}>Round 3</Text>
-            <View>
-              <View style={styles.match}>
-                {/*Match 7*/}
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
-                </TouchableOpacity>
-                <View>
-                  <Text style={styles.matchup}>
-                    pending vs pending
-                  </Text>
-                  <SetResultsCounter/>
+              <View>
+                <View style={styles.match}>
+                  {/*Match 7*/}
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.matchup}>
+                      pending vs pending
+                    </Text>
+                    <SetResultsCounter/>
+                  </View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
-                </TouchableOpacity>
               </View>
-            </View>
-    {/********************************************************************/}
-          </ScrollView>
-        </View>
+          </View>
+        </Swiper>
       </View>
     );
   }//render
@@ -187,28 +185,55 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     backgroundColor: '#333',
   },
+  header: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'white',
+  },
+  wrapper: {
+  },
+  slide: {
+    flex: 9,
+    justifyContent: 'center',
+    backgroundColor: 'transparent'
+  },
+  slide1: {
+    flex: 9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333'
+  },
+  slide2: {
+    flex: 9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333'
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#333'
+  },
+  // text: {
+  //   color: '#fff',
+  //   fontSize: 30,
+  //   fontWeight: 'bold'
+  // },
   body: {
     alignSelf: 'stretch',
     backgroundColor: '#333',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 50
-  },
-  showBracketButton: {
-    paddingTop: 20
-  },
-  header: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginTop: 60,
-    textAlign: 'center',
-    color: 'white',
   },
   round: {
     fontSize: 20,
     fontWeight: 'bold',
-
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
     paddingBottom: 15,
     paddingTop: 25,
     textAlign: 'center',
@@ -217,7 +242,7 @@ const styles = StyleSheet.create({
   match: {
     backgroundColor: '#333',
     height: 70,
-    width: 380,
+    width: 330,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -230,8 +255,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     fontSize: 15,
-    paddingLeft: 40,
-    paddingRight: 40,
+    paddingLeft: 20,
+    paddingRight: 20,
     color: 'white',
     fontWeight: 'bold',
   },

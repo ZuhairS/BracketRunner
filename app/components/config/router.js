@@ -88,9 +88,6 @@ export const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
     }
   },
-  // Auth: {
-  //   screen: AuthPage,
-  // },
 });
 
 export const BracketFormStack = StackNavigator({
@@ -103,9 +100,9 @@ export const BracketFormStack = StackNavigator({
 });
 
 export const Root = StackNavigator({
-  // Auth: {
-  //   screen: AuthPage,
-  // },
+  Auth: {
+    screen: AuthPage,
+  },
   Tabs: {
     screen: Tabs
   },
