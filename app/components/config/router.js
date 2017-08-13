@@ -21,7 +21,16 @@ export const HomePageStack = StackNavigator({
     navigationOptions: {
       title: 'Home'
     }
+  },
+  BracketForm: {
+    screen: BracketForm,
+    navigationOptions: {
+      title: 'Create Bracket'
+    }
   }
+}, {
+  mode: 'modal',
+  headerMode: 'none'
 });
 
 export const ProfilePageStack = StackNavigator({
@@ -99,6 +108,12 @@ export const BracketFormStack = StackNavigator({
   }
 });
 
+export const AuthPageStack = StackNavigator({
+  AuthPage: {
+    screen: AuthPage,
+  }
+});
+
 export const Root = StackNavigator({
   Auth: {
     screen: AuthPage,
@@ -110,6 +125,5 @@ export const Root = StackNavigator({
     screen: BracketFormStack
   }
 }, {
-  mode: 'modal',
   headerMode: 'none'
 });

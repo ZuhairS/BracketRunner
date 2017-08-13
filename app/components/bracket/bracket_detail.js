@@ -24,6 +24,10 @@ export default class BracketDetail extends Component{
     this.onLearnMore = this.onLearnMore.bind(this);
   }
 
+  componentDidMount(){
+
+  }
+
   onLearnMore() {
     this.props.navigation.navigate('PlayerModal');
   }
@@ -216,11 +220,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#333'
   },
-  // text: {
-  //   color: '#fff',
-  //   fontSize: 30,
-  //   fontWeight: 'bold'
-  // },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
   body: {
     alignSelf: 'stretch',
     backgroundColor: '#333',
