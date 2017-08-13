@@ -25,22 +25,27 @@ Auth = class Auth extends Component {
   }
 
   signUp(values) {
-    console.log('submitting form', values);
-    this.props.signUpUser(values).then(() => {
+     console.log('submitting form', values);
+     this.props.signUpUser(values).then(() => {
+       this.props.reset();
+     }).then(() => {
+       if (this.props.state.auth.userId) {
+         this.props.navigation.navigate('Tabs');
+       }
+     });
+   }
+
+
+  logIn(values) {
+    this.props.logInUser(values).then(() => {
+      this.props.reset();
+    }).then(() => {
       if (this.props.state.auth.userId) {
         this.props.navigation.navigate('Tabs');
       }
     });
   }
 
-  logIn(values){
-    console.log('submitting form', values)
-    this.props.logInUser(values).then(() => {
-      if (this.props.state.auth.userId) {
-        this.props.navigation.navigate('Tabs');
-      }
-    });
-  }
 
   render() {
     return (

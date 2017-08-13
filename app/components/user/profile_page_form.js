@@ -13,39 +13,46 @@ import {
 import AlertContainer from '../alerts/alert_container';
 import MyTextInput from './my_text_input';
 import { Field, reduxForm } from 'redux-form';
+import { editUser } from '../../actions/user_actions';
 
 
 
 ProfilePage = class ProfilePage extends Component {
   constructor(props) {
     super(props);
+
+    this.updateUser = this.updateUser.bind(this);
   }
 
   updateUser(values){
-    console.log('submitting form', values);
-    // this.props.updateUser(values);
+    const user = Object.assign(this.props.state.auth, values);
+    this.props.editUser(user).then(() => {
+    this.props.reset();
+    }).then(() =>{
+      this.props.navigation.navigate('ProfilePage');
+    });
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text >Picture:</Text>
-          <Field name="picture" component={renderInput} />
+          <Text >Avatar URL:</Text>
+          <Field name="avatarUrl" component={renderInput} />
           <Text >Twitter:</Text>
-          <Field name="twitter" component={renderInput} />
+          <Field name="twitterUrl" component={renderInput} />
           <Text>Twitch:</Text>
-          <Field name="twitch" component={renderInput} />
+          <Field name="twitchUrl" component={renderInput} />
           <Text>YouTube:</Text>
-          <Field name="youTube" component={renderInput} type="text" />
+          <Field name="youtubeUrl" component={renderInput} type="text" />
           <Text>Sponsor:</Text>
-          <Field name="sponsor" component={renderInput} />
-          <Text>Sponsor Picture:</Text>
-          <Field name="sponsor_picture" component={renderInput} />
+          <Field name="sponserName" component={renderInput} />
+          <Text>Sponsor Picture URL:</Text>
+          <Field name="sponserImageUrl" component={renderInput} />
           <Text>About:</Text>
-          <Field name="about" component={renderMultiLineInput} />
+          <Field name="aboutMe" component={renderMultiLineInput} />
           <TouchableOpacity onPress={this.props.handleSubmit(this.updateUser)}>
-            <Text style={styles.button}>Sign Up</Text>
+            <Text style={styles.button}>Submit</Text>
           </TouchableOpacity>
         </View>
       <AlertContainer />
@@ -104,8 +111,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signUpUser: user => dispatch(signUpUser(user)),
-    logInUser: user => dispatch(logInUser(user))
+    editUser: user => dispatch(editUser(user))
 
   };
 };

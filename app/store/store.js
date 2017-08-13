@@ -5,26 +5,26 @@ import reducer from '../reducers/root_reducer';
 import thunk from 'redux-thunk';
 
 var defaultState = {
-  bracket: {
-    matches: [
-      {
-        player1: 'pending',
-        player2: 'pending'
-      },
-      {
-        player1: 'pending',
-        player2: 'pending'
-      },
-      {
-        player1: 'pending',
-        player2: 'pending'
-      },
-      {
-        player1: 'pending',
-        player2: 'pending'
-      }
-    ]
-  }
+  // bracket: {
+  //   matches: [
+  //     {
+  //       player1: 'pending',
+  //       player2: 'pending'
+  //     },
+  //     {
+  //       player1: 'pending',
+  //       player2: 'pending'
+  //     },
+  //     {
+  //       player1: 'pending',
+  //       player2: 'pending'
+  //     },
+  //     {
+  //       player1: 'pending',
+  //       player2: 'pending'
+  //     }
+  //   ]
+  // }
 };
 
 export var configureStore = (initialState = defaultState) => {
