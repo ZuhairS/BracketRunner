@@ -9,6 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 
+import { selectAllLiveBrackets } from '../../reducers/selectors';
+
 export default class BracketFeed extends Component{
   constructor(props) {
     super(props);
@@ -21,25 +23,32 @@ export default class BracketFeed extends Component{
   }
 
   render() {
-    // const { liveBrackets } = this.props;
+    const { liveBrackets } = this.props;
 
-    // const allLiveBrackets = liveBrackets.map((bracket, idx) => (
-    //   <View key={`bracket-${idx}`} bracket={ bracket }>
-    //     <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
-    //       <Text style={styles.bracketTitle}>Bracket Title</Text>
-    //       <View style={styles.timeContainer}>
-    //         <Text style={styles.time}>Start Time - End Time</Text>
-    //         <Text style={styles.live}>Live!</Text>
-    //       </View>
-    //     </TouchableOpacity>
-    //   </View>
-    // ));
+    const allLiveBrackets = liveBrackets.map((bracket, idx) => (
+      <View key={`bracket-${idx}`} bracket={ bracket }>
+        <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
+          <Text style={styles.bracketTitle}>Bracket Title</Text>
+          <View style={styles.timeContainer}>
+            <Text style={styles.time}>Start Time - End Time</Text>
+            <Text style={styles.live}>Live!</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    ));
 
     return (
       <View style={styles.bracketContainer}>
         <Text style={styles.header}>Streaming Now</Text>
         <ScrollView>
-          {/* { allLiveBrackets } */}
+          { allLiveBrackets }
+          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
+            <Text style={styles.bracketTitle}>Bracket Title</Text>
+            <View style={styles.timeContainer}>
+              <Text style={styles.time}>Start Time - End Time</Text>
+              <Text style={styles.live}>Live!</Text>
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
             <Text style={styles.bracketTitle}>Bracket Title</Text>
             <View style={styles.timeContainer}>
@@ -99,4 +108,16 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = BracketFeed
+const mapStatetoProps = (state) => {
+  return {
+    liveBrackets: selectAllLiveBrackets(state)
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    requestLiveBrackets: () => dispatch(requestLiveBrackets())
+  }
+}
+
+module.exports = connect(mapStatetoProps, mapDispatchToProps)(BracketFeed)
