@@ -24,9 +24,11 @@ const Menu = class Menu extends Component {
   }
 
   onSignOutPress() {
-    console.log("here");
-    console.log(this.props.state.auth);
     this.props.signOutUser(this.props.state.auth);
+  }
+
+  onEditUserPress(){
+
   }
 
   render() {
@@ -56,6 +58,14 @@ const Menu = class Menu extends Component {
             onPress={() => this.onSignOutPress()}
           >
             <Text style={styles.modalButtonText}>Log Out</Text>
+            <View />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.modalButton}
+            onPress={() => this.onEditUserPress()}
+          >
+            <Text style={styles.modalButtonText}>Edit Profile</Text>
             <View />
           </TouchableOpacity>
         </View>

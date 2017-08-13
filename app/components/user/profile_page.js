@@ -13,10 +13,25 @@ import {
 export default class ProfilePage extends Component {
   constructor(props) {
     super(props);
+    this.onEditPress= this.onEditPress.bind(this);
+  }
+
+  onEditPress() {
+    this.props.navigation.navigate('ProfilePageForm');
   }
 
   render() {
-    return <View style={styles.container} />;
+    return (
+      <View style={styles.container} >
+        <TouchableOpacity
+          style={styles.modalButton}
+          onPress={() => this.onEditPress()}
+          >
+          <Text style={styles.modalButtonText}>Edit Profile</Text>
+        </TouchableOpacity>
+
+      </View>
+    )
   }
 }
 
@@ -36,6 +51,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
+  },
+  modalButton: {
+    backgroundColor: 'white',
+    height: 40,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginTop: 2,
+    flexDirection: 'row'
   }
 });
 

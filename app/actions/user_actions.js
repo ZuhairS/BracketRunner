@@ -8,7 +8,7 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 
 export const editUser = userProps => dispatch => {
   return axios
-    .patch(EDIT_URL, userProps)
+    .put(EDIT_URL(userProps.userId), userProps)
     .then(response => {
       var { user } = response.data;
       dispatch(receiveUser(user));

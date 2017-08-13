@@ -7,6 +7,7 @@ exports.show = (req, res, next) => {
 };
 
 exports.edit = (req, res, next) => {
+  console.log("i'm in the controller");
   const userId = req.params.id;
   const userProps = req.body;
 
