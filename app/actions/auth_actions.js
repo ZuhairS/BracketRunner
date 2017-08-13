@@ -14,6 +14,7 @@ exports.logInUser = ({ email, username, password }) => {
       .post(SIGNIN_URL, { email, username, password })
       .then(response => {
         var { user_id, token } = response.data;
+        console.log(response.data);
         dispatch(addAlert(token));
         dispatch(authUser(user_id));
       })

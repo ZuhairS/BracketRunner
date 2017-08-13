@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { Icon } from 'react-native-elements';
 
 export default class Menu extends Component {
   constructor(props) {
@@ -25,25 +24,15 @@ export default class Menu extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-
           <TouchableOpacity style={styles.modalButton}>
-            <Text style={styles.modalButtonText}>
-              About
-            </Text>
-            <View>
-              <Icon name="chevron-right" size={30} color='lightgrey' />
-            </View>
+            <Text style={styles.modalButtonText}>About</Text>
+            <View />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.modalButtonLogOut}>
-            <Text style={styles.modalButtonText}>
-              Log Out
-            </Text>
-            <View>
-              <Icon name="chevron-right" size={30} color='lightgrey' />
-            </View>
+            <Text style={styles.modalButtonText}>Log Out</Text>
+            <View />
           </TouchableOpacity>
-
         </View>
       </View>
     );
@@ -52,10 +41,10 @@ export default class Menu extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   innerContainer: {
-    marginTop: 20,
+    marginTop: 20
   },
   modalButton: {
     backgroundColor: 'white',
@@ -75,7 +64,7 @@ var styles = StyleSheet.create({
   },
   modalButtonText: {
     paddingLeft: 20,
-    width: 320,
+    width: 320
   }
 });
 

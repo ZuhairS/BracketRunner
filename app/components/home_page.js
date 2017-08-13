@@ -9,35 +9,46 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+// import { Icon } from 'react-native-elements';
 
 //components
 import Menu from './modals/menu';
 import BracketFeed from './bracket/bracket_feed';
-
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
 
     this.onCreateBracketPress = this.onCreateBracketPress.bind(this);
-    // this.handleMenuPress = this.handleMenuPress.bind(this);
+    this.handleMenuPress = this.handleMenuPress.bind(this);
   }
 
   onCreateBracketPress() {
     this.props.navigation.navigate('BracketForm');
   }
 
-  // handleMenuPress() {
-  //   this.props.navigation.navigate('Menu');
-  // }
+  handleMenuPress() {
+    this.props.navigation.navigate('Menu');
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.createBracketButton} onPress={() => this.onCreateBracketPress()}>
+
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => this.handleMenuPress()}
+        >
+          <Text>Menu</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.createBracketButton}
+          onPress={() => this.onCreateBracketPress()}
+        >
           <Text style={styles.createBracketButtonText}>Create Bracket</Text>
         </TouchableOpacity>
+
       </View>
     );
   }
@@ -48,7 +59,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   createBracketButton: {
     borderWidth: 1,
