@@ -7,7 +7,6 @@ var defaultState = {
 module.exports = (state = defaultState, action) => {
   switch (action.type) {
     case AUTH_USER:
-      console.log(action);
       return {
         userId: action.userId
       };

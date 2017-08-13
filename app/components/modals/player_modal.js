@@ -1,6 +1,7 @@
 'use strict';
 //modules
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   ReactNative,
   Modal,
@@ -11,6 +12,7 @@ import {
   View
 } from 'react-native';
 // import { Icon } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 //components
 import BracketFeed from '../bracket/bracket_feed';
@@ -24,35 +26,37 @@ export default class PlayerModal extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Username</Text>
-        <View style={styles.profilePicture}>
-          {/*profile picture goes here*/}
-        </View>
-        <View style={styles.innerContainer}>
-          <View style={styles.modalButton}>
-            <Text style={styles.modalButtonText}>
-              {/*sponser image */} Sponser
-            </Text>
+
+        <TouchableOpacity>
+          <View style={styles.followButton}>
           </View>
-
-          <View style={styles.modalButton}>
-            <Text style={styles.modalButtonText} />
+        </TouchableOpacity>
+        <View style={styles.content}>
+          <View style={styles.profilePicture}>
+            {/*profile picture goes here*/}
           </View>
+          <View style={styles.innerContainer}>
+            <View style={styles.modalButton}>
+              <Text style={styles.modalButtonText}>
+                {/*sponser image */} Sponser
+              </Text>
+              <Text></Text>
+            </View>
+            <View style={styles.links}>
 
-          <View style={styles.links}>
-            <Text style={styles.modalButtonText}>Links:</Text>
+              <TouchableOpacity style={styles.modalButtonText} >
+                <Icon name="twitter" size={30} color={'yellow'} />
+              </TouchableOpacity>
 
-            <Text style={styles.modalButtonText}>Twitter Url</Text>
+              <TouchableOpacity style={styles.modalButtonText} >
+                <Icon name="twitch" size={30} color={'yellow'} />
+              </TouchableOpacity>
 
-            <Text style={styles.modalButtonText}>Twitch Url</Text>
-
-            <Text style={styles.modalButtonText}>Youtube Url</Text>
+              <TouchableOpacity style={styles.modalButtonText} >
+                <Icon name="youtube" size={30} color={'yellow'} />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-
-        <View style={styles.viewProfileContainer}>
-          <TouchableOpacity style={styles.viewProfile}>
-            <Text style={styles.modalButtonText}>View Profile</Text>
-          </TouchableOpacity>
         </View>
       </View>
     );
@@ -61,20 +65,30 @@ export default class PlayerModal extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#333',
   },
   header: {
     alignItems: 'center',
     alignSelf: 'center',
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'yellow',
+  },
+  followButton: {
+    alignSelf: 'flex-end',
+    marginRight: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    backgroundColor: 'white'
   },
   profilePicture: {
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     marginTop: 10,
     marginLeft: 10,
-    height: 150,
-    width: 150,
+    height: 120,
+    width: 120,
     backgroundColor: 'white'
   },
   innerContainer: {
@@ -82,32 +96,45 @@ var styles = StyleSheet.create({
     marginTop: 20
   },
   modalButton: {
-    backgroundColor: 'white',
+    backgroundColor: '#333',
     height: 40,
     paddingTop: 10,
     paddingBottom: 10,
     marginTop: 2,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    borderBottomWidth: .4,
+    borderColor: 'yellow',
+
+
+  },
+  modalButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+
   },
   links: {
-    backgroundColor: 'white',
-    alignItems: 'center',
+    backgroundColor: '#333',
+    borderBottomWidth: .5,
+    borderColor: 'yellow',
+    alignItems: 'flex-start',
     height: 80,
     paddingTop: 10,
     paddingBottom: 10,
     marginTop: 2,
     flexDirection: 'column'
-  },
-  viewProfileContainer: {
-    justifyContent: 'flex-end'
-  },
-  viewProfile: {
-    backgroundColor: 'white',
-    height: 40,
-    paddingTop: 10,
-    paddingBottom: 10,
-    alignItems: 'center'
   }
 });
 
-module.exports = PlayerModal;
+const mapStatetoProps = (state) => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    requestLiveBrackets: () => dispatch(requestLiveBrackets())
+  }
+}
+
+module.exports = connect(mapStatetoProps, mapDispatchToProps)(PlayerModal)

@@ -25,8 +25,9 @@ Auth = class Auth extends Component {
   }
 
   signUp(values) {
-    console.log('submitting form', values);
     this.props.signUpUser(values).then(() => {
+      this.props.reset();
+    }).then(() => {
       if (this.props.state.auth.userId) {
         this.props.navigation.navigate('Tabs');
       }
@@ -34,8 +35,9 @@ Auth = class Auth extends Component {
   }
 
   logIn(values){
-    console.log('submitting form', values)
     this.props.logInUser(values).then(() => {
+      this.props.reset();
+    }).then(() => {
       if (this.props.state.auth.userId) {
         this.props.navigation.navigate('Tabs');
       }
