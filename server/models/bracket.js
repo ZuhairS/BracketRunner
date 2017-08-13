@@ -6,6 +6,10 @@ let bracketSchema = new Schema({
     type: String,
     required: true
   },
+  tournamentOrganizer: {
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+  },
   // numberOfEntrants: {
   //   type: Number,
   //   enum: [8],
@@ -32,7 +36,7 @@ let bracketSchema = new Schema({
     type: String
   },
   live: Boolean,
-  // matches or rounds with match objects inside?
+  streamUrl: String,
   matches: [
     {
       pairing: {
