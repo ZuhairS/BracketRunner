@@ -1,4 +1,4 @@
-import { RECEIVE_USER } from '../actions/auth_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 
 var defaultState = {
   selectedUser: {}
@@ -6,7 +6,7 @@ var defaultState = {
 
 module.exports = (state = defaultState, action) => {
   switch (action.type) {
-    case 'RECEIVE_USER':
+    case RECEIVE_USER:
       return {
         selectedUser: action.user
       };

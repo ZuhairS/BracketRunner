@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {SIGNIN_URL, SIGNUP_URL, SIGNOUT_URL} from '../util/auth_api_util';
+import { SIGNIN_URL, SIGNUP_URL, SIGNOUT_URL } from '../util/auth_api_util';
 // import * as APIUtil from '../util/auth_api_util';
 // if we get this to work lets refactor it will this better style
 import { addAlert } from './alerts_actions';
@@ -13,10 +13,9 @@ exports.logInUser = ({ email, username, password }) => {
     return axios
       .post(SIGNIN_URL, { email, username, password })
       .then(response => {
-        var { user_id, token } = response.data;
-        dispatch(authUser(user_id));
+        var { user, token } = response.data;
         dispatch(addAlert(token));
-
+        dispatch(authUser(user));
       })
       .catch(error => {
         dispatch(addAlert('Could not sign in'));
@@ -29,9 +28,9 @@ exports.signUpUser = ({ email, username, password }) => {
     return axios
       .post(SIGNUP_URL, { email, username, password })
       .then(response => {
-        var { user_id, token } = response.data;
+        var { user, token } = response.data;
         dispatch(addAlert(token));
-        dispatch(authUser(user_id));
+        dispatch(authUser(user));
       })
       .catch(error => {
         dispatch(addAlert('Could not sign up'));
@@ -39,26 +38,24 @@ exports.signUpUser = ({ email, username, password }) => {
   };
 };
 
-
-exports.signOutUser = ({user_id}) => {
+exports.signOutUser = ({ user_id }) => {
   return function(dispatch) {
     return dispatch(unauthUser());
-  }
-}
-
-
-authUser = (userId) => {
-  return {
-    type: AUTH_USER,
-    userId
   };
 };
 
-unauthUser = () => {
+const authUser = user => {
+  return {
+    type: AUTH_USER,
+    user
+  };
+};
+
+const unauthUser = () => {
   return {
     type: UNAUTH_USER
-  }
-}
+  };
+};
 
 // exports.unauthUser = {
 //   type: UNAUTH_USER

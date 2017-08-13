@@ -17,7 +17,7 @@ exports.signin = function(req, res, next) {
   console.log("controller");
   console.log(req);
   var user = req.user;
-  res.send({ token: tokenForUser(user), user_id: user._id });
+  res.send({ token: tokenForUser(user), user: user });
 };
 
 exports.signout = function(req, res, next) {
@@ -57,7 +57,7 @@ exports.signup = function(req, res, next) {
         if (error) {
           return next(error);
         }
-        res.json({ user_id: user._id, token: tokenForUser(user) });
+        res.json({ user: user, token: tokenForUser(user) });
       });
     }
   );
