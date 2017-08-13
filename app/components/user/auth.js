@@ -26,13 +26,19 @@ Auth = class Auth extends Component{
 
   signUp(values){
     console.log('submitting form', values);
-    this.props.signUpUser(values);
+    this.props.signUpUser(values).then(() => {
+    this.props.reset();
+    });
   }
 
   logIn(values){
     console.log('submitting form', values)
     console.log(this.props);
-    this.props.logInUser(values);
+    this.props.logInUser(values).then(() => {
+    this.props.reset();
+  }).then(() =>{
+    this.props.navigation.navigate('ProfilePage');
+  });
   }
 
   render() {

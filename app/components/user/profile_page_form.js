@@ -25,10 +25,12 @@ ProfilePage = class ProfilePage extends Component {
   }
 
   updateUser(values){
-    console.log(this.props.state.auth);
     const user = Object.assign(this.props.state.auth, values);
-    console.log(user);
-    this.props.editUser(user);
+    this.props.editUser(user).then(() => {
+    this.props.reset();
+    }).then(() =>{
+      this.props.navigation.navigate('ProfilePage');
+    });
   }
 
   render() {
