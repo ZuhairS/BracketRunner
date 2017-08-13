@@ -35,19 +35,6 @@ const Menu = class Menu extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-          <TouchableOpacity
-            style={styles.modalButton}
-            onPress={() => this.onCreateBracketPress()}
-          >
-            <Text style={styles.modalButtonText}>Create Bracket</Text>
-            <View />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.modalButton}>
-            <Text style={styles.modalButtonText}>Settings</Text>
-            <View />
-          </TouchableOpacity>
-
           <TouchableOpacity style={styles.modalButton}>
             <Text style={styles.modalButtonText}>About</Text>
             <View />

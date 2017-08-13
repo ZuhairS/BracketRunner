@@ -17,23 +17,17 @@ let bracketSchema = new Schema({
   },
   game: {
     type: String,
-    required: [true, 'Need to choose a game!']
   },
   startTime: {
     type: Date,
-    required: true
+    // required: true
   },
   endTime: {
     type: Date,
-    required: true
+    // required: true
   },
   location: {
     type: String,
-    required: [true, 'Need a location!']
-  },
-  live: {
-    type: Boolean,
-    // required: true
   },
   // matches or rounds with match objects inside?
   matches: [

@@ -22,7 +22,7 @@ exports.signin = function(req, res, next) {
 
 exports.signout = function(req, res, next) {
   var userId = req.userId;
-  res.send({ userId: userId });
+  res.send({ user_id: userId });
 };
 
 exports.signup = function(req, res, next) {
