@@ -1,17 +1,30 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import {
   StyleSheet,
   View,
   Image,
-  ImageBackground
+  ImageBackground,
+  Text,
+  TouchableOpacity
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 
-import {RkConfig, RkText} from 'react-native-ui-kitten';
+import {RkConfig, RkText, RkCard} from 'react-native-ui-kitten';
 
-export default class ProfilePage extends Component {
 
-  componentWillMount(){
-  console.log('profile mounted');
+
+ProfilePage = class ProfilePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onEditPress = this.onEditPress.bind(this);
+  }
+
+
+  onEditPress(){
+    this.props.navigation.navigate('ProfilePageForm');
   }
 
   render() {
@@ -21,24 +34,28 @@ export default class ProfilePage extends Component {
       <ImageBackground source={{uri: 'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'}}
              style={styles.profileBackground}>
         <View/>
+          <TouchableOpacity style={styles.playerPicture} onPress={() => this.onEditPress()}>
+            <Icon name="edit" size={35} style={styles.edit_icon} />
+          </TouchableOpacity>
         <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
                style={styles.avatar}/>
         <RkText style={styles.nameText}>
           {"f name"} {"l name"}
         </RkText>
-      </ImageBackground>
-      <RkText style={styles.nameText}>
-        {"f name"} {"l name"}
-      </RkText>
-      <RkText style={styles.nameText}>
-        {"f name"} {"l name"}
-      </RkText>
-      <RkText style={styles.nameText}>
-        {"f name"} {"l name"}
-      </RkText>
-      <RkText style={styles.nameText}>
-        {"f name"} {"l name"}
-      </RkText>
+        </ImageBackground>
+              <RkCard rkType='shadowed'>
+                <View rkCardHeader>
+                  <Text>Header</Text>
+                </View>
+            <Image source={{uri: 'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'}}/>
+            <View rkCardContent>
+              <Text> quick brown fox jumps over the lazy dog</Text>
+            </View>
+            <View rkCardFooter>
+              <Text>Footer</Text>
+            </View>
+          </RkCard>
+
     </View>
     )
   }
@@ -46,6 +63,11 @@ export default class ProfilePage extends Component {
 }
 
 const styles = StyleSheet.create({
+  edit_icon:{
+    alignSelf: 'flex-end',
+    paddingRight: 15
+
+  },
   profileBackground: {
     width: null,
     height: 220,
@@ -66,3 +88,32 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editUser: user => dispatch(editUser(user))
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    state
+  };
+};
+
+const validate = (formProps) => {
+  var errors = {};
+  return errors;
+}
+
+
+ProfilePage = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ProfilePage);
+
+export default reduxForm({
+  form: 'login',
+  fields: ['email', 'password'],
+  validate: validate
+})(ProfilePage)

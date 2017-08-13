@@ -57,7 +57,7 @@ export default class BracketDetail extends Component{
                   </TouchableOpacity>
                   <View>
                     <Text style={styles.matchup}>
-                      {matches[0].player1} vs {matches[0].player2}
+                      pending vs pending
                     </Text>
                     <SetResultsCounter/>
                   </View>
@@ -73,7 +73,7 @@ export default class BracketDetail extends Component{
                   </TouchableOpacity>
                   <View>
                     <Text style={styles.matchup}>
-                      {matches[1].player1} vs {matches[1].player2}
+                      pending vs pending
                     </Text>
                     <SetResultsCounter/>
                   </View>
@@ -89,7 +89,7 @@ export default class BracketDetail extends Component{
                   </TouchableOpacity>
                   <View>
                     <Text style={styles.matchup}>
-                      {matches[2].player1} vs {matches[2].player2}
+                      pending vs pending
                     </Text>
                     <SetResultsCounter/>
                   </View>
@@ -105,7 +105,7 @@ export default class BracketDetail extends Component{
                   </TouchableOpacity>
                   <View>
                     <Text style={styles.matchup}>
-                      {matches[3].player1} vs {matches[3].player2}
+                      pending vs pending
                     </Text>
                     <SetResultsCounter/>
                   </View>

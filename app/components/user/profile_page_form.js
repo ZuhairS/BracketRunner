@@ -17,7 +17,7 @@ import { editUser } from '../../actions/user_actions';
 
 
 
-ProfilePage = class ProfilePage extends Component {
+ProfilePageForm = class ProfilePageForm extends Component {
   constructor(props) {
     super(props);
 
@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = (dispatch) => {
   return {
     editUser: user => dispatch(editUser(user))
-
   };
 };
 
@@ -129,13 +128,13 @@ const validate = (formProps) => {
 }
 
 
-ProfilePage = connect(
+ProfilePageForm = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ProfilePage);
+)(ProfilePageForm);
 
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password'],
   validate: validate
-})(ProfilePage)
+})(ProfilePageForm)
