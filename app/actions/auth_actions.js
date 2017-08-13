@@ -13,10 +13,9 @@ exports.logInUser = ({ email, username, password }) => {
     return axios
       .post(SIGNIN_URL, { email, username, password })
       .then(response => {
-        var { user_id, token } = response.data;
-        console.log(response.data);
+        var { user, token } = response.data;
         dispatch(addAlert(token));
-        dispatch(authUser(user_id));
+        dispatch(authUser(user));
       })
       .catch(error => {
         dispatch(addAlert('Could not sign in'));
@@ -29,9 +28,9 @@ exports.signUpUser = ({ email, username, password }) => {
     return axios
       .post(SIGNUP_URL, { email, username, password })
       .then(response => {
-        var { user_id, token } = response.data;
+        var { user, token } = response.data;
         dispatch(addAlert(token));
-        dispatch(authUser(user_id));
+        dispatch(authUser(user));
       })
       .catch(error => {
         dispatch(addAlert('Could not sign up'));
@@ -39,10 +38,10 @@ exports.signUpUser = ({ email, username, password }) => {
   };
 };
 
-const authUser = userId => {
+const authUser = user => {
   return {
     type: AUTH_USER,
-    userId
+    user
   };
 };
 

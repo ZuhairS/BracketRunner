@@ -24,12 +24,10 @@ Auth = class Auth extends Component {
   }
 
   signUp(values) {
-    console.log('submitting form', values);
     this.props.signUpUser(values);
   }
 
   logIn(values) {
-    console.log('submitting form', values);
     this.props.logInUser(values).then(() => console.log(this.props.state));
   }
 

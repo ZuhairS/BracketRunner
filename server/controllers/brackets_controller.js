@@ -82,3 +82,13 @@ exports.delete = (req, res, next) => {
     .then(bracket => res.status(204).send(bracket))
     .catch(next);
 };
+
+exports.showFeatured = (req, res, next) => {
+  let random;
+
+  Bracket.count().then(count => {
+    random = Math.floor(Math.random() * count);
+  });
+
+  Bracket.findOne().skip(random).then(bracket => res.send(bracket)).catch(next);
+};
