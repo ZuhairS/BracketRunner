@@ -14,13 +14,117 @@ import { Icon } from 'react-native-elements';
 import {RkConfig, RkText, RkCard} from 'react-native-ui-kitten';
 
 
-
 ProfilePage = class ProfilePage extends Component {
   constructor(props) {
     super(props);
 
     this.onEditPress = this.onEditPress.bind(this);
+    this.aboutMe = this.aboutMe.bind(this);
+    this.youTube = this.youTube.bind(this);
+    this.twitch = this.twitch.bind(this);
+    this.twitter = this.twitter.bind(this);
+    this.sponserImage = this.sponserImage.bind(this);
+    this.sponserName = this.sponserName.bind(this);
+
   }
+
+  componentDidMount(){
+    console.log("ProfilePage");
+    console.log(this.props);
+  }
+
+  aboutMe() {
+    let user = this.props.state.auth.user
+      if (user.aboutMe) {
+        return (
+          <RkCard rkType='shadowed'>
+            <View rkCardHeader>
+              <Text>About</Text>
+            </View>
+            <View rkCardContent>
+              <Text>{user.aboutMe}</Text>
+            </View>
+          </RkCard>
+       );
+   } else {
+     return (
+      <RkCard rkType='shadowed'>
+        <View rkCardHeader>
+          <Text>About</Text>
+        </View>
+        <View rkCardContent>
+          <Text>Write somting about yourself</Text>
+        </View>
+      </RkCard>
+     );
+   }
+ }
+
+ youTube() {
+   let user = this.props.state.auth.user
+      if (user.youtubeUrl) {
+        return (
+          <Text>{user.youtubeUrl}</Text>
+      );
+    } else {
+      return (
+        <Text>Add your Youtube link</Text>
+      );
+    }
+  }
+
+  twitch() {
+    let user = this.props.state.auth.user
+       if (user.twitchUrl) {
+         return (
+           <Text>{user.twitchUrl}</Text>
+       );
+     } else {
+       return (
+         <Text>Add your twitch link</Text>
+       );
+     }
+   }
+
+   twitter() {
+     let user = this.props.state.auth.user
+        if (user.twitterUrl) {
+          return (
+            <Text>{user.twitterUrl}</Text>
+        );
+      } else {
+        return (
+          <Text>Add your twitter link</Text>
+        );
+      }
+    }
+
+    sponserImage() {
+      let user = this.props.state.auth.user
+         if (user.twitterUrl) {
+           return (
+             <Text>{user.sponserImageUrl}</Text>
+         );
+       } else {
+         return (
+           <Text>Add your sponsers Image link</Text>
+         );
+       }
+     }
+
+     sponserName() {
+       let user = this.props.state.auth.user
+          if (user.sponserName) {
+            return (
+              <Text>{user.sponserName}</Text>
+          );
+        } else {
+          return (
+            <Text>Add your Sponsers Name link</Text>
+          );
+        }
+      }
+
 
 
   onEditPress(){
@@ -28,33 +132,51 @@ ProfilePage = class ProfilePage extends Component {
   }
 
   render() {
-    console.log(this.props);
+    let user = this.props.state.auth.user
     return (
       <View>
-      <ImageBackground source={{uri: 'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'}}
-             style={styles.profileBackground}>
-        <View/>
+        <ImageBackground source={{uri: 'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'}}
+                       style={styles.profileBackground}>
+          <View/>
           <TouchableOpacity style={styles.playerPicture} onPress={() => this.onEditPress()}>
             <Icon name="edit" size={35} style={styles.edit_icon} />
           </TouchableOpacity>
-        <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-               style={styles.avatar}/>
-        <RkText style={styles.nameText}>
-          {"f name"} {"l name"}
-        </RkText>
+          <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                 style={styles.avatar}/>
+          <RkText style={styles.nameText}>
+            {user.username} {user.email}
+          </RkText>
         </ImageBackground>
-              <RkCard rkType='shadowed'>
-                <View rkCardHeader>
-                  <Text>Header</Text>
-                </View>
-            <Image source={{uri: 'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'}}/>
-            <View rkCardContent>
-              <Text> quick brown fox jumps over the lazy dog</Text>
-            </View>
-            <View rkCardFooter>
-              <Text>Footer</Text>
-            </View>
-          </RkCard>
+
+        {this.aboutMe()}
+
+
+        <RkCard rkType='shadowed'>
+
+          <View rkCardHeader>
+            <Text>Social Media</Text>
+          </View>
+
+          <View rkCardContent>
+            <Text>Youtube: {this.youTube()}</Text>
+            <Text>Twitch: {this.twitch()}</Text>
+            <Text>Twitter: {this.twitter()}</Text>
+          </View>
+
+        </RkCard>
+
+        <RkCard rkType='shadowed'>
+
+          <View rkCardHeader>
+            <Text>Sponsorship</Text>
+          </View>
+
+          <View rkCardContent>
+            <Text>Sponser Image {this.sponserImage()}</Text>
+            <Text>Sponser Name {this.sponserName()}</Text>
+          </View>
+
+        </RkCard>
 
     </View>
     )
@@ -81,10 +203,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   nameText: {
-    backgroundColor: 'green',
+    backgroundColor: '#333',
     paddingLeft: 20,
     paddingVertical: 5,
-    fontSize: 32,
+    fontSize: 25,
     color: 'white'
   }
 });

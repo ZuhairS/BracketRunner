@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 //imported components
 import AlertContainer from '../alerts/alert_container';
-import MyTextInput from './my_text_input';
+import MyTextInput from '../user/my_text_input';
 import { Field, reduxForm } from 'redux-form';
-import { editUser } from '../../actions/user_actions';
+
 
 
 
@@ -21,37 +21,28 @@ ProfilePageForm = class ProfilePageForm extends Component {
   constructor(props) {
     super(props);
 
-    this.updateUser = this.updateUser.bind(this);
+    this.onReportResult = this.onReportResult.bind(this);
   }
 
-  updateUser(values){
-    const user = Object.assign(this.props.state.auth, values);
-    this.props.editUser(user).then(() => {
-    this.props.reset();
-    }).then(() =>{
-      this.props.navigation.navigate('ProfilePage');
-    });
+  onReportResult(values){
+    console.log("submitting form");
+    console.log(values);
+    // this.props.setResult(user).then(() => {
+    // this.props.reset();
+    // }).then(() =>{
+    //   this.props.navigation.navigate('ProfilePage');
+    // });
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text >Avatar URL:</Text>
-          <Field name="avatarUrl" component={renderInput} />
-          <Text >Twitter:</Text>
-          <Field name="twitterUrl" component={renderInput} />
-          <Text>Twitch:</Text>
-          <Field name="twitchUrl" component={renderInput} />
-          <Text>YouTube:</Text>
-          <Field name="youtubeUrl" component={renderInput} type="text" />
-          <Text>Sponsor:</Text>
-          <Field name="sponserName" component={renderInput} />
-          <Text>Sponsor Picture URL:</Text>
-          <Field name="sponserImageUrl" component={renderInput} />
-          <Text>About:</Text>
-          <Field name="aboutMe" component={renderMultiLineInput} />
-          <TouchableOpacity onPress={this.props.handleSubmit(this.updateUser)}>
+          <Text >player 1:</Text>
+          <Field name="player1_result" component={renderInput} />
+          <Text >player 2:</Text>
+          <Field name="player2_result" component={renderInput} />
+          <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
             <Text style={styles.button}>Submit</Text>
           </TouchableOpacity>
         </View>
@@ -66,9 +57,6 @@ const renderInput = ({ input: { onChange, ...restInput }}) => {
   return <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
 }
 
-const renderMultiLineInput = ({ input: { onChange, ...restInput }}) => {
-  return <TextInput multiline = {true} numberOfLines = {4} style={styles.inputs} onChangeText={onChange} {...restInput} />
-}
 
 const styles = StyleSheet.create({
   button: {
@@ -111,7 +99,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    editUser: user => dispatch(editUser(user))
+    setResult: result => dispatch(setResult(result))
   };
 };
 
@@ -134,7 +122,7 @@ ProfilePageForm = connect(
 )(ProfilePageForm);
 
 export default reduxForm({
-  form: 'ProfilePageForm',
-  fields: ['avatarUrl', 'twitterUrl'],
+  form: 'result_form',
+  fields: ['player1_result', 'player2_result'],
   validate: validate
 })(ProfilePageForm)

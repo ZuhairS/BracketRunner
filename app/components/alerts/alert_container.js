@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {
   StyleSheet,
@@ -8,7 +8,7 @@ import {
 
 import Alert from './alert';
 
-var AlertContainer = React.createClass({
+ AlertContainer = class AlertContainer extends Component{
   render() {
     var renderAlerts = () => {
       return this.props.alerts.map((alert) => {
@@ -23,7 +23,7 @@ var AlertContainer = React.createClass({
       </View>
     );
   }
-});
+};
 
 const styles = StyleSheet.create({
   container: {
