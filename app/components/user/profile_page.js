@@ -1,65 +1,68 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
   View,
-  TouchableOpacity
+  Image,
+  ImageBackground
 } from 'react-native';
-//imported components
-// import NavBar from '../nav_bar/nav_bar';
+
+import {RkConfig, RkText} from 'react-native-ui-kitten';
 
 export default class ProfilePage extends Component {
-  constructor(props) {
-    super(props);
-    this.onEditPress= this.onEditPress.bind(this);
-  }
 
-  onEditPress() {
-    this.props.navigation.navigate('ProfilePageForm');
+  componentWillMount(){
+  console.log('profile mounted');
   }
 
   render() {
+    console.log(this.props);
     return (
-      <View style={styles.container} >
-        <TouchableOpacity
-          style={styles.modalButton}
-          onPress={() => this.onEditPress()}
-          >
-          <Text style={styles.modalButtonText}>Edit Profile</Text>
-        </TouchableOpacity>
-
-      </View>
+      <View>
+      <ImageBackground source={{uri: 'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'}}
+             style={styles.profileBackground}>
+        <View/>
+        <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+               style={styles.avatar}/>
+        <RkText style={styles.nameText}>
+          {"f name"} {"l name"}
+        </RkText>
+      </ImageBackground>
+      <RkText style={styles.nameText}>
+        {"f name"} {"l name"}
+      </RkText>
+      <RkText style={styles.nameText}>
+        {"f name"} {"l name"}
+      </RkText>
+      <RkText style={styles.nameText}>
+        {"f name"} {"l name"}
+      </RkText>
+      <RkText style={styles.nameText}>
+        {"f name"} {"l name"}
+      </RkText>
+    </View>
     )
   }
+
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    width: 400,
-    paddingTop: 25
+  profileBackground: {
+    width: null,
+    height: 220,
+    justifyContent: 'flex-end',
+    alignItems: 'stretch'
   },
-  body: {
-    flex: 9,
-    alignSelf: 'stretch',
-    backgroundColor: 'white',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+  avatar: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    alignSelf: 'center'
   },
-  modalButton: {
-    backgroundColor: 'white',
-    height: 40,
-    paddingTop: 10,
-    paddingBottom: 10,
-    marginTop: 2,
-    flexDirection: 'row'
+  nameText: {
+    backgroundColor: 'green',
+    paddingLeft: 20,
+    paddingVertical: 5,
+    fontSize: 32,
+    color: 'white'
   }
 });
-
-module.exports = ProfilePage;
