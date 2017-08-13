@@ -15,7 +15,6 @@ import {
 import AlertContainer from '../alerts/alert_container';
 import MyTextInput from './my_text_input';
 
-
 Auth = class Auth extends Component {
   constructor(props) {
     super(props);
@@ -25,27 +24,31 @@ Auth = class Auth extends Component {
   }
 
   signUp(values) {
-     console.log('submitting form', values);
-     this.props.signUpUser(values).then(() => {
-       this.props.reset();
-     }).then(() => {
-       if (this.props.state.auth.userId) {
-         this.props.navigation.navigate('Tabs');
-       }
-     });
-   }
-
-
-  logIn(values) {
-    this.props.logInUser(values).then(() => {
-      this.props.reset();
-    }).then(() => {
-      if (this.props.state.auth.userId) {
-        this.props.navigation.navigate('Tabs');
-      }
-    });
+    console.log('submitting form', values);
+    this.props
+      .signUpUser(values)
+      .then(() => {
+        this.props.reset();
+      })
+      .then(() => {
+        if (this.props.state.auth.userId) {
+          this.props.navigation.navigate('Tabs');
+        }
+      });
   }
 
+  logIn(values) {
+    this.props
+      .logInUser(values)
+      .then(() => {
+        this.props.reset();
+      })
+      .then(() => {
+        if (this.props.state.auth.userId) {
+          this.props.navigation.navigate('Tabs');
+        }
+      });
+  }
 
   render() {
     return (
