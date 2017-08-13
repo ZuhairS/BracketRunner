@@ -1,6 +1,8 @@
 'use strict';
 //modules
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { signOutUser } from '../../actions/auth_actions'
 import {
   ReactNative,
   StyleSheet,
@@ -9,41 +11,48 @@ import {
   View
 } from 'react-native';
 
-export default class Menu extends Component {
+const Menu = class Menu extends Component {
   constructor(props) {
     super(props);
 
     this.onCreateBracketPress = this.onCreateBracketPress.bind(this);
+    this.onSignOutPress = this.onSignOutPress.bind(this);
   }
 
   onCreateBracketPress() {
     this.props.navigation.navigate('CreateBracket');
   }
 
+  onSignOutPress() {
+    this.props.signOutUser(this.props.state.auth);
+  }
+
+  onEditUserPress(){
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-          <TouchableOpacity
-            style={styles.modalButton}
-            onPress={() => this.onCreateBracketPress()}
-          >
-            <Text style={styles.modalButtonText}>Create Bracket</Text>
-            <View />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.modalButton}>
-            <Text style={styles.modalButtonText}>Settings</Text>
-            <View />
-          </TouchableOpacity>
-
           <TouchableOpacity style={styles.modalButton}>
             <Text style={styles.modalButtonText}>About</Text>
             <View />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.modalButtonLogOut}>
+          <TouchableOpacity
+            style={styles.modalButton}
+            onPress={() => this.onSignOutPress()}
+          >
             <Text style={styles.modalButtonText}>Log Out</Text>
+            <View />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.modalButton}
+            onPress={() => this.onEditUserPress()}
+          >
+            <Text style={styles.modalButtonText}>Edit Profile</Text>
             <View />
           </TouchableOpacity>
         </View>
@@ -81,4 +90,17 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = Menu;
+
+var mapStateToProps = (state) => {
+  return {
+    state
+  }
+}
+var mapDispatchToProps = (dispatch) => {
+  return {
+      signOutUser: (user) => dispatch(signOutUser(user))
+  }
+}
+
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(Menu);
