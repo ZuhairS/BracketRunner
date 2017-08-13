@@ -7,8 +7,6 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-//imported components
-// import NavBar from '../nav_bar/nav_bar';
 
 export default class ProfilePage extends Component {
   constructor(props) {

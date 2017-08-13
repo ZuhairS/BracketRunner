@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { signUpUser, logInUser } from '../../actions/auth_actions';
 import { connect } from 'react-redux';
-
-//components
 import {
   StyleSheet,
   Text,
@@ -12,8 +10,11 @@ import {
   TouchableOpacity,
   TextInput
 } from 'react-native';
+
+//components
 import AlertContainer from '../alerts/alert_container';
 import MyTextInput from './my_text_input';
+
 
 Auth = class Auth extends Component {
   constructor(props) {
@@ -25,12 +26,20 @@ Auth = class Auth extends Component {
 
   signUp(values) {
     console.log('submitting form', values);
-    this.props.signUpUser(values);
+    this.props.signUpUser(values).then(() => {
+      if (this.props.state.auth.userId) {
+        this.props.navigation.navigate('Tabs');
+      }
+    });
   }
 
-  logIn(values) {
-    console.log('submitting form', values);
-    this.props.logInUser(values).then(() => console.log(this.props.state));
+  logIn(values){
+    console.log('submitting form', values)
+    this.props.logInUser(values).then(() => {
+      if (this.props.state.auth.userId) {
+        this.props.navigation.navigate('Tabs');
+      }
+    });
   }
 
   render() {
