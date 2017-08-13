@@ -12,7 +12,8 @@ exports.edit = (req, res, next) => {
 
   User.findByIdAndUpdate({ _id: userId }, userProps)
     .then(() => User.findById({ _id: userId }))
-    .then(user => res.send(user));
+    .then(user => res.send(user))
+    .catch(next);
 };
 
 exports.delete = (req, res, next) => {
