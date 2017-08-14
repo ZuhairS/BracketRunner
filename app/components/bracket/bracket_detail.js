@@ -12,25 +12,45 @@ import {
   Dimensions,
   Image
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 //components
 import PlayerModal from '../modals/player_modal';
-import SetResultsCounter from './set_results_counter';
+import ResultForm from './result_form';
 
-export default class BracketDetail extends Component{
+export default class BracketDetail extends Component {
   constructor(props) {
     super(props);
 
     this.getBracket = this.getBracket.bind(this);
     this.onLearnMore = this.onLearnMore.bind(this);
+    this.onEditPress = this.onEditPress.bind(this);
   }
 
   onLearnMore() {
     this.props.navigation.navigate('PlayerModal');
   }
 
+  onEditPress() {
+    this.props.navigation.navigate('ResultForm');
+  }
+
   getBracket() {
     this.props.receiveBracket();
+  }
+
+  ShowEditButton() {
+    if (this.props.currentUserId === this.props.selectedBracket.tournamentOrganizerId) {
+      return (
+        <TouchableOpacity style={styles.editButton} onPress={() => this.onEditPress()}>
+          <Icon name="pencil" size={26} color={'yellow'} />
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <View style={styles.editButton}></View>
+      );
+    }
   }
 
   render() {
@@ -38,6 +58,7 @@ export default class BracketDetail extends Component{
 
       return (
         <View style={styles.container}>
+          {this.ShowEditButton()}
           <View>
             <Text style={styles.header}>{selectedBracket.title}</Text>
           </View>
@@ -185,10 +206,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
-    width: 400,
+    width: '100%',
     paddingTop: 25,
     backgroundColor: '#333',
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderColor: '#000',
+
+  },
+  editButton: {
+    position: 'absolute',
+    top: 10,
+    right: 40,
   },
   header: {
     fontSize: 28,

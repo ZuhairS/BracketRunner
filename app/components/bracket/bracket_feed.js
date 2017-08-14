@@ -97,11 +97,13 @@ const styles = StyleSheet.create({
   bracketContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'white',
     height: 450,
-    width: 400,
+    width: '100%',
     padding: 20,
-    backgroundColor: '#333'
+    backgroundColor: '#333',
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderColor: '#000',
   },
   header: {
     marginBottom: 40,
@@ -111,13 +113,12 @@ const styles = StyleSheet.create({
 
   },
   bracketButton: {
-    padding: 10,
-    margin: 5,
+    marginBottom: 15,
     borderBottomWidth: .3,
     borderColor: 'yellow',
     borderRadius: 15,
     height: 90,
-    width: 350,
+    width: 330,
   },
   bracketTitle: {
     color: 'white',

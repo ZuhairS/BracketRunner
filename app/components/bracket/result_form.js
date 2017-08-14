@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   NavigatorIOS,
   TextInput,
+  ScrollView,
 } from 'react-native';
+
 //imported components
 import AlertContainer from '../alerts/alert_container';
 import MyTextInput from '../user/my_text_input';
 import { Field, reduxForm } from 'redux-form';
-
-
+// import SetResultsCounter from './set_results_counter';
 
 
 ProfilePageForm = class ProfilePageForm extends Component {
@@ -37,17 +38,142 @@ ProfilePageForm = class ProfilePageForm extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Text >player 1:</Text>
-          <Field name="player1_result" component={renderInput} />
-          <Text >player 2:</Text>
-          <Field name="player2_result" component={renderInput} />
-          <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
-            <Text style={styles.button}>Submit</Text>
-          </TouchableOpacity>
-        </View>
-      <AlertContainer />
+        <Text style={styles.pageHeader}>Input Results</Text>
+        <ScrollView>
+
+          <Text style={styles.matchHeader}>Match 1</Text>
+          <View style={styles.matchContainer}>
+            <View style={styles.fieldContainer}>
+              <View>
+                <Text style={styles.fieldTitle}>P1</Text>
+                <Field name="player1_result" component={renderInput} />
+              </View>
+              <View>
+                <Text style={styles.fieldTitle}>P2</Text>
+                <Field name="player2_result" component={renderInput} />
+              </View>
+            </View>
+            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
+              <Text style={styles.button}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <AlertContainer />
+
+          <Text style={styles.matchHeader}>Match 2</Text>
+          <View style={styles.matchContainer}>
+            <View style={styles.fieldContainer}>
+              <View>
+                <Text style={styles.fieldTitle}>P1</Text>
+                <Field name="player1_result" component={renderInput} />
+              </View>
+              <View>
+                <Text style={styles.fieldTitle}>P2</Text>
+                <Field name="player2_result" component={renderInput} />
+              </View>
+            </View>
+            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
+              <Text style={styles.button}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <AlertContainer />
+
+          <Text style={styles.matchHeader}>Match 3</Text>
+          <View style={styles.matchContainer}>
+            <View style={styles.fieldContainer}>
+              <View>
+                <Text style={styles.fieldTitle}>P1</Text>
+                <Field name="player1_result" component={renderInput} />
+              </View>
+              <View>
+                <Text style={styles.fieldTitle}>P2</Text>
+                <Field name="player2_result" component={renderInput} />
+              </View>
+            </View>
+            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
+              <Text style={styles.button}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <AlertContainer />
+
+          <Text style={styles.matchHeader}>Match 4</Text>
+          <View style={styles.matchContainer}>
+            <View style={styles.fieldContainer}>
+              <View>
+                <Text style={styles.fieldTitle}>P1</Text>
+                <Field name="player1_result" component={renderInput} />
+              </View>
+              <View>
+                <Text style={styles.fieldTitle}>P2</Text>
+                <Field name="player2_result" component={renderInput} />
+              </View>
+            </View>
+            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
+              <Text style={styles.button}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <AlertContainer />
+
+          <Text style={styles.matchHeader}>Match 5</Text>
+          <View style={styles.matchContainer}>
+            <View style={styles.fieldContainer}>
+              <View>
+                <Text style={styles.fieldTitle}>P1</Text>
+                <Field name="player1_result" component={renderInput} />
+              </View>
+              <View>
+                <Text style={styles.fieldTitle}>P2</Text>
+                <Field name="player2_result" component={renderInput} />
+              </View>
+            </View>
+            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
+              <Text style={styles.button}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <AlertContainer />
+
+          <Text style={styles.matchHeader}>Match 6</Text>
+          <View style={styles.matchContainer}>
+            <View style={styles.fieldContainer}>
+              <View>
+                <Text style={styles.fieldTitle}>P1</Text>
+                <Field name="player1_result" component={renderInput} />
+              </View>
+              <View>
+                <Text style={styles.fieldTitle}>P2</Text>
+                <Field name="player2_result" component={renderInput} />
+              </View>
+            </View>
+            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
+              <Text style={styles.button}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <AlertContainer />
+
+          <Text style={styles.matchHeader}>Match 7</Text>
+          <View style={styles.matchContainer}>
+            <View style={styles.fieldContainer}>
+              <View>
+                <Text style={styles.fieldTitle}>P1</Text>
+                <Field name="player1_result" component={renderInput} />
+              </View>
+              <View>
+                <Text style={styles.fieldTitle}>P2</Text>
+                <Field name="player2_result" component={renderInput} />
+              </View>
+            </View>
+            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
+              <Text style={styles.button}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+          <AlertContainer />
+
+
+
+
+
+        </ScrollView>
       </View>
+
     );
   }
 
@@ -59,42 +185,87 @@ const renderInput = ({ input: { onChange, ...restInput }}) => {
 
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#333',
+    flex : 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+
+  },
+  pageHeader: {
+    color: 'yellow',
+    fontSize: 28,
+    fontWeight: 'bold',
+    paddingTop: 15,
+    paddingBottom: 30,
+  },
+  matchContainer: {
+    borderBottomWidth: .5,
+    borderColor: 'yellow',
+    height: 110,
+    width: 300,
+    marginBottom: 20,
+
+  },
+  fieldContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  matchHeader: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 10,
+
+  },
+  fieldTitle:{
+    color: 'yellow',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  input: {
+    color: '#333',
+    backgroundColor: 'white',
+    borderColor: 'yellow',
+    borderRadius: 5,
+    textAlign: 'center',
+    padding: 5,
+    height: 30,
+    width: 50,
+    marginLeft: 50,
+    marginRight: 50,
+    fontSize: 16,
+  },
+  inputs: {
+    color: 'white',
+    borderColor: 'yellow',
+    padding: 5,
+    borderRadius: 5,
+    borderWidth: 1,
+    height: 74,
+    width: 250,
+
+  },
   button: {
-    backgroundColor: '#5361A6',
+    backgroundColor: '#333',
+    borderWidth: 1,
+    borderColor: 'yellow',
+    borderRadius: 5,
+    fontWeight: 'bold',
     color: 'white',
     height: 30,
     lineHeight: 30,
     marginTop: 10,
     textAlign: 'center',
-    width: 250,
+    width: 100,
+    alignSelf: 'center',
+    fontSize: 14,
+
   },
-  container: {
-    backgroundColor: '#C4B585',
-    flex : 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  input: {
-    color: 'white',
-    borderColor: 'black',
-    padding: 5,
-    borderRadius: 5,
-    borderWidth: 1,
-    height: 37,
-    width: 250
-  },
-  inputs: {
-    color: 'white',
-    borderColor: 'black',
-    padding: 5,
-    borderRadius: 5,
-    borderWidth: 1,
-    height: 74,
-    width: 250
-  },
-  title:{
-    color: '#2D3336'
-  }
 })
 
 const mapDispatchToProps = (dispatch) => {
