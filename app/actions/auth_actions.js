@@ -14,7 +14,6 @@ exports.logInUser = ({ email, username, password }) => {
       .post(SIGNIN_URL, { email, username, password })
       .then(response => {
         var { user, token } = response.data;
-        dispatch(addAlert(token));
         dispatch(authUser(user));
       })
       .catch(error => {
@@ -29,7 +28,6 @@ exports.signUpUser = ({ email, username, password }) => {
       .post(SIGNUP_URL, { email, username, password })
       .then(response => {
         var { user, token } = response.data;
-        dispatch(addAlert(token));
         dispatch(authUser(user));
       })
       .catch(error => {
