@@ -15,6 +15,7 @@ import Menu from '../modals/menu';
 import BracketForm from '../bracket/bracket_form';
 import PlayerModal from '../modals/player_modal';
 import ProfilePageForm from '../user/profile_page_form';
+import BracketDetailEdit from '../bracket/edit_bracket_detail';
 
 
 export const HomePageStack = StackNavigator({
@@ -80,7 +81,8 @@ export const BracketStack = StackNavigator({
     navigationOptions: {
       title: 'Bracket Detail'
     }
-  }
+  },
+
 });
 
 export const Tabs = TabNavigator({

@@ -36,7 +36,6 @@ export default class BracketDetail extends Component{
   render() {
     const { selectedBracket, currentUserId } = this.props;
 
-    // if (currentUserId !== selectedBracket.tournamentOrganizerId) {
       return (
         <View style={styles.container}>
           <View>
@@ -115,7 +114,6 @@ export default class BracketDetail extends Component{
                       {/* player 2 profile pic */}
                     </TouchableOpacity>
                   </View>
-
                 </View>
             </View>
   {/*Round 2*/}
@@ -158,23 +156,23 @@ export default class BracketDetail extends Component{
   {/*Round 3*/}
             <View style={styles.slide3}>
               <Text style={styles.round}>Round 3</Text>
-                <View>
-                  <View style={styles.match}>
-                    {/*Match 7*/}
-                    <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                      {/* player 1 profile pic */}
-                    </TouchableOpacity>
-                    <View>
-                      <Text style={styles.matchup}>
-                        pending vs pending
-                      </Text>
-                      <Text style={styles.resultText}>0 - 0</Text>
-                    </View>
-                    <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                      {/* player 2 profile pic */}
-                    </TouchableOpacity>
+              <View>
+                <View style={styles.match}>
+      {/*Match 7*/}
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 1 profile pic */}
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.matchup}>
+                      pending vs pending
+                    </Text>
+                    <Text style={styles.resultText}>0 - 0</Text>
                   </View>
+                  <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                    {/* player 2 profile pic */}
+                  </TouchableOpacity>
                 </View>
+              </View>
             </View>
           </Swiper>
         </View>
