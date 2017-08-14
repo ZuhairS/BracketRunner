@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 //imported components
 import AlertContainer from '../alerts/alert_container';
-import MyTextInput from '../user/my_text_input';
 import { Field, reduxForm } from 'redux-form';
 
 

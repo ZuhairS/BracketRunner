@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 //imported components
 import AlertContainer from '../alerts/alert_container';
-import MyTextInput from './my_text_input';
 import { Field, reduxForm } from 'redux-form';
 import { editUser } from '../../actions/user_actions';
 
@@ -37,20 +36,20 @@ ProfilePageForm = class ProfilePageForm extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text >Avatar URL:</Text>
-          <Field name="avatarUrl" component={renderInput} />
-          <Text >Twitter:</Text>
-          <Field name="twitterUrl" component={renderInput} />
-          <Text>Twitch:</Text>
-          <Field name="twitchUrl" component={renderInput} />
-          <Text>YouTube:</Text>
-          <Field name="youtubeUrl" component={renderInput} type="text" />
-          <Text>Sponsor:</Text>
-          <Field name="sponserName" component={renderInput} />
-          <Text>Sponsor Picture URL:</Text>
-          <Field name="sponserImageUrl" component={renderInput} />
-          <Text>About:</Text>
-          <Field name="aboutMe" component={renderMultiLineInput} />
+
+          <Field name="avatarUrl" component={renderInput} label="Avatar URL"/>
+
+          <Field name="twitterUrl" component={renderInput} label="Twitter" />
+
+          <Field name="twitchUrl" component={renderInput}label="Twitch" />
+
+          <Field name="youtubeUrl" component={renderInput} type="text" label="YouTube"/>
+
+          <Field name="sponserName" component={renderInput} label="Sponsor"/>
+
+          <Field name="sponserImageUrl" component={renderInput} label="Sponsor Picture URL"/>
+
+          <Field name="aboutMe" component={renderMultiLineInput} label="About"/>
           <TouchableOpacity onPress={this.props.handleSubmit(this.updateUser)}>
             <Text style={styles.button}>Submit</Text>
           </TouchableOpacity>
@@ -62,52 +61,76 @@ ProfilePageForm = class ProfilePageForm extends Component {
 
 }
 
-const renderInput = ({ input: { onChange, ...restInput }}) => {
-  return <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
-}
+const renderInput = ({ label, input: { onChange, ...restInput } }) => {
+  return (
+    <TextInput placeholder={label} style={styles.input} onChangeText={onChange} {...restInput} placeholderTextColor='#333' />
+  );
+};
 
-const renderMultiLineInput = ({ input: { onChange, ...restInput }}) => {
-  return <TextInput multiline = {true} numberOfLines = {4} style={styles.inputs} onChangeText={onChange} {...restInput} />
+
+const renderMultiLineInput = ({ label, input: { onChange, ...restInput }}) => {
+  return <TextInput placeholder={label} multiline = {true} numberOfLines = {4} style={styles.inputs} onChangeText={onChange} {...restInput} />
 }
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#5361A6',
+    backgroundColor: '#333',
+    borderColor: 'yellow',
     color: 'white',
-    height: 30,
     lineHeight: 30,
-    marginTop: 10,
     textAlign: 'center',
+    padding: 5,
+    borderRadius: 20,
+    borderWidth: 2,
+    marginTop: 10,
+    height: 45,
     width: 250,
+    fontSize: 16,
   },
   container: {
-    backgroundColor: '#C4B585',
-    flex : 1,
+    backgroundColor: '#333',
+    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
+
   },
   input: {
-    color: 'white',
-    borderColor: 'black',
+    color: '#333',
+    borderColor: '#404000',
+    backgroundColor: 'white',
     padding: 5,
-    borderRadius: 5,
+    borderRadius: 20,
     borderWidth: 1,
-    height: 37,
-    width: 250
+    marginTop: 10,
+    height: 45,
+    width: 250,
+    textAlign: 'center',
+    fontSize: 16,
   },
   inputs: {
-    color: 'white',
-    borderColor: 'black',
+    color: '#333',
+    borderColor: '#404000',
+    backgroundColor: 'white',
     padding: 5,
-    borderRadius: 5,
+    borderRadius: 20,
     borderWidth: 1,
-    height: 74,
-    width: 250
+    marginTop: 10,
+    height: 90,
+    width: 250,
+    textAlign: 'center',
+    fontSize: 16,
   },
-  title:{
+  title: {
     color: '#2D3336'
-  }
-})
+  },
+  avatar: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    alignSelf: 'center',
+    marginBottom: 40
+  },
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {

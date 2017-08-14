@@ -28,32 +28,28 @@ ProfilePage = class ProfilePage extends Component {
 
   }
 
-  componentDidMount(){
-    console.log("ProfilePage");
-    console.log(this.props);
-  }
 
   aboutMe() {
     let user = this.props.state.auth.user
       if (user.aboutMe) {
         return (
-          <RkCard rkType='shadowed'>
+          <RkCard rkType='shadowed' style={styles.tab2}>
             <View rkCardHeader>
-              <Text>About</Text>
+              <Text style={styles.header}>About</Text>
             </View>
             <View rkCardContent>
-              <Text>{user.aboutMe}</Text>
+              <Text style={styles.userText}>{user.aboutMe}</Text>
             </View>
           </RkCard>
        );
    } else {
      return (
-      <RkCard rkType='shadowed'>
-        <View rkCardHeader>
-          <Text>About</Text>
+      <RkCard rkType='shadowed' style={styles.tab2}>
+        <View rkCardHeader >
+          <Text  style={styles.header}>About</Text>
         </View>
         <View rkCardContent>
-          <Text>Write somting about yourself</Text>
+          <Text style={styles.userText}>Write somting about yourself</Text>
         </View>
       </RkCard>
      );
@@ -64,11 +60,11 @@ ProfilePage = class ProfilePage extends Component {
    let user = this.props.state.auth.user
       if (user.youtubeUrl) {
         return (
-          <Text>{user.youtubeUrl}</Text>
+          <Text style={styles.userText}>{user.youtubeUrl}</Text>
       );
     } else {
       return (
-        <Text>Add your Youtube link</Text>
+        <Text style={styles.userText}>Add your Youtube link</Text>
       );
     }
   }
@@ -77,11 +73,11 @@ ProfilePage = class ProfilePage extends Component {
     let user = this.props.state.auth.user
        if (user.twitchUrl) {
          return (
-           <Text>{user.twitchUrl}</Text>
+           <Text style={styles.userText}>{user.twitchUrl}</Text>
        );
      } else {
        return (
-         <Text>Add your twitch link</Text>
+         <Text style={styles.userText}>Add your twitch link</Text>
        );
      }
    }
@@ -90,24 +86,25 @@ ProfilePage = class ProfilePage extends Component {
      let user = this.props.state.auth.user
         if (user.twitterUrl) {
           return (
-            <Text>{user.twitterUrl}</Text>
+            <Text style={styles.userText}>{user.twitterUrl}</Text>
         );
       } else {
         return (
-          <Text>Add your twitter link</Text>
+          <Text style={styles.userText}>Add your twitter link</Text>
         );
       }
     }
 
     sponserImage() {
       let user = this.props.state.auth.user
-         if (user.twitterUrl) {
+         if (user.sponserImageUrl) {
            return (
-             <Text>{user.sponserImageUrl}</Text>
+             <Image source={{uri: user.sponserImageUrl}}
+                    style={styles.avatar}/>
          );
        } else {
          return (
-           <Text>Add your sponsers Image link</Text>
+           <Text style={styles.userText}>Add your sponsers Image link</Text>
          );
        }
      }
@@ -116,11 +113,11 @@ ProfilePage = class ProfilePage extends Component {
        let user = this.props.state.auth.user
           if (user.sponserName) {
             return (
-              <Text>{user.sponserName}</Text>
+              <Text style={styles.userText}>{user.sponserName}</Text>
           );
         } else {
           return (
-            <Text>Add your Sponsers Name link</Text>
+            <Text style={styles.userText}>Add your Sponsers Name link</Text>
           );
         }
       }
@@ -151,29 +148,32 @@ ProfilePage = class ProfilePage extends Component {
         {this.aboutMe()}
 
 
-        <RkCard rkType='shadowed'>
+        <RkCard rkType='shadowed' style={styles.tab2}>
 
           <View rkCardHeader>
-            <Text>Social Media</Text>
+            <Text style={styles.header}>Social Media</Text>
           </View>
 
           <View rkCardContent>
-            <Text>Youtube: {this.youTube()}</Text>
-            <Text>Twitch: {this.twitch()}</Text>
-            <Text>Twitter: {this.twitter()}</Text>
+            <Text style={styles.userText}>You Tube: {this.youTube()}</Text>
+            <Text style={styles.userText}>Twitch: {this.twitch()}</Text>
+            <Text style={styles.userText}>Twitter: {this.twitter()}</Text>
           </View>
 
         </RkCard>
 
-        <RkCard rkType='shadowed'>
+        <RkCard rkType='shadowed' style={styles.tab3}>
 
           <View rkCardHeader>
-            <Text>Sponsorship</Text>
+            <Text style={styles.header}>Sponsorship</Text>
           </View>
 
           <View rkCardContent>
-            <Text>Sponser Image {this.sponserImage()}</Text>
-            <Text>Sponser Name {this.sponserName()}</Text>
+
+            <View style={styles.sponserContainer}>
+              <Text style={styles.userText}>Sponser Name {this.sponserName()}</Text>
+              {this.sponserImage()}
+            </View>
           </View>
 
         </RkCard>
@@ -208,7 +208,26 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     fontSize: 25,
     color: 'white'
+  },
+  tab1:{
+    backgroundColor: '#424242'
+  },
+  tab2:{
+    backgroundColor: '#424242'
+  },
+  tab3:{
+    backgroundColor: '#424242'
+  },
+  header:{
+    color: 'yellow'
+  },
+  userText:{
+    color: 'white'
+  },
+  sponserContainer:{
+
   }
+
 });
 
 const mapDispatchToProps = (dispatch) => {
