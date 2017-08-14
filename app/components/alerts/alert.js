@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {
   StyleSheet,
@@ -9,11 +9,16 @@ import {
 
 import {removeAlert} from '../../actions/alerts_actions';
 
-var Alert = React.createClass({
+Alert = class Alert extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onRemoveAlert = this.onRemoveAlert.bind(this);
+  }
   onRemoveAlert() {
     var {dispatch, alert} = this.props;
     dispatch(removeAlert(alert.id));
-  },
+  }
   render() {
     return (
       <TouchableWithoutFeedback onPress={this.onRemoveAlert}>
@@ -25,7 +30,7 @@ var Alert = React.createClass({
       </TouchableWithoutFeedback>
     );
   }
-});
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -8,12 +8,12 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Image
 } from 'react-native';
 
 //components
 import AlertContainer from '../alerts/alert_container';
-import MyTextInput from './my_text_input';
 
 Auth = class Auth extends Component {
   constructor(props) {
@@ -37,6 +37,7 @@ Auth = class Auth extends Component {
   }
 
   logIn(values) {
+    console.log(values);
     this.props
       .logInUser(values)
       .then(() => {
@@ -52,13 +53,16 @@ Auth = class Auth extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image source={require('./logo.jpg')}
+               style={styles.avatar}/>
         <View style={styles.titleContainer}>
-          <Text sytle={styles.title}>Email:</Text>
-          <Field name="email" component={renderInput} />
-          <Text>Username:</Text>
-          <Field name="username" component={renderInput} />
-          <Text>Password:</Text>
-          <Field name="password" component={renderInput} />
+
+          <Field name="email" component={renderInput} label="Email" />
+
+          <Field name="username" component={renderInput} label="Username"/>
+
+          <Field name="password" component={renderPasswordInput} label="Password" />
+
           <TouchableOpacity onPress={this.props.handleSubmit(this.signUp)}>
             <Text style={styles.button}>Sign Up</Text>
           </TouchableOpacity>
@@ -74,37 +78,60 @@ Auth = class Auth extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#5361A6',
+    backgroundColor: '#333',
+    borderColor: 'yellow',
     color: 'white',
-    height: 30,
     lineHeight: 30,
-    marginTop: 10,
     textAlign: 'center',
-    width: 250
+    padding: 5,
+    borderRadius: 20,
+    borderWidth: 2,
+    marginTop: 10,
+    height: 45,
+    width: 250,
+    fontSize: 16,
   },
   container: {
-    backgroundColor: '#C4B585',
+    backgroundColor: '#333',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+
   },
   input: {
-    color: 'white',
-    borderColor: 'black',
+    color: '#333',
+    borderColor: '#404000',
+    backgroundColor: 'white',
     padding: 5,
-    borderRadius: 5,
+    borderRadius: 20,
     borderWidth: 1,
-    height: 37,
-    width: 250
+    marginTop: 10,
+    height: 45,
+    width: 250,
+    textAlign: 'center',
+    fontSize: 16,
   },
   title: {
     color: '#2D3336'
+  },
+  avatar: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    alignSelf: 'center',
+    marginBottom: 40
   }
 });
 
-const renderInput = ({ input: { onChange, ...restInput } }) => {
+const renderInput = ({ label, input: { onChange, ...restInput } }) => {
   return (
-    <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
+    <TextInput placeholder={label} style={styles.input} onChangeText={onChange} {...restInput} placeholderTextColor='#333' />
+  );
+};
+
+const renderPasswordInput = ({ label, input: { onChange, ...restInput } }) => {
+  return (
+    <TextInput placeholder={label} secureTextEntry={true} style={styles.input} onChangeText={onChange} {...restInput} placeholderTextColor='#333' />
   );
 };
 
