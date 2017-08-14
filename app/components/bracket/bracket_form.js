@@ -26,7 +26,9 @@ BracketForm = class BracketForm extends Component {
 
     const bracket = Object.assign({tournamentOrganizerId : this.props.state.auth.userId}, values);
     console.log(bracket);
-    this.props.createBracket(bracket);
+    this.props.createBracket(bracket).then(() => {
+      this.props.reset();
+      })
   }
 
   renderInput({ input: { onChange, ...restInput } }) {
