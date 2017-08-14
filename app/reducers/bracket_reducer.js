@@ -7,6 +7,7 @@ import {
 var defaultState = {
   selectedBracket: {
     title: "SmashCon",
+    tournamentOrganizerId: '5990eab8e575bd3faffcc86d',
     entrants: {
       1: 'ZPowers',
       2: 'PhoenixD',
@@ -17,7 +18,7 @@ var defaultState = {
       7: 'Knight1916',
       8: 'mango'
     },
-    game: "Super Smash Bros. for WiiU",
+    game: "Super Smash Bros. Melee",
     live: true,
     streamUrl: "http://google.com",
     matches: [

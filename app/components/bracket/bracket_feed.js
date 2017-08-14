@@ -25,8 +25,7 @@ export default class BracketFeed extends Component{
   }
 
   isLive(){
-    let { selectedBracket } = this.props;
-    if (selectedBracket.live) {
+    if (this.props.selectedBracket.live) {
       return "Live!";
     } else {
       return "";
@@ -34,8 +33,7 @@ export default class BracketFeed extends Component{
   }
 
   tourneyStream() {
-    let { selectedBracket } = this.props;
-    if (selectedBracket.streamUrl && selectedBracket.live) {
+    if (this.props.selectedBracket.streamUrl && this.props.selectedBracket.live) {
       return (
         <Text style={styles.streamLink} onPress={() => Linking.openURL(selectedBracket.streamUrl)}>
           Watch Stream
@@ -49,7 +47,7 @@ export default class BracketFeed extends Component{
   }
 
   render() {
-    let { liveBrackets, selectedBracket } = this.props;
+    const { liveBrackets, selectedBracket } = this.props;
 
     const allLiveBrackets = liveBrackets.map((bracket, idx) => (
       <View key={`bracket-${idx}`} bracket={ bracket }>
@@ -136,6 +134,8 @@ const styles = StyleSheet.create({
   streamLink: {
     color: 'yellow',
     paddingTop: 10,
+    width: 100,
+
   },
   live: {
     color: 'yellow',
