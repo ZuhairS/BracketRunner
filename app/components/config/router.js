@@ -14,6 +14,8 @@ import BracketDetail from '../bracket/bracket_detail';
 import Menu from '../modals/menu';
 import BracketForm from '../bracket/bracket_form';
 import PlayerModal from '../modals/player_modal';
+import ProfilePageForm from '../user/profile_page_form';
+
 
 export const HomePageStack = StackNavigator({
   Home: {
@@ -38,6 +40,12 @@ export const ProfilePageStack = StackNavigator({
     screen: ProfilePage,
     navigationOptions: {
       title: 'Profile Page'
+    }
+  },
+  ProfilePageForm: {
+    screen: ProfilePageForm,
+    navigationOptions: {
+      title: 'Profile Page Edit'
     }
   }
 });
