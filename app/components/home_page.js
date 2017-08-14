@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-// import { Icon } from 'react-native-elements';
 
 //components
 import Menu from './modals/menu';
@@ -34,7 +33,6 @@ export default class HomePage extends Component {
   render() {
     return (
       <View style={styles.container}>
-
         <TouchableOpacity
           style={styles.menuButton}
           onPress={() => this.handleMenuPress()}
@@ -48,7 +46,6 @@ export default class HomePage extends Component {
         >
           <Text style={styles.createBracketButtonText}>Create Bracket</Text>
         </TouchableOpacity>
-
       </View>
     );
   }
@@ -65,14 +62,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     width: 200,
-    marginTop: 100,
+    marginTop: 100
   },
   createBracketButtonText: {
     fontSize: 20,
     alignItems: 'center',
     alignSelf: 'center',
-    padding: 8,
-
+    padding: 8
   },
   menuButton: {
     marginTop: 60,
