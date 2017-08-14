@@ -7,6 +7,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  Linking
 } from 'react-native';
 
 import { selectAllLiveBrackets } from '../../reducers/selectors';
@@ -16,22 +17,48 @@ export default class BracketFeed extends Component{
     super(props);
 
     this.onLearnMore = this.onLearnMore.bind(this);
+    this.isLive = this.isLive.bind(this);
   }
 
   onLearnMore() {
     this.props.navigation.navigate('BracketDetail');
   }
 
+  isLive(){
+    if (this.props.selectedBracket.live) {
+      return "Live!";
+    } else {
+      return "";
+    }
+  }
+
+  tourneyStream() {
+    if (this.props.selectedBracket.streamUrl && this.props.selectedBracket.live) {
+      return (
+        <Text style={styles.streamLink} onPress={() => Linking.openURL(selectedBracket.streamUrl)}>
+          Watch Stream
+        </Text>
+      );
+    } else {
+      return (
+        <Text style={styles.streamLink}></Text>
+      );
+    }
+  }
+
   render() {
-    const { liveBrackets } = this.props;
+    const { liveBrackets, selectedBracket } = this.props;
 
     const allLiveBrackets = liveBrackets.map((bracket, idx) => (
       <View key={`bracket-${idx}`} bracket={ bracket }>
         <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
-          <Text style={styles.bracketTitle}>Bracket Title</Text>
+          <Text style={styles.bracketTitle}>{selectedBracket.title}</Text>
           <View style={styles.timeContainer}>
-            <Text style={styles.time}>Start Time - End Time</Text>
-            <Text style={styles.live}>Live!</Text>
+            <Text style={styles.time}>Game</Text>
+            <Text style={styles.streamLink} onPress={() => Linking.openURL(selectedBracket.streamUrl)}>
+              Watch Stream
+            </Text>
+            <Text style={styles.live}>{this.isLive()}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -43,17 +70,21 @@ export default class BracketFeed extends Component{
         <ScrollView>
           { allLiveBrackets }
           <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
-            <Text style={styles.bracketTitle}>Bracket Title</Text>
-            <View style={styles.timeContainer}>
-              <Text style={styles.time}>Start Time - End Time</Text>
-              <Text style={styles.live}>Live!</Text>
+            <Text style={styles.bracketTitle}>{selectedBracket.title}</Text>
+            <View style={styles.gameTextContainer}>
+              <Text style={styles.gameText}>{selectedBracket.game}</Text>
+              {this.tourneyStream()}
+              <Text style={styles.live}>{this.isLive()}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
             <Text style={styles.bracketTitle}>Bracket Title</Text>
-            <View style={styles.timeContainer}>
-              <Text style={styles.time}>Start Time - End Time</Text>
-              <Text style={styles.live}>Live!</Text>
+            <View style={styles.gameTextContainer}>
+              <Text style={styles.gameText}>Game</Text>
+              <Text style={styles.streamLink} onPress={() => Linking.openURL(selectedBracket.streamUrl)}>
+                Watch Stream
+              </Text>
+              <Text style={styles.live}>{this.isLive()}</Text>
             </View>
           </TouchableOpacity>
         </ScrollView>
@@ -75,7 +106,7 @@ const styles = StyleSheet.create({
   header: {
     marginBottom: 40,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'yellow',
     fontSize: 28,
 
   },
@@ -93,24 +124,31 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
-  timeContainer: {
+  gameTextContainer: {
 
   },
-  time: {
+  gameText: {
     color: 'white',
-    fontSize: 12,
+    fontSize: 13,
+  },
+  streamLink: {
+    color: 'yellow',
+    paddingTop: 10,
+    width: 100,
+
   },
   live: {
     color: 'yellow',
-    paddingTop: 20,
+    paddingTop: 0,
     alignSelf: 'flex-end',
-
   }
 });
 
 const mapStatetoProps = (state) => {
   return {
-    liveBrackets: selectAllLiveBrackets(state)
+    liveBrackets: selectAllLiveBrackets(state),
+    selectedBracket: state.bracket.selectedBracket,
+    state
   }
 }
 
