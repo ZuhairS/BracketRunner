@@ -46,7 +46,6 @@ export default class BracketDetail extends Component {
   }
 
   ShowEditButton(match) {
-
     if (this.props.currentUserId === this.props.selectedBracket.tournamentOrganizerId) {
       return (
         <TouchableOpacity style={styles.editButton} onPress={() => this.onEditPress(match)}>

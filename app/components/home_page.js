@@ -59,20 +59,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#333'
   },
   createBracketButton: {
     borderWidth: 1,
     borderRadius: 10,
     width: 200,
     marginTop: 100,
+    borderColor: 'yellow',
+    borderWidth: 2
   },
   createBracketButtonText: {
     fontSize: 20,
     alignItems: 'center',
     alignSelf: 'center',
     padding: 8,
-
+    color: 'yellow'
   },
   menuButton: {
     marginTop: 60,

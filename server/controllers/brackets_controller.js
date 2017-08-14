@@ -14,6 +14,7 @@ const User = require('../models/user');
 // };
 
 exports.create = (req, res, next) => {
+  console.log("bracketController");
   const bracketProps = req.body;
 
   // bracketProps.matches = populateMatches(bracketProps.entrants);
