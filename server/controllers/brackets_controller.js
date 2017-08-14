@@ -39,6 +39,10 @@ exports.create = (req, res, next) => {
 //   });
 // };
 
+exports.index = (req, res, next) => {
+  Bracket.find({ live: true }).then(brackets => res.send(brackets)).catch(next);
+};
+
 exports.show = (req, res, next) => {
   const bracketId = req.params.id;
 
@@ -107,7 +111,7 @@ const populateMatches = entrants => {
   let matches = [];
   const numMatches = Math.ceil(Object.keys(entrants).length / 2);
 
-  for (let i = 0, j = 1; i < numMatches; i++, j = j + 2) {
+  for (let i = 0, j = 0; i < numMatches; i++, j = j + 2) {
     matches[i] = {
       pairing: {
         player1: entrants[j],
@@ -121,7 +125,7 @@ const populateMatches = entrants => {
 const userQueries = entrants => {
   const promiseArr = [];
 
-  for (let i = 1; i <= Object.keys(entrants).length; i++) {
+  for (let i = 0; i <= Object.keys(entrants).length; i++) {
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
         user => (entrants[i] = user ? user : entrants[i])
