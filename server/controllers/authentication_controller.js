@@ -14,8 +14,6 @@ function tokenForUser(user) {
 }
 
 exports.signin = function(req, res, next) {
-  console.log("controller");
-  console.log(req);
   var user = req.user;
   res.send({ token: tokenForUser(user), user: user });
 };
