@@ -40,10 +40,14 @@ let bracketSchema = new Schema({
     type: String
   },
   live: { type: Boolean, default: true },
+<<<<<<< HEAD
   streamUrl: {
     type: String,
     default: 'www.google.com'
   },
+=======
+  streamUrl: String,
+>>>>>>> b922746306623665adf41836ac87e1fff679b502
   matches: [
     {
       pairing: {

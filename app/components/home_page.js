@@ -56,19 +56,30 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#333'
   },
   createBracketButton: {
     borderWidth: 1,
     borderRadius: 10,
     width: 200,
+<<<<<<< HEAD
     marginTop: 100
+=======
+    marginTop: 100,
+    borderColor: 'yellow',
+    borderWidth: 2
+>>>>>>> b922746306623665adf41836ac87e1fff679b502
   },
   createBracketButtonText: {
     fontSize: 20,
     alignItems: 'center',
     alignSelf: 'center',
+<<<<<<< HEAD
     padding: 8
+=======
+    padding: 8,
+    color: 'yellow'
+>>>>>>> b922746306623665adf41836ac87e1fff679b502
   },
   menuButton: {
     marginTop: 60,
