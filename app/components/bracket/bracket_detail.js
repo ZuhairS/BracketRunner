@@ -28,10 +28,10 @@ export default class BracketDetail extends Component {
     this.onEditPress = this.onEditPress.bind(this);
   }
 
-  componentWillMount(){
-    console.log(this.props);
-    this.props.requestSelectedBracket(this.props.navigation.state.params.bracket._id);
-  }
+  // componentWillMount(){
+  //   console.log(this.props);
+  //   this.props.requestSelectedBracket(this.props.navigation.state.params.bracket._id);
+  // }
 
   onLearnMore() {
     this.props.navigation.navigate('PlayerModal');
@@ -61,10 +61,6 @@ export default class BracketDetail extends Component {
   }
 
   render() {
-    if (!this.props.selectedBracket.matches) {
-      return null;
-    }
-
     const { selectedBracket, currentUserId } = this.props;
 
       return (
