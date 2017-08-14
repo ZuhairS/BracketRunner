@@ -28,7 +28,6 @@ ProfilePage = class ProfilePage extends Component {
 
   }
 
-
   aboutMe() {
     let user = this.props.state.auth.user
       if (user.aboutMe) {
