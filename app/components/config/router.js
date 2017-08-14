@@ -15,6 +15,7 @@ import Menu from '../modals/menu';
 import BracketForm from '../bracket/bracket_form';
 import PlayerModal from '../modals/player_modal';
 import ProfilePageForm from '../user/profile_page_form';
+import ResultForm from '../bracket/result_form';
 
 export const HomePageStack = StackNavigator(
   {
@@ -84,6 +85,12 @@ export const BracketStack = StackNavigator({
     screen: BracketDetailStack,
     navigationOptions: {
       title: 'Bracket Detail'
+    }
+  },
+  ResultForm: {
+    screen: ResultForm,
+    navigationOptions: {
+      title: ('Edit Results')
     }
   }
 });

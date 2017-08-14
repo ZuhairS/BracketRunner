@@ -11,24 +11,10 @@ export const RECEIVE_FEATURED_BRACKET = 'RECEIVE_FEATURED_BRACKET';
 export const RECEIVE_LIVE_BRACKETS = 'RECEIVE_LIVE_BRACKETS';
 
 //async actions
-<<<<<<< HEAD
 export const createBracket = bracket => dispatch =>
   axios
     .post(BRACKETS_URL, bracket)
     .then(response => dispatch(receiveSelectedBracket(response.data)));
-=======
-export const createBracket = bracket => dispatch =>{
-
-console.log(bracket);
-  return axios
-    .post(BRACKETS_URL, bracket)
-    .then(response => {
-      console.log(response);
-      dispatch(receiveSelectedBracket(response.data))
-
-    });
-  }
->>>>>>> b922746306623665adf41836ac87e1fff679b502
 
 export const editBracket = bracket => dispatch =>
   axios
