@@ -36,7 +36,7 @@ export default class BracketDetail extends Component{
   render() {
     const { selectedBracket, currentUserId } = this.props;
 
-    if (currentUserId !== selectedBracket.tournamentOrganizerId) {
+    // if (currentUserId !== selectedBracket.tournamentOrganizerId) {
       return (
         <View style={styles.container}>
           <View>
@@ -179,11 +179,6 @@ export default class BracketDetail extends Component{
           </Swiper>
         </View>
       );
-    } else {
-      return (
-        <Text>It works!</Text>
-      );
-    }
   }//render
 }//Bracket
 
