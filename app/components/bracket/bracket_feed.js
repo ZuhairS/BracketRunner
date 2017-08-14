@@ -10,7 +10,7 @@ import {
   Linking
 } from 'react-native';
 
-import { selectAllLiveBrackets } from '../../reducers/selectors';
+import { requestLiveBrackets } from '../../actions/bracket_actions';
 
 export default class BracketFeed extends Component{
   constructor(props) {
@@ -18,24 +18,29 @@ export default class BracketFeed extends Component{
 
     this.onLearnMore = this.onLearnMore.bind(this);
     this.isLive = this.isLive.bind(this);
+    this.tourneyStream = this.tourneyStream.bind(this);
   }
 
-  onLearnMore() {
-    this.props.navigation.navigate('BracketDetail');
+  componentWillMount() {
+    this.props.requestLiveBrackets();
   }
 
-  isLive(){
-    if (this.props.selectedBracket.live) {
+  onLearnMore(bracket) {
+    this.props.navigation.navigate('BracketDetail', { bracket });
+  }
+
+  isLive(bracket){
+    if (bracket.live) {
       return "Live!";
     } else {
       return "";
     }
   }
 
-  tourneyStream() {
-    if (this.props.selectedBracket.streamUrl && this.props.selectedBracket.live) {
+  tourneyStream(bracket) {
+    if (bracket.streamUrl && bracket.live) {
       return (
-        <Text style={styles.streamLink} onPress={() => Linking.openURL(selectedBracket.streamUrl)}>
+        <Text style={styles.streamLink} onPress={() => Linking.openURL(bracket.streamUrl)}>
           Watch Stream
         </Text>
       );
@@ -47,29 +52,33 @@ export default class BracketFeed extends Component{
   }
 
   render() {
-    const { liveBrackets, selectedBracket } = this.props;
 
-    const allLiveBrackets = liveBrackets.map((bracket, idx) => (
-      <View key={`bracket-${idx}`} bracket={ bracket }>
-        <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
-          <Text style={styles.bracketTitle}>{selectedBracket.title}</Text>
-          <View style={styles.timeContainer}>
-            <Text style={styles.time}>Game</Text>
-            <Text style={styles.streamLink} onPress={() => Linking.openURL(selectedBracket.streamUrl)}>
-              Watch Stream
-            </Text>
-            <Text style={styles.live}>{this.isLive()}</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    ));
+    const { liveBrackets, selectedBracket } = this.props;
+    console.log(this.props);
+
+    const allLiveBrackets = liveBrackets.map((bracket, idx) => {
+      console.log(bracket);
+      return (
+        <View key={`bracket-${idx}`} bracket={ bracket }>
+          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore(bracket)}>
+            <Text style={styles.bracketTitle}>{bracket.title}</Text>
+            <View style={styles.timeContainer}>
+              <Text style={styles.gameText}>{bracket.game}</Text>
+              {this.tourneyStream(bracket)}
+              <Text style={styles.live}>{this.isLive(bracket)}</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      )
+
+    });
 
     return (
       <View style={styles.bracketContainer}>
         <Text style={styles.header}>Streaming Now</Text>
         <ScrollView>
           { allLiveBrackets }
-          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
+          {/* <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
             <Text style={styles.bracketTitle}>{selectedBracket.title}</Text>
             <View style={styles.gameTextContainer}>
               <Text style={styles.gameText}>{selectedBracket.game}</Text>
@@ -86,7 +95,7 @@ export default class BracketFeed extends Component{
               </Text>
               <Text style={styles.live}>{this.isLive()}</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
       </View>
     );
@@ -147,9 +156,8 @@ const styles = StyleSheet.create({
 
 const mapStatetoProps = (state) => {
   return {
-    liveBrackets: selectAllLiveBrackets(state),
-    selectedBracket: state.bracket.selectedBracket,
-    state
+    liveBrackets: state.bracket.liveBrackets,
+    selectedBracket: state.bracket.selectedBracket
   }
 }
 

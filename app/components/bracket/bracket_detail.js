@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
-import { receiveBracket } from '../../actions/bracket_actions';
+
 import {
   StyleSheet,
   Text,
@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 //components
 import PlayerModal from '../modals/player_modal';
 import ResultForm from './result_form';
+import { requestSelectedBracket } from '../../actions/bracket_actions';
 
 export default class BracketDetail extends Component {
   constructor(props) {
@@ -25,6 +26,11 @@ export default class BracketDetail extends Component {
     this.getBracket = this.getBracket.bind(this);
     this.onLearnMore = this.onLearnMore.bind(this);
     this.onEditPress = this.onEditPress.bind(this);
+  }
+
+  componentWillMount(){
+    console.log(this.props);
+    this.props.requestSelectedBracket(this.props.navigation.state.params.bracket._id);
   }
 
   onLearnMore() {
@@ -41,7 +47,6 @@ export default class BracketDetail extends Component {
 
   ShowEditButton(match) {
 
-
     if (this.props.currentUserId === this.props.selectedBracket.tournamentOrganizerId) {
       return (
         <TouchableOpacity style={styles.editButton} onPress={() => this.onEditPress(match)}>
@@ -56,6 +61,10 @@ export default class BracketDetail extends Component {
   }
 
   render() {
+    if (!this.props.selectedBracket.matches) {
+      return null;
+    }
+
     const { selectedBracket, currentUserId } = this.props;
 
       return (
@@ -328,7 +337,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    receiveBracket: () => dispatch(receiveBracket())
+    requestSelectedBracket: (id) => dispatch(requestSelectedBracket(id))
   }
 }
 

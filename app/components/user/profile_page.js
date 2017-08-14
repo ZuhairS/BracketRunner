@@ -28,11 +28,6 @@ ProfilePage = class ProfilePage extends Component {
 
   }
 
-  componentDidMount(){
-    console.log("ProfilePage");
-    console.log(this.props);
-  }
-
   aboutMe() {
     let user = this.props.state.auth.user
       if (user.aboutMe) {
