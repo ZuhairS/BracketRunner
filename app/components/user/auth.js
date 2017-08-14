@@ -115,9 +115,9 @@ const styles = StyleSheet.create({
     color: '#2D3336'
   },
   avatar: {
-    width: 120,
+    width: 200,
     height: 120,
-    borderRadius: 60,
+
     alignSelf: 'center',
     marginBottom: 40
   }

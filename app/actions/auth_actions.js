@@ -9,13 +9,11 @@ export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
 
 exports.logInUser = ({ email, username, password }) => {
-  console.log({email, password});
   return function(dispatch) {
     return axios
       .post(SIGNIN_URL, { email, username, password })
       .then(response => {
         var { user, token } = response.data;
-        dispatch(addAlert(token));
         dispatch(authUser(user));
       })
       .catch(error => {
@@ -30,7 +28,6 @@ exports.signUpUser = ({ email, username, password }) => {
       .post(SIGNUP_URL, { email, username, password })
       .then(response => {
         var { user, token } = response.data;
-        dispatch(addAlert(token));
         dispatch(authUser(user));
       })
       .catch(error => {

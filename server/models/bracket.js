@@ -39,7 +39,7 @@ let bracketSchema = new Schema({
   location: {
     type: String
   },
-  live: { type: Boolean, default: false },
+  live: { type: Boolean, default: true },
   streamUrl: String,
   matches: [
     {

@@ -24,7 +24,7 @@ ProfilePageForm = class ProfilePageForm extends Component {
   }
 
   updateUser(values){
-    const user = Object.assign(this.props.state.auth, values);
+    const user = Object.assign(this.props.state.auth.user, values);
     this.props.editUser(user).then(() => {
     this.props.reset();
     }).then(() =>{
