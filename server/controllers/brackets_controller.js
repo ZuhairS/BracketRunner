@@ -14,6 +14,7 @@ const User = require('../models/user');
 // };
 
 exports.create = (req, res, next) => {
+  console.log("bracketController");
   const bracketProps = req.body;
 
   // bracketProps.matches = populateMatches(bracketProps.entrants);
@@ -107,7 +108,7 @@ const populateMatches = entrants => {
   let matches = [];
   const numMatches = Math.ceil(Object.keys(entrants).length / 2);
 
-  for (let i = 0, j = 1; i < numMatches; i++, j = j + 2) {
+  for (let i = 0, j = 0; i < numMatches; i++, j = j + 2) {
     matches[i] = {
       pairing: {
         player1: entrants[j],
@@ -121,7 +122,7 @@ const populateMatches = entrants => {
 const userQueries = entrants => {
   const promiseArr = [];
 
-  for (let i = 1; i <= Object.keys(entrants).length; i++) {
+  for (let i = 0; i <= Object.keys(entrants).length; i++) {
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
         user => (entrants[i] = user ? user : entrants[i])

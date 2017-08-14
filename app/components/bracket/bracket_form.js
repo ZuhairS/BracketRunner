@@ -13,18 +13,20 @@ import {
 //imported components
 import AlertContainer from '../alerts/alert_container';
 import { Field, reduxForm } from 'redux-form';
+import { createBracket } from '../../actions/bracket_actions';
 
 BracketForm = class BracketForm extends Component {
   constructor(props) {
     super(props);
 
-    this.date = Date.now();
+    this.createBracket= this.createBracket.bind(this)
   }
 
   createBracket(values) {
-    
-    console.log('submitting form', values);
-    // this.props.updateUser(values);
+
+    const bracket = Object.assign({tournamentOrganizerId : this.props.state.auth.userId}, values);
+    console.log(bracket);
+    this.props.createBracket(bracket);
   }
 
   renderInput({ input: { onChange, ...restInput } }) {
@@ -33,9 +35,6 @@ BracketForm = class BracketForm extends Component {
     );
   }
 
-  submit(values) {
-    console.log('submitting form', values);
-  }
 
   render() {
     const { handleSubmit } = this.props;
@@ -45,23 +44,23 @@ BracketForm = class BracketForm extends Component {
 
           <Field name="title" component={renderInput} label="Bracket Name"/>
 
-          <Field name="game" component={renderInput} label="Bracket Name"/>
+          <Field name="game" component={renderInput} label="Game Type"/>
 
-          <Field name="player1" component={renderInput} label="player1"/>
+          <Field name="entrants[0]" component={renderInput} label="player1"/>
 
-          <Field name="player2" component={renderInput} label="player2"/>
+          <Field name="entrants[1]" component={renderInput} label="player2"/>
 
-          <Field name="player3" component={renderInput} label="player3"/>
+          <Field name="entrants[2]" component={renderInput} label="player3"/>
 
-          <Field name="player4" component={renderInput} label="player4"/>
+          <Field name="entrants[3]" component={renderInput} label="player4"/>
 
-          <Field name="player5" component={renderInput} label="player5"/>
+          <Field name="entrants[4]" component={renderInput} label="player5"/>
 
-          <Field name="player6" component={renderInput} label="player6"/>
+          <Field name="entrants[5]" component={renderInput} label="player6"/>
 
-          <Field name="player7" component={renderInput} label="player7"/>
+          <Field name="entrants[6]" component={renderInput} label="player7"/>
 
-          <Field name="player8" component={renderInput} label="player8"/>
+          <Field name="entrants[7]" component={renderInput} label="player8"/>
 
           <TouchableOpacity
             onPress={this.props.handleSubmit(this.createBracket)}
@@ -129,7 +128,9 @@ const styles = StyleSheet.create({
 });
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    createBracket: bracket => dispatch(createBracket(bracket)),
+  };
 };
 
 const mapStateToProps = state => {
