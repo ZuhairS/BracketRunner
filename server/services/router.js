@@ -21,6 +21,7 @@ router.route('/users/:id').put(UsersController.edit);
 router.route('/users/:id').delete(UsersController.delete);
 
 // Bracket Routes
+router.route('/brackets').get(BracketsController.index);
 router.route('/brackets').post(BracketsController.create);
 router.route('/brackets/:bracket_id').get(BracketsController.show);
 router.route('/brackets/:bracket_id').put(BracketsController.edit);

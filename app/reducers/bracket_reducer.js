@@ -6,7 +6,7 @@ import {
 
 var defaultState = {
   selectedBracket: {
-    title: "SmashCon",
+    title: 'SmashCon',
     tournamentOrganizerId: '5990eab8e575bd3faffcc86d',
     entrants: {
       1: 'ZPowers',
@@ -18,11 +18,11 @@ var defaultState = {
       7: 'Knight1916',
       8: 'mango'
     },
-    game: "Super Smash Bros. Melee",
+    game: 'Super Smash Bros. Melee',
     live: true,
-    streamUrl: "http://google.com",
+    streamUrl: 'http://google.com',
     matches: [
-     {
+      {
         pairing: {
           player1: 'ZPowers',
           player2: 'PhoenixD'
@@ -77,7 +77,7 @@ var defaultState = {
     ]
   },
   featuredBracket: {},
-  liveBrackets: {}
+  liveBrackets: []
 };
 
 module.exports = (state = defaultState, action) => {

@@ -7,7 +7,10 @@ const router = require('./services/router');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/BracketRunner');
+mongoose.Promise = global.Promise;
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect('mongodb://localhost/BracketRunner');
+}
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
