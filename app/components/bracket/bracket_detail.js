@@ -31,18 +31,20 @@ export default class BracketDetail extends Component {
     this.props.navigation.navigate('PlayerModal');
   }
 
-  onEditPress() {
-    this.props.navigation.navigate('ResultForm');
+  onEditPress(match) {
+    this.props.navigation.navigate('ResultForm', { match });
   }
 
   getBracket() {
     this.props.receiveBracket();
   }
 
-  ShowEditButton() {
+  ShowEditButton(match) {
+
+
     if (this.props.currentUserId === this.props.selectedBracket.tournamentOrganizerId) {
       return (
-        <TouchableOpacity style={styles.editButton} onPress={() => this.onEditPress()}>
+        <TouchableOpacity style={styles.editButton} onPress={() => this.onEditPress(match)}>
           <Icon name="pencil" size={25} color={'yellow'} />
         </TouchableOpacity>
       );
@@ -79,7 +81,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[0].result.player1Score} - {selectedBracket.matches[0].result.player2Score}
                       </Text>
-                      {this.ShowEditButton()}
+                      {this.ShowEditButton(0)}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -97,7 +99,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[1].result.player1Score} - {selectedBracket.matches[1].result.player2Score}
                       </Text>
-                      {this.ShowEditButton()}
+                      {this.ShowEditButton(1)}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -115,7 +117,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[2].result.player1Score} - {selectedBracket.matches[2].result.player2Score}
                       </Text>
-                      {this.ShowEditButton()}
+                      {this.ShowEditButton(2)}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -133,7 +135,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[3].result.player1Score} - {selectedBracket.matches[3].result.player2Score}
                       </Text>
-                      {this.ShowEditButton()}
+                      {this.ShowEditButton(3)}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -155,7 +157,7 @@ export default class BracketDetail extends Component {
                       pending vs pending
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
-                    {this.ShowEditButton()}
+                    {this.ShowEditButton(4)}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}
@@ -172,7 +174,7 @@ export default class BracketDetail extends Component {
                       pending vs pending
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
-                    {this.ShowEditButton()}
+                    {this.ShowEditButton(5)}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}
@@ -194,7 +196,7 @@ export default class BracketDetail extends Component {
                       pending vs pending
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
-                    {this.ShowEditButton()}
+                    {this.ShowEditButton(6)}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}

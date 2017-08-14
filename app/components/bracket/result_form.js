@@ -15,8 +15,12 @@ import {
 import AlertContainer from '../alerts/alert_container';
 import MyTextInput from '../user/my_text_input';
 import { Field, reduxForm } from 'redux-form';
+import { editBracket } from '../../actions/bracket_actions';
 // import SetResultsCounter from './set_results_counter';
 
+
+// this.props.state.bracket.selectedBracket.matches[this.props.navigation.state.params.match].player1Score
+// this.props.state.bracket.selectedBracket.matches[this.props.navigation.state.params.match].player2Score
 
 ResultForm = class ResultForm extends Component {
   constructor(props) {
@@ -26,21 +30,23 @@ ResultForm = class ResultForm extends Component {
   }
 
   onReportResult(values){
-    console.log("submitting form");
-    console.log(values);
-    // this.props.setResult(user).then(() => {
-    // this.props.reset();
-    // }).then(() =>{
-    //   this.props.navigation.navigate('ProfilePage');
-    // });
+    this.props.editBracket(values).then(() => {
+    this.props.reset();
+    }).then(() =>{
+      this.props.navigation.navigate('BracketDetail');
+    });
   }
 
   render() {
+
+    const matchNum = this.props.navigation.state.params.match + 1
+
     return (
       <View style={styles.container}>
         <Text style={styles.pageHeader}>Input Results</Text>
         <ScrollView>
           <View style={styles.matchContainer}>
+            <Text style={styles.matchHeader}>Match {matchNum}</Text>
             <View style={styles.fieldContainer}>
               <View>
                 <Text style={styles.fieldTitle}>P1</Text>
@@ -87,9 +93,10 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   matchContainer: {
+    borderTopWidth: .5,
     borderBottomWidth: .5,
     borderColor: 'yellow',
-    height: 110,
+    height: 160,
     width: 300,
     marginBottom: 20,
 
@@ -98,6 +105,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  matchHeader: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 10,
+
   },
   fieldTitle:{
     color: 'yellow',
@@ -145,16 +160,15 @@ const styles = StyleSheet.create({
   },
 })
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setResult: result => dispatch(setResult(result))
-  };
-};
-
-
 const mapStateToProps = (state) => {
   return {
     state
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editBracket: bracket => dispatch(editBracket(bracket))
   };
 };
 
@@ -162,7 +176,6 @@ const validate = (formProps) => {
   var errors = {};
   return errors;
 }
-
 
 ResultForm = connect(
     mapStateToProps,

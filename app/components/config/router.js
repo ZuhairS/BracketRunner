@@ -85,7 +85,7 @@ export const BracketStack = StackNavigator({
   ResultForm: {
     screen: ResultForm,
     navigationOptions: {
-      title: 'Edit Results'
+      title: ('Edit Results')
     }
   }
 });
