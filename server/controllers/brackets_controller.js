@@ -1,4 +1,5 @@
 const Bracket = require('../models/bracket');
+const User = require('../models/user');
 
 // Create new Bracket through POST
 
@@ -15,7 +16,15 @@ const Bracket = require('../models/bracket');
 exports.create = (req, res, next) => {
   const bracketProps = req.body;
 
-  Bracket.create(bracketProps).then(bracket => res.send(bracket)).catch(next);
+  // bracketProps.matches = populateMatches(bracketProps.entrants);
+
+  Promise.all(userQueries(bracketProps.entrants))
+    .then((bracketProps.matches = populateMatches(bracketProps.entrants)))
+    .then(
+      Bracket.create(bracketProps)
+        .then(bracket => res.send(bracket))
+        .catch(next)
+    );
 };
 
 // Display specific Bracket through GET
@@ -92,3 +101,43 @@ exports.showFeatured = (req, res, next) => {
 
   Bracket.findOne().skip(random).then(bracket => res.send(bracket)).catch(next);
 };
+
+// Populates matches with correct sequence of players in entrants
+const populateMatches = entrants => {
+  let matches = [];
+  const numMatches = Math.ceil(Object.keys(entrants).length / 2);
+
+  for (let i = 0, j = 1; i < numMatches; i++, j = j + 2) {
+    matches[i] = {
+      pairing: {
+        player1: entrants[j],
+        player2: entrants[j + 1]
+      }
+    };
+  }
+  return matches;
+};
+
+const userQueries = entrants => {
+  const promiseArr = [];
+
+  for (let i = 1; i <= Object.keys(entrants).length; i++) {
+    promiseArr.push(
+      User.findOne({ username: entrants[i] }).then(
+        user => (entrants[i] = user ? user : entrants[i])
+      )
+    );
+  }
+  return promiseArr;
+};
+
+// let entries = {
+//   1: 'Zuhair',
+//   2: 'Zack',
+//   3: 'Nick',
+//   4: 'Ali',
+//   5: 'Mango',
+//   6: 'Tobito',
+//   7: 'Peeves',
+//   8: 'Potato Monster'
+// };

@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     padding: 8,
 
   },
-  searchBar: {
+  menuButton: {
     marginTop: 60,
     marginBottom: 40
   }
