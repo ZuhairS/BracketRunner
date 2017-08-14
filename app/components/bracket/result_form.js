@@ -18,7 +18,7 @@ import { Field, reduxForm } from 'redux-form';
 // import SetResultsCounter from './set_results_counter';
 
 
-ProfilePageForm = class ProfilePageForm extends Component {
+ResultForm = class ResultForm extends Component {
   constructor(props) {
     super(props);
 
@@ -40,8 +40,6 @@ ProfilePageForm = class ProfilePageForm extends Component {
       <View style={styles.container}>
         <Text style={styles.pageHeader}>Input Results</Text>
         <ScrollView>
-
-          <Text style={styles.matchHeader}>Match 1</Text>
           <View style={styles.matchContainer}>
             <View style={styles.fieldContainer}>
               <View>
@@ -58,119 +56,6 @@ ProfilePageForm = class ProfilePageForm extends Component {
             </TouchableOpacity>
           </View>
           <AlertContainer />
-
-          <Text style={styles.matchHeader}>Match 2</Text>
-          <View style={styles.matchContainer}>
-            <View style={styles.fieldContainer}>
-              <View>
-                <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
-              </View>
-              <View>
-                <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
-              </View>
-            </View>
-            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
-              <Text style={styles.button}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-          <AlertContainer />
-
-          <Text style={styles.matchHeader}>Match 3</Text>
-          <View style={styles.matchContainer}>
-            <View style={styles.fieldContainer}>
-              <View>
-                <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
-              </View>
-              <View>
-                <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
-              </View>
-            </View>
-            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
-              <Text style={styles.button}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-          <AlertContainer />
-
-          <Text style={styles.matchHeader}>Match 4</Text>
-          <View style={styles.matchContainer}>
-            <View style={styles.fieldContainer}>
-              <View>
-                <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
-              </View>
-              <View>
-                <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
-              </View>
-            </View>
-            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
-              <Text style={styles.button}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-          <AlertContainer />
-
-          <Text style={styles.matchHeader}>Match 5</Text>
-          <View style={styles.matchContainer}>
-            <View style={styles.fieldContainer}>
-              <View>
-                <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
-              </View>
-              <View>
-                <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
-              </View>
-            </View>
-            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
-              <Text style={styles.button}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-          <AlertContainer />
-
-          <Text style={styles.matchHeader}>Match 6</Text>
-          <View style={styles.matchContainer}>
-            <View style={styles.fieldContainer}>
-              <View>
-                <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
-              </View>
-              <View>
-                <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
-              </View>
-            </View>
-            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
-              <Text style={styles.button}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-          <AlertContainer />
-
-          <Text style={styles.matchHeader}>Match 7</Text>
-          <View style={styles.matchContainer}>
-            <View style={styles.fieldContainer}>
-              <View>
-                <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
-              </View>
-              <View>
-                <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
-              </View>
-            </View>
-            <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
-              <Text style={styles.button}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-          <AlertContainer />
-
-
-
-
-
         </ScrollView>
       </View>
 
@@ -213,14 +98,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  matchHeader: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    padding: 10,
-
   },
   fieldTitle:{
     color: 'yellow',
@@ -287,13 +164,13 @@ const validate = (formProps) => {
 }
 
 
-ProfilePageForm = connect(
+ResultForm = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ProfilePageForm);
+)(ResultForm);
 
 export default reduxForm({
   form: 'result_form',
   fields: ['player1_result', 'player2_result'],
   validate: validate
-})(ProfilePageForm)
+})(ResultForm)

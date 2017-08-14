@@ -43,7 +43,7 @@ export default class BracketDetail extends Component {
     if (this.props.currentUserId === this.props.selectedBracket.tournamentOrganizerId) {
       return (
         <TouchableOpacity style={styles.editButton} onPress={() => this.onEditPress()}>
-          <Icon name="pencil" size={26} color={'yellow'} />
+          <Icon name="pencil" size={25} color={'yellow'} />
         </TouchableOpacity>
       );
     } else {
@@ -58,7 +58,7 @@ export default class BracketDetail extends Component {
 
       return (
         <View style={styles.container}>
-          {this.ShowEditButton()}
+
           <View>
             <Text style={styles.header}>{selectedBracket.title}</Text>
           </View>
@@ -79,6 +79,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[0].result.player1Score} - {selectedBracket.matches[0].result.player2Score}
                       </Text>
+                      {this.ShowEditButton()}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -96,6 +97,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[1].result.player1Score} - {selectedBracket.matches[1].result.player2Score}
                       </Text>
+                      {this.ShowEditButton()}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -113,6 +115,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[2].result.player1Score} - {selectedBracket.matches[2].result.player2Score}
                       </Text>
+                      {this.ShowEditButton()}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -130,6 +133,7 @@ export default class BracketDetail extends Component {
                       <Text style={styles.resultText}>
                         {selectedBracket.matches[3].result.player1Score} - {selectedBracket.matches[3].result.player2Score}
                       </Text>
+                      {this.ShowEditButton()}
                     </View>
                     <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                       {/* player 2 profile pic */}
@@ -151,6 +155,7 @@ export default class BracketDetail extends Component {
                       pending vs pending
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
+                    {this.ShowEditButton()}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}
@@ -167,6 +172,7 @@ export default class BracketDetail extends Component {
                       pending vs pending
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
+                    {this.ShowEditButton()}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}
@@ -188,6 +194,7 @@ export default class BracketDetail extends Component {
                       pending vs pending
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
+                    {this.ShowEditButton()}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}
@@ -216,8 +223,8 @@ const styles = StyleSheet.create({
   },
   editButton: {
     position: 'absolute',
-    top: 10,
-    right: 40,
+    top: -30,
+    right: 105,
   },
   header: {
     fontSize: 28,
