@@ -6,6 +6,12 @@ let bracketSchema = new Schema({
     type: String,
     required: true
   },
+  tournamentOrganizerId: String,
+  // {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'user',
+  //   required: true
+  // },
   // numberOfEntrants: {
   //   type: Number,
   //   enum: [8],
@@ -21,31 +27,33 @@ let bracketSchema = new Schema({
     required: true
   },
   startTime: {
-    type: Date
+    type: Date,
+    default: new Date()
     // required: true
   },
   endTime: {
-    type: Date
+    type: Date,
+    default: new Date(new Date().setDate(new Date().getDate() + 1))
     // required: true
   },
   location: {
     type: String
   },
-  live: Boolean,
-  // matches or rounds with match objects inside?
+  live: { type: Boolean, default: false },
+  streamUrl: String,
   matches: [
     {
       pairing: {
         player1: {},
         player2: {}
       },
-      live: Boolean,
+      live: { type: Boolean, default: false },
       result: {
-        winner: String,
-        loser: String,
-        player1Score: Number,
-        player2Score: Number,
-        status: String
+        winner: { type: String, default: 'pending' },
+        loser: { type: String, default: 'pending' },
+        player1Score: { type: Number, default: 0 },
+        player2Score: { type: Number, default: 0 },
+        status: { type: String, default: 'pending' }
       }
     }
   ]
