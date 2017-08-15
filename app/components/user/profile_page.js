@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import {
@@ -11,8 +11,7 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-import {RkConfig, RkText, RkCard} from 'react-native-ui-kitten';
-
+import { RkConfig, RkText, RkCard } from 'react-native-ui-kitten';
 
 ProfilePage = class ProfilePage extends Component {
   constructor(props) {
@@ -25,120 +24,126 @@ ProfilePage = class ProfilePage extends Component {
     this.twitter = this.twitter.bind(this);
     this.sponserImage = this.sponserImage.bind(this);
     this.sponserName = this.sponserName.bind(this);
-
   }
 
   aboutMe() {
-    let user = this.props.state.auth.user
-      if (user.aboutMe) {
-        return (
-          <RkCard rkType='shadowed' style={styles.tab2}>
-            <View rkCardHeader>
-              <Text style={styles.header}>About</Text>
-            </View>
-            <View rkCardContent>
-              <Text style={styles.userText}>{user.aboutMe}</Text>
-            </View>
-          </RkCard>
-       );
-   } else {
-     return (
-      <RkCard rkType='shadowed' style={styles.tab2}>
-        <View rkCardHeader >
-          <Text  style={styles.header}>About</Text>
-        </View>
-        <View rkCardContent>
-          <Text style={styles.userText}>Write somting about yourself</Text>
-        </View>
-      </RkCard>
-     );
-   }
- }
-
- youTube() {
-   let user = this.props.state.auth.user
-      if (user.youtubeUrl) {
-        return (
-          <Text style={styles.userText}>{user.youtubeUrl}</Text>
+    let user = this.props.state.auth.user;
+    if (user.aboutMe) {
+      return (
+        <RkCard rkType="shadowed" style={styles.tab2}>
+          <View rkCardHeader>
+            <Text style={styles.header}>About</Text>
+          </View>
+          <View rkCardContent>
+            <Text style={styles.userText}>
+              {user.aboutMe}
+            </Text>
+          </View>
+        </RkCard>
       );
     } else {
       return (
-        <Text style={styles.userText}>Add your Youtube link</Text>
+        <RkCard rkType="shadowed" style={styles.tab2}>
+          <View rkCardHeader>
+            <Text style={styles.header}>About</Text>
+          </View>
+          <View rkCardContent>
+            <Text style={styles.userText}>Write somting about yourself</Text>
+          </View>
+        </RkCard>
       );
+    }
+  }
+
+  youTube() {
+    let user = this.props.state.auth.user;
+    if (user.youtubeUrl) {
+      return (
+        <Text style={styles.userText}>
+          {user.youtubeUrl}
+        </Text>
+      );
+    } else {
+      return <Text style={styles.userText}>Add your Youtube link</Text>;
     }
   }
 
   twitch() {
-    let user = this.props.state.auth.user
-       if (user.twitchUrl) {
-         return (
-           <Text style={styles.userText}>{user.twitchUrl}</Text>
-       );
-     } else {
-       return (
-         <Text style={styles.userText}>Add your twitch link</Text>
-       );
-     }
-   }
-
-   twitter() {
-     let user = this.props.state.auth.user
-        if (user.twitterUrl) {
-          return (
-            <Text style={styles.userText}>{user.twitterUrl}</Text>
-        );
-      } else {
-        return (
-          <Text style={styles.userText}>Add your twitter link</Text>
-        );
-      }
+    let user = this.props.state.auth.user;
+    if (user.twitchUrl) {
+      return (
+        <Text style={styles.userText}>
+          {user.twitchUrl}
+        </Text>
+      );
+    } else {
+      return <Text style={styles.userText}>Add your twitch link</Text>;
     }
+  }
 
-    sponserImage() {
-      let user = this.props.state.auth.user
-         if (user.sponserImageUrl) {
-           return (
-             <Image source={{uri: user.sponserImageUrl}}
-                    style={styles.avatar}/>
-         );
-       } else {
-         return (
-           <Text style={styles.userText}>Add your sponsers Image link</Text>
-         );
-       }
-     }
+  twitter() {
+    let user = this.props.state.auth.user;
+    if (user.twitterUrl) {
+      return (
+        <Text style={styles.userText}>
+          {user.twitterUrl}
+        </Text>
+      );
+    } else {
+      return <Text style={styles.userText}>Add your twitter link</Text>;
+    }
+  }
 
-     sponserName() {
-       let user = this.props.state.auth.user
-          if (user.sponserName) {
-            return (
-              <Text style={styles.userText}>{user.sponserName}</Text>
-          );
-        } else {
-          return (
-            <Text style={styles.userText}>Add your Sponsers Name link</Text>
-          );
-        }
-      }
+  sponserImage() {
+    let user = this.props.state.auth.user;
+    if (user.sponserImageUrl) {
+      return (
+        <Image source={{ uri: user.sponserImageUrl }} style={styles.avatar} />
+      );
+    } else {
+      return <Text style={styles.userText}>Add your sponsers Image link</Text>;
+    }
+  }
 
+  sponserName() {
+    let user = this.props.state.auth.user;
+    if (user.sponserName) {
+      return (
+        <Text style={styles.userText}>
+          {user.sponserName}
+        </Text>
+      );
+    } else {
+      return <Text style={styles.userText}>Add your Sponsers Name link</Text>;
+    }
+  }
 
-
-  onEditPress(){
+  onEditPress() {
     this.props.navigation.navigate('ProfilePageForm');
   }
 
   render() {
-    let user = this.props.state.auth.user
+    let user = this.props.state.auth.user;
     return (
       <View>
-        <ImageBackground source={{uri: 'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'}}
-                       style={styles.profileBackground}>
-          <View/>
-          <TouchableOpacity style={styles.playerPicture} onPress={() => this.onEditPress()}>
+        <ImageBackground
+          source={{
+            uri:
+              'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'
+          }}
+          style={styles.profileBackground}
+        >
+          <View />
+          <TouchableOpacity
+            style={styles.playerPicture}
+            onPress={() => this.onEditPress()}
+          >
             <Icon name="edit" size={35} style={styles.edit_icon} />
           </TouchableOpacity>
-          <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
-                 style={styles.avatar}/>
+          <Image
+            source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+            style={styles.avatar}
+          />
           <RkText style={styles.nameText}>
             {user.username} {user.email}
           </RkText>
@@ -146,48 +151,47 @@ ProfilePage = class ProfilePage extends Component {
 
         {this.aboutMe()}
 
-
-        <RkCard rkType='shadowed' style={styles.tab2}>
-
+        <RkCard rkType="shadowed" style={styles.tab2}>
           <View rkCardHeader>
             <Text style={styles.header}>Social Media</Text>
           </View>
 
           <View rkCardContent>
-            <Text style={styles.userText}>You Tube: {this.youTube()}</Text>
-            <Text style={styles.userText}>Twitch: {this.twitch()}</Text>
-            <Text style={styles.userText}>Twitter: {this.twitter()}</Text>
+            <Text style={styles.userText}>
+              You Tube: {this.youTube()}
+            </Text>
+            <Text style={styles.userText}>
+              Twitch: {this.twitch()}
+            </Text>
+            <Text style={styles.userText}>
+              Twitter: {this.twitter()}
+            </Text>
           </View>
-
         </RkCard>
 
-        <RkCard rkType='shadowed' style={styles.tab3}>
-
+        <RkCard rkType="shadowed" style={styles.tab3}>
           <View rkCardHeader>
             <Text style={styles.header}>Sponsorship</Text>
           </View>
 
           <View rkCardContent>
-
             <View style={styles.sponserContainer}>
-              <Text style={styles.userText}>Sponser Name {this.sponserName()}</Text>
+              <Text style={styles.userText}>
+                Sponser Name {this.sponserName()}
+              </Text>
               {this.sponserImage()}
             </View>
           </View>
-
         </RkCard>
-
-    </View>
-    )
+      </View>
+    );
   }
-
-}
+};
 
 const styles = StyleSheet.create({
-  edit_icon:{
+  edit_icon: {
     alignSelf: 'flex-end',
     paddingRight: 15
-
   },
   profileBackground: {
     width: null,
@@ -208,52 +212,45 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: 'white'
   },
-  tab1:{
+  tab1: {
     backgroundColor: '#424242'
   },
-  tab2:{
+  tab2: {
     backgroundColor: '#424242'
   },
-  tab3:{
+  tab3: {
     backgroundColor: '#424242'
   },
-  header:{
+  header: {
     color: 'yellow'
   },
-  userText:{
+  userText: {
     color: 'white'
   },
-  sponserContainer:{
-
-  }
-
+  sponserContainer: {}
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     editUser: user => dispatch(editUser(user))
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     state
   };
 };
 
-const validate = (formProps) => {
+const validate = formProps => {
   var errors = {};
   return errors;
-}
+};
 
-
-ProfilePage = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ProfilePage);
+ProfilePage = connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
 
 export default reduxForm({
   form: 'login',
   fields: ['email', 'password'],
   validate: validate
-})(ProfilePage)
+})(ProfilePage);
