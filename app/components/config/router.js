@@ -99,23 +99,23 @@ export const Tabs = TabNavigator({
   Home: {
     screen: HomePageStack,
     navigationOptions: {
-      tabBarLabel: 'Home'
-        tabBarIcon: ({ tintColor }) =>
-          <Icon name="home" size={35} color={tintColor} />
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor }) =>
+        <Icon name="home" size={35} color={tintColor} />
     }
   },
   ProfilePage: {
     screen: ProfilePageStack,
     navigationOptions: {
-      tabBarLabel: 'Profile Page'
-        tabBarIcon: ({ tintColor }) =>
-          <Icon name="account-circle" size={35} color={tintColor} />
+      tabBarLabel: 'Profile Page',
+      tabBarIcon: ({ tintColor }) =>
+        <Icon name="account-circle" size={35} color={tintColor} />
     }
   },
   BracketFeed: {
     screen: BracketStack,
     navigationOptions: {
-      tabBarLabel: 'Bracket Feed'
+      tabBarLabel: 'Bracket Feed',
       tabBarIcon: ({ tintColor }) =>
         <Icon name="list" size={35} color={tintColor} />
     }
