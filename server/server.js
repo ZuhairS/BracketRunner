@@ -9,7 +9,7 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 if (process.env.NODE_ENV === 'production') {
-  mongoose.connect(process.env.MONGO_URL);
+  mongoose.connect(process.env.MONGODB_URI);
 } else {
   mongoose.connect('mongodb://localhost/BracketRunner');
 }
