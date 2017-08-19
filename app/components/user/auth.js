@@ -14,6 +14,8 @@ import {
 
 //components
 import AlertContainer from '../alerts/alert_container';
+import { requestLiveBrackets } from '../../actions/bracket_actions';
+
 
 Auth = class Auth extends Component {
   constructor(props) {
@@ -35,6 +37,7 @@ Auth = class Auth extends Component {
           this.props.navigation.navigate('Tabs');
         }
       });
+      this.props.requestLiveBrackets();
   }
 
   guestAccount(values) {
@@ -61,6 +64,7 @@ Auth = class Auth extends Component {
           this.props.navigation.navigate('Tabs');
         }
       });
+      this.props.requestLiveBrackets();
   }
 
   render() {
@@ -154,7 +158,8 @@ const renderPasswordInput = ({ label, input: { onChange, ...restInput } }) => {
 const mapDispatchToProps = dispatch => {
   return {
     signUpUser: user => dispatch(signUpUser(user)),
-    logInUser: user => dispatch(logInUser(user))
+    logInUser: user => dispatch(logInUser(user)),
+    requestLiveBrackets: () => dispatch(requestLiveBrackets())
   };
 };
 

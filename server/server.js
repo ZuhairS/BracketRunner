@@ -8,7 +8,9 @@ const router = require('./services/router');
 const app = express();
 
 mongoose.Promise = global.Promise;
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV === 'production') {
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
   mongoose.connect('mongodb://localhost/BracketRunner');
 }
 
@@ -20,8 +22,7 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || '127.0.0.1';
 
-console.log('Listening on', HOST, PORT);
+console.log('Listening on', PORT);
 
-app.listen(PORT, HOST);
+app.listen(PORT);

@@ -40,6 +40,10 @@ exports.create = (req, res, next) => {
 //   });
 // };
 
+exports.index = (req, res, next) => {
+  Bracket.find({ live: true }).then(brackets => res.send(brackets)).catch(next);
+};
+
 exports.show = (req, res, next) => {
   const bracketId = req.params.id;
 
