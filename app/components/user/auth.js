@@ -21,6 +21,7 @@ Auth = class Auth extends Component {
 
     this.signUp = this.signUp.bind(this);
     this.logIn = this.logIn.bind(this);
+    this.guestAccount = this.guestAccount.bind(this);
   }
 
   signUp(values) {
@@ -36,8 +37,20 @@ Auth = class Auth extends Component {
       });
   }
 
+  guestAccount(values) {
+    this.props
+      .logInUser({email:"Guest@guest.com", password:"guest"})
+      .then(() => {
+        this.props.reset();
+      })
+      .then(() => {
+        if (this.props.state.auth.userId) {
+          this.props.navigation.navigate('Tabs');
+        }
+      });
+  }
+
   logIn(values) {
-    console.log(values);
     this.props
       .logInUser(values)
       .then(() => {
@@ -68,6 +81,9 @@ Auth = class Auth extends Component {
           </TouchableOpacity>
           <TouchableOpacity onPress={this.props.handleSubmit(this.logIn)}>
             <Text style={styles.button}>Log In</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.props.handleSubmit(this.guestAccount)}>
+            <Text style={styles.button}>Guest Account</Text>
           </TouchableOpacity>
         </View>
         <AlertContainer />
