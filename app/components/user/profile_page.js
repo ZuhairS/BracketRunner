@@ -114,7 +114,7 @@ ProfilePage = class ProfilePage extends Component {
       );
     } else {
       return <Image
-        source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}
+        source={require('./react_native.png')}
         style={styles.avatar}
       />
     }
@@ -142,10 +142,7 @@ ProfilePage = class ProfilePage extends Component {
     return (
       <View>
         <ImageBackground
-          source={{
-            uri:
-              'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'
-          }}
+          source={require('./default.png')}
           style={styles.profileBackground}
         >
           <View />
