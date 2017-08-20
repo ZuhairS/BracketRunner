@@ -128,6 +128,12 @@ export const BracketFormStack = StackNavigator({
     navigationOptions: {
       title: 'Create Bracket'
     }
+  },
+  BracketDetail: {
+    screen: BracketDetail,
+    navigationOptions: {
+      title: 'Bracket Detail'
+    }
   }
 });
 
@@ -139,9 +145,9 @@ export const AuthPageStack = StackNavigator({
 
 export const Root = StackNavigator(
   {
-    Auth: {
-      screen: AuthPage
-    },
+    // Auth: {
+    //   screen: AuthPage
+    // },
     Tabs: {
       screen: Tabs
     },

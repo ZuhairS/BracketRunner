@@ -23,30 +23,21 @@ export default class BracketDetail extends Component {
   constructor(props) {
     super(props);
 
-    this.getBracket = this.getBracket.bind(this);
     this.onLearnMore = this.onLearnMore.bind(this);
     this.onEditPress = this.onEditPress.bind(this);
+    this.ShowEditButton = this.ShowEditButton.bind(this);
   }
 
-  // componentWillMount(){
-  //   console.log(this.props);
-  //   this.props.requestSelectedBracket(this.props.navigation.state.params.bracket._id);
-  // }
-
-  onLearnMore() {
-    this.props.navigation.navigate('PlayerModal');
+  onLearnMore(user) {
+    this.props.navigation.navigate('PlayerModal', { user });
   }
 
   onEditPress(match) {
     this.props.navigation.navigate('ResultForm', { match });
   }
 
-  getBracket() {
-    this.props.receiveBracket();
-  }
-
   ShowEditButton(match) {
-    if (this.props.currentUserId === this.props.selectedBracket.tournamentOrganizerId) {
+    if (this.props.currentUserId === this.props.navigation.state.params.bracket.tournamentOrganizerId) {
       return (
         <TouchableOpacity style={styles.editButton} onPress={() => this.onEditPress(match)}>
           <Icon name="pencil" size={25} color={'yellow'} />
@@ -60,13 +51,13 @@ export default class BracketDetail extends Component {
   }
 
   render() {
-    const { selectedBracket, currentUserId } = this.props;
+    const { bracket } = this.props.navigation.state.params;
 
       return (
         <View style={styles.container}>
 
           <View>
-            <Text style={styles.header}>{selectedBracket.title}</Text>
+            <Text style={styles.header}>{bracket.title}</Text>
           </View>
           <Swiper style={styles.wrapper} height={500} horizontal={true}>
   {/*Round 1*/}
@@ -80,10 +71,10 @@ export default class BracketDetail extends Component {
                     </TouchableOpacity>
                     <View>
                       <Text style={styles.matchup}>
-                        {selectedBracket.matches[0].pairing.player1} vs {selectedBracket.matches[0].pairing.player2}
+                        {bracket.matches[0].pairing.player1} vs {bracket.matches[0].pairing.player2}
                       </Text>
                       <Text style={styles.resultText}>
-                        {selectedBracket.matches[0].result.player1Score} - {selectedBracket.matches[0].result.player2Score}
+                        {bracket.matches[0].result.player1Score} - {bracket.matches[0].result.player2Score}
                       </Text>
                       {this.ShowEditButton(0)}
                     </View>
@@ -98,10 +89,10 @@ export default class BracketDetail extends Component {
                     </TouchableOpacity>
                     <View>
                       <Text style={styles.matchup}>
-                        {selectedBracket.matches[1].pairing.player1} vs {selectedBracket.matches[1].pairing.player2}
+                        {bracket.matches[1].pairing.player1} vs {bracket.matches[1].pairing.player2}
                       </Text>
                       <Text style={styles.resultText}>
-                        {selectedBracket.matches[1].result.player1Score} - {selectedBracket.matches[1].result.player2Score}
+                        {bracket.matches[1].result.player1Score} - {bracket.matches[1].result.player2Score}
                       </Text>
                       {this.ShowEditButton(1)}
                     </View>
@@ -116,10 +107,10 @@ export default class BracketDetail extends Component {
                     </TouchableOpacity>
                     <View>
                       <Text style={styles.matchup}>
-                        {selectedBracket.matches[2].pairing.player1} vs {selectedBracket.matches[2].pairing.player2}
+                        {bracket.matches[2].pairing.player1} vs {bracket.matches[2].pairing.player2}
                       </Text>
                       <Text style={styles.resultText}>
-                        {selectedBracket.matches[2].result.player1Score} - {selectedBracket.matches[2].result.player2Score}
+                        {bracket.matches[2].result.player1Score} - {bracket.matches[2].result.player2Score}
                       </Text>
                       {this.ShowEditButton(2)}
                     </View>
@@ -134,10 +125,10 @@ export default class BracketDetail extends Component {
                     </TouchableOpacity>
                     <View>
                       <Text style={styles.matchup}>
-                        {selectedBracket.matches[3].pairing.player1} vs {selectedBracket.matches[3].pairing.player2}
+                        {bracket.matches[3].pairing.player1} vs {bracket.matches[3].pairing.player2}
                       </Text>
                       <Text style={styles.resultText}>
-                        {selectedBracket.matches[3].result.player1Score} - {selectedBracket.matches[3].result.player2Score}
+                        {bracket.matches[3].result.player1Score} - {bracket.matches[3].result.player2Score}
                       </Text>
                       {this.ShowEditButton(3)}
                     </View>

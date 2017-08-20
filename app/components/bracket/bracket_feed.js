@@ -21,6 +21,10 @@ export default class BracketFeed extends Component{
     this.tourneyStream = this.tourneyStream.bind(this);
   }
 
+  componentWillReceiveProps(){
+    this.props.requestLiveBrackets();
+  }
+
   componentWillMount() {
     this.props.requestLiveBrackets();
   }
@@ -52,15 +56,12 @@ export default class BracketFeed extends Component{
   }
 
   render() {
-
     const { liveBrackets, selectedBracket } = this.props;
-    console.log(this.props);
 
     const allLiveBrackets = liveBrackets.map((bracket, idx) => {
-      console.log(bracket);
       return (
         <View key={`bracket-${idx}`} bracket={ bracket }>
-          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
+          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore(bracket)}>
             <Text style={styles.bracketTitle}>{bracket.title}</Text>
             <View style={styles.timeContainer}>
               <Text style={styles.gameText}>{bracket.game}</Text>
@@ -78,7 +79,7 @@ export default class BracketFeed extends Component{
         <Text style={styles.header}>Streaming Now</Text>
         <ScrollView>
           { allLiveBrackets }
-          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
+          {/* <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
             <Text style={styles.bracketTitle}>{selectedBracket.title}</Text>
             <View style={styles.gameTextContainer}>
               <Text style={styles.gameText}>{selectedBracket.game}</Text>
@@ -95,7 +96,7 @@ export default class BracketFeed extends Component{
               </Text>
               <Text style={styles.live}>{this.isLive()}</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
       </View>
     );

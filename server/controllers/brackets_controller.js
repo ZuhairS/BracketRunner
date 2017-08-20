@@ -23,7 +23,10 @@ exports.create = (req, res, next) => {
     .then((bracketProps.matches = populateMatches(bracketProps.entrants)))
     .then(
       Bracket.create(bracketProps)
-        .then(bracket => res.send(bracket))
+        .then(bracket => {
+          console.log(bracket);
+          return res.send(bracket)
+        })
         .catch(next)
     );
 };

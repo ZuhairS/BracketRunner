@@ -14,7 +14,7 @@ export const RECEIVE_LIVE_BRACKETS = 'RECEIVE_LIVE_BRACKETS';
 export const createBracket = bracket => dispatch =>
   axios
     .post(BRACKETS_URL, bracket)
-    .then(response => dispatch(receiveSelectedBracket(response.data)));
+    // .then(response => dispatch(receiveSelectedBracket(response.data.bracket)));
 
 export const editBracket = bracket => dispatch =>
   axios
