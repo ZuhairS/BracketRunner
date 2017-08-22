@@ -29,11 +29,13 @@ ResultForm = class ResultForm extends Component {
   }
 
   onReportResult(values){
-    this.props.editBracket(values).then(() => {
+    this.props.editBracket(values)
+    .then(() => {
     this.props.reset();
-    }).then(() =>{
-      this.props.navigation.navigate('BracketDetail');
-    });
+    })
+    // .then(() => {
+    //   this.props.navigation.navigate('BracketDetail');
+    // });
   }
 
   render() {
@@ -49,11 +51,11 @@ ResultForm = class ResultForm extends Component {
             <View style={styles.fieldContainer}>
               <View>
                 <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
+                <Field name="player1Score" component={renderInput} />
               </View>
               <View>
                 <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
+                <Field name="player2Score" component={renderInput} />
               </View>
             </View>
             <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>

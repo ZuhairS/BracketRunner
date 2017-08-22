@@ -28,7 +28,7 @@ export const HomePageStack = StackNavigator(
     BracketForm: {
       screen: BracketForm,
       navigationOptions: {
-        title: 'Create Bracket'
+        // title: 'Create Bracket'
       }
     }
   },
@@ -58,13 +58,13 @@ export const BracketDetailStack = StackNavigator(
     BracketDetail: {
       screen: BracketDetail,
       navigationOptions: {
-        title: 'Bracket Detail'
+        // title: 'Bracket Detail'
       }
     },
     PlayerModal: {
       screen: PlayerModal,
       navigationOptions: {
-        title: 'Player Modal'
+        // title: 'Player Modal'
       }
     }
   },
@@ -78,19 +78,19 @@ export const BracketStack = StackNavigator({
   BracketFeed: {
     screen: BracketFeed,
     navigationOptions: {
-      title: 'Bracket Feed'
+      // title: 'Bracket Feed'
     }
   },
   BracketDetail: {
     screen: BracketDetailStack,
     navigationOptions: {
-      title: 'Bracket Detail'
+      // title: 'Bracket Detail'
     }
   },
   ResultForm: {
     screen: ResultForm,
     navigationOptions: {
-      title: 'Edit Results'
+      // title: 'Edit Results'
     }
   }
 });
