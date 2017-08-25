@@ -111,13 +111,13 @@ exports.showFeatured = (req, res, next) => {
 // Populates matches with correct sequence of players in entrants
 const populateMatches = entrants => {
   let matches = [];
-  const numMatches = Math.ceil(Object.keys(entrants).length / 2);
+  const numMatches = Math.ceil(Object.keys(entrants).length - 1);
 
-  for (let i = 0, j = 0; i < numMatches; i++, j = j + 2) {
+  for (let i = 0, j = 1; i < numMatches; i++, j = j + 2) {
     matches[i] = {
       pairing: {
-        player1: entrants[j],
-        player2: entrants[j + 1]
+        player1: entrants[j] ? entrants[j] : "Pending",
+        player2: entrants[j + 1] ? entrants[j+1] : "Pending"
       }
     };
   }
@@ -127,7 +127,7 @@ const populateMatches = entrants => {
 const userQueries = entrants => {
   const promiseArr = [];
 
-  for (let i = 0; i <= Object.keys(entrants).length; i++) {
+  for (let i = 1; i <= Object.keys(entrants).length; i++) {
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
         user => (entrants[i] = user ? user : entrants[i])
