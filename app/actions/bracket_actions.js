@@ -16,10 +16,11 @@ export const createBracket = bracket => dispatch =>
     .post(BRACKETS_URL, bracket)
     // .then(response => dispatch(receiveSelectedBracket(response.data.bracket)));
 
-export const editBracket = bracket => dispatch =>
-  axios
-    .put(BRACKET_URL(bracket._id))
-    .then(response => dispatch(receiveSelectedBracket(response.data)));
+export const editBracket = bracket => dispatch => {
+  return axios
+    .put(BRACKET_URL(bracket._id), bracket)
+    // .then(response => dispatch(receiveSelectedBracket(response.data)));
+}
 
 export const requestSelectedBracket = bracketId => dispatch =>
   axios

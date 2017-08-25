@@ -21,9 +21,9 @@ export default class BracketFeed extends Component{
     this.tourneyStream = this.tourneyStream.bind(this);
   }
 
-  componentWillReceiveProps(){
-    this.props.requestLiveBrackets();
-  }
+  // componentWillReceiveProps(){
+  //   this.props.requestLiveBrackets();
+  // }
 
   componentWillMount() {
     this.props.requestLiveBrackets();

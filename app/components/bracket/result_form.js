@@ -26,21 +26,25 @@ ResultForm = class ResultForm extends Component {
     super(props);
 
     this.onReportResult = this.onReportResult.bind(this);
+    this.progressPlayer = this.progressPlayer.bind(this);
   }
 
   onReportResult(values){
-    this.props.editBracket(values)
+    this.props.selectedBracket.matches[this.props.navigation.state.params.matchIndex].result.player1Score = parseInt(values.player1Score);
+    this.props.selectedBracket.matches[this.props.navigation.state.params.matchIndex].result.player2Score = parseInt(values.player2Score);
+    this.props.editBracket(this.props.selectedBracket)
+    .then((res) => {
+      const bracket = res.data;
+      console.log(bracket);
+      this.props.navigation.navigate('BracketDetail', { bracket });
+    })
     .then(() => {
     this.props.reset();
     })
-    // .then(() => {
-    //   this.props.navigation.navigate('BracketDetail');
-    // });
   }
 
   render() {
-
-    const matchNum = this.props.navigation.state.params.match + 1
+    const matchNum = this.props.navigation.state.params.matchIndex;
 
     return (
       <View style={styles.container}>
@@ -51,7 +55,7 @@ ResultForm = class ResultForm extends Component {
             <View style={styles.fieldContainer}>
               <View>
                 <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1Score" component={renderInput} />
+                <Field name='player1Score' component={renderInput} />
               </View>
               <View>
                 <Text style={styles.fieldTitle}>P2</Text>
@@ -161,9 +165,11 @@ const styles = StyleSheet.create({
   },
 })
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
-    state
+    state,
+    selectedBracket: props.navigation.state.params.bracket,
+    matches: props.navigation.state.params.bracket.matches
   };
 };
 

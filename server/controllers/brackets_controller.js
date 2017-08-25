@@ -71,7 +71,7 @@ exports.show = (req, res, next) => {
 // };
 
 exports.edit = (req, res, next) => {
-  const bracketId = req.params.id;
+  const bracketId = req.params.bracket_id;
   const bracketProps = req.body;
 
   Bracket.findByIdAndUpdate({ _id: bracketId }, bracketProps)
