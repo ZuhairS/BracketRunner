@@ -149,10 +149,10 @@ export default class BracketDetail extends Component {
                   </TouchableOpacity>
                   <View>
                     <Text style={styles.matchup}>
-                      pending vs pending
+                      {bracket.matches[4].pairing.player1} vs {bracket.matches[4].pairing.player2}
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
-                    {this.ShowEditButton(4)}
+                    {this.ShowEditButton(bracket, 4)}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}
@@ -166,10 +166,10 @@ export default class BracketDetail extends Component {
                   </TouchableOpacity>
                   <View>
                     <Text style={styles.matchup}>
-                      pending vs pending
+                      {bracket.matches[5].pairing.player1} vs {bracket.matches[5].pairing.player2}
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
-                    {this.ShowEditButton(5)}
+                    {this.ShowEditButton(bracket, 5)}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}
@@ -188,10 +188,10 @@ export default class BracketDetail extends Component {
                   </TouchableOpacity>
                   <View>
                     <Text style={styles.matchup}>
-                      pending vs pending
+                      {bracket.matches[6].pairing.player1} vs {bracket.matches[6].pairing.player2}
                     </Text>
                     <Text style={styles.resultText}>0 - 0</Text>
-                    {this.ShowEditButton(6)}
+                    {this.ShowEditButton(bracket, 6)}
                   </View>
                   <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
                     {/* player 2 profile pic */}

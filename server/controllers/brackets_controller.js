@@ -14,7 +14,6 @@ const User = require('../models/user');
 // };
 
 exports.create = (req, res, next) => {
-  console.log("bracketController");
   const bracketProps = req.body;
 
   // bracketProps.matches = populateMatches(bracketProps.entrants);
@@ -24,7 +23,6 @@ exports.create = (req, res, next) => {
     .then(
       Bracket.create(bracketProps)
         .then(bracket => {
-          console.log(bracket);
           return res.send(bracket)
         })
         .catch(next)
