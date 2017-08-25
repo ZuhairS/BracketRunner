@@ -18,7 +18,7 @@ export const createBracket = bracket => dispatch =>
 
 export const editBracket = bracket => dispatch =>
   axios
-    .put(BRACKET_URL(bracket._id))
+    .put(BRACKET_URL(bracket._id), bracket)
     .then(response => dispatch(receiveSelectedBracket(response.data)));
 
 export const requestSelectedBracket = bracketId => dispatch =>
