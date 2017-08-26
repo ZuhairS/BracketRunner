@@ -10,9 +10,6 @@ var requireLogin = passport.authenticate('local', { session: false });
 
 const router = require('express').Router();
 
-// Root Route
-router.route('/').get(BracketsController.index);
-
 // Auth Routes
 router.route('/signup').post(AuthenticationController.signup);
 router.route('/signin').post([requireLogin, AuthenticationController.signin]);

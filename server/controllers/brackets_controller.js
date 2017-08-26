@@ -128,7 +128,7 @@ const userQueries = entrants => {
   for (let i = 0; i <= Object.keys(entrants).length; i++) {
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
-        user => (entrants[i] = user ? user : entrants[i])
+        user => (entrants[entrants[i]] = user ? user : { username: entrants[i], avatarUrl: "Test"})
       )
     );
   }

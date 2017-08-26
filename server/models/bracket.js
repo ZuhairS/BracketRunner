@@ -19,7 +19,7 @@ let bracketSchema = new Schema({
   //   required: true
   // },
   entrants: {
-    type: {},
+    type: Schema.Types.Mixed,
     required: true
   },
   game: {
