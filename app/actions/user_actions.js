@@ -19,7 +19,7 @@ export const requestUser = userId => dispatch => {
 };
 export const editUser = userProps => dispatch => {
   return axios
-    .put(EDIT_URL(userProps.userId), userProps)
+    .put(EDIT_URL(userProps._id), userProps)
     .then(response => {
       var { user } = response.data;
       dispatch(receiveUser(user));

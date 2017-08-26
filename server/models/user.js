@@ -32,18 +32,25 @@ const userSchema = new Schema({
   password: {
     type: String
   },
-  sponserName: String,
-  sponserImageUrl: String,
-  avatarUrl: String,
-  aboutMe: String,
+  sponserName: {type: String,
+            default: "Add a sponser"},
+  sponserImageUrl: {type: String,
+            default: "Include a sponser Image"},
+  avatarUrl: {type: String,
+              default: "https://www.searchinggo.com/Assets/images/icons/1497605502.png"},
+  aboutMe: {type: String,
+            default: "Write somthing about yourself"},
   gamesPlayed: [
     {
       name: String
     }
   ],
-  twitterUrl: String,
-  twitchUrl: String,
-  youtubeUrl: String,
+  twitterUrl: { type: String,
+            default: "Add your Twitter Url" },
+  twitchUrl: { type: String,
+            default: "Add your Twitch Url" },
+  youtubeUrl: { type: String,
+            default: "Add your YouTube Url" },
   live: Boolean
 });
 

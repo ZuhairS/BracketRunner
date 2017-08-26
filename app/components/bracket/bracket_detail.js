@@ -54,7 +54,7 @@ export default class BracketDetail extends Component {
 
   render() {
     const { bracket } = this.props.navigation.state.params;
-
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <TouchableOpacity style={styles.backButton} onPress={() => this.goBack()}>
@@ -73,7 +73,6 @@ export default class BracketDetail extends Component {
     {/*Match 1*/}
               <View style={styles.match}>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
                 </TouchableOpacity>
                 <View>
                   <Text style={styles.matchup}>
