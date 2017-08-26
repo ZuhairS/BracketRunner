@@ -53,7 +53,7 @@ export default class BracketDetail extends Component {
 
   render() {
     const { bracket } = this.props.navigation.state.params;
-
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <View>
