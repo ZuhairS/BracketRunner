@@ -16,7 +16,7 @@ import { RkConfig, RkText, RkCard } from 'react-native-ui-kitten';
 ProfilePage = class ProfilePage extends Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     this.onEditPress = this.onEditPress.bind(this);
     this.aboutMe = this.aboutMe.bind(this);
     this.youTube = this.youTube.bind(this);

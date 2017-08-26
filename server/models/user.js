@@ -34,7 +34,8 @@ const userSchema = new Schema({
   },
   sponserName: String,
   sponserImageUrl: String,
-  avatarUrl: String,
+  avatarUrl: {type: String,
+              default: "https://www.searchinggo.com/Assets/images/icons/1497605502.png"},
   aboutMe: String,
   gamesPlayed: [
     {
