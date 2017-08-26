@@ -35,7 +35,7 @@ ResultForm = class ResultForm extends Component {
     //determine which match they progress to based on the winner's current position in bracket
     const matchNum = Math.floor(matchIndex / 2) + 4;
     //determine whether they are player1 or player2 in the match the winner progresses to
-    const matchPosition = matchIndex % 2 === 0 ? player1 : player2
+    const matchPosition = matchIndex % 2 === 0 ? 'player1' : 'player2';
     //set match_.player_ = winner
     this.props.selectedBracket.matches[matchNum].pairing[matchPosition] = winner;
   }
@@ -44,18 +44,15 @@ ResultForm = class ResultForm extends Component {
     const { matches } = this.props.selectedBracket;
     const { matchIndex } = this.props.navigation.state.params;
 
-    const play1Score = matches[matchIndex].result.player1Score;
-    const play2Score = matches[matchIndex].result.player2Score;
+    matches[matchIndex].result.player1Score = parseInt(values.player1Score);
+    matches[matchIndex].result.player2Score = parseInt(values.player2Score);
 
     const player1 = matches[matchIndex].pairing.player1;
     const player2 = matches[matchIndex].pairing.player2;
 
-    const p1Score = parseInt(values.player1Score);
-    const p2Score = parseInt(values.player2Score);
-
-    this.progressPlayer(player1, player2, play1Score, play2Score, matchindex);
-
-
+    if (matchIndex !== 6) {
+      this.progressPlayer(player1, player2, matches[matchIndex].result.player1Score, matches[matchIndex].result.player2Score, matchIndex);
+    }
 
     this.props.editBracket(this.props.selectedBracket)
     .then((res) => {

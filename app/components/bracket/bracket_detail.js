@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
+import { NavigationActions } from 'react-navigation';
 
 import {
   StyleSheet,
@@ -27,6 +28,8 @@ export default class BracketDetail extends Component {
     this.onEditPress = this.onEditPress.bind(this);
     this.ShowEditButton = this.ShowEditButton.bind(this);
   }
+
+
 
   onLearnMore(user) {
     this.props.navigation.navigate('PlayerModal', { user });
@@ -177,12 +180,6 @@ export default class BracketDetail extends Component {
                 </TouchableOpacity>
 
               </View>
-              <TouchableOpacity
-                style={styles.playerPicture}
-                onPress={() => this.onLearnMore()}
-              >
-                {/* player 2 profile pic */}
-              </TouchableOpacity>
             </View>
           </View>
 {/*Round 3*/}
@@ -207,9 +204,6 @@ export default class BracketDetail extends Component {
                   {/* player 2 profile pic */}
                 </TouchableOpacity>
               </View>
-              <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                {/* player 2 profile pic */}
-              </TouchableOpacity>
             </View>
           </View>
         </Swiper>

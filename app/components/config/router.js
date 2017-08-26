@@ -17,26 +17,26 @@ import PlayerModal from '../modals/player_modal';
 import ProfilePageForm from '../user/profile_page_form';
 import ResultForm from '../bracket/result_form';
 
-export const HomePageStack = StackNavigator(
-  {
-    Home: {
-      screen: HomePage,
-      navigationOptions: {
-        title: 'Home'
-      }
-    },
-    BracketForm: {
-      screen: BracketForm,
-      navigationOptions: {
-        // title: 'Create Bracket'
-      }
-    }
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none'
-  }
-);
+// export const HomePageStack = StackNavigator(
+//   {
+//     Home: {
+//       screen: HomePage,
+//       navigationOptions: {
+//         title: 'Home'
+//       }
+//     },
+//     BracketForm: {
+//       screen: BracketForm,
+//       navigationOptions: {
+//         // title: 'Create Bracket'
+//       }
+//     }
+//   },
+//   {
+//     mode: 'modal',
+//     headerMode: 'none'
+//   }
+// );
 
 export const ProfilePageStack = StackNavigator({
   ProfilePage: {
@@ -72,6 +72,7 @@ export const BracketDetailStack = StackNavigator(
     mode: 'modal',
     headerMode: 'none'
   }
+
 );
 
 export const BracketStack = StackNavigator({
@@ -96,14 +97,14 @@ export const BracketStack = StackNavigator({
 });
 
 export const Tabs = TabNavigator({
-  Home: {
-    screen: HomePageStack,
-    navigationOptions: {
-      tabBarLabel: 'Home',
-      tabBarIcon: ({ tintColor }) =>
-        <Icon name="home" size={35} color={tintColor} />
-    }
-  },
+  // Home: {
+  //   screen: HomePageStack,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Home',
+  //     tabBarIcon: ({ tintColor }) =>
+  //       <Icon name="home" size={35} color={tintColor} />
+  //   }
+  // },
   ProfilePage: {
     screen: ProfilePageStack,
     navigationOptions: {
