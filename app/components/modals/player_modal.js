@@ -69,7 +69,6 @@ export default class PlayerModal extends Component {
     return (
       <View style={styles.outerContainer}>
         <View style={styles.container}>
-          <Image style={styles.sponserPicture} source={{uri: selectedUser.sponserImageUrl}}/>
 
           <View style={styles.content}>
             <Image style={styles.profilePicture} source={{uri: selectedUser.avatarUrl}}/>
@@ -83,7 +82,10 @@ export default class PlayerModal extends Component {
               {this.hasYoutubeUrl()}
             </View>
           </View>
+
+
         </View>
+        <Image style={styles.sponserPicture} source={{uri: selectedUser.sponserImageUrl}}/>
       </View>
     );
   }
@@ -102,15 +104,13 @@ const styles = StyleSheet.create({
   },
   content: {
     flexDirection: 'row',
-
   },
   header: {
     alignItems: 'center',
-    alignSelf: 'center',
     fontSize: 20,
     fontWeight: 'bold',
     color: 'yellow',
-    paddingTop: 30,
+    paddingTop: 15,
   },
   profilePicture: {
     alignSelf: 'center',
@@ -119,12 +119,14 @@ const styles = StyleSheet.create({
     width: 150,
     backgroundColor: 'white',
     borderRadius: 80,
+    marginLeft: 20,
   },
   sponserPicture: {
-    marginTop: 1,
-    height: 100,
+
+    height: 110,
     width: '100%',
     backgroundColor: 'white',
+    justifyContent: 'flex-end',
   },
   followButton: {
     alignSelf: 'center',
@@ -169,7 +171,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    requestLiveBrackets: () => dispatch(requestLiveBrackets())
+
   }
 }
 

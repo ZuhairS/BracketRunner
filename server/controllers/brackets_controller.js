@@ -17,12 +17,13 @@ exports.create = (req, res, next) => {
   const bracketProps = req.body;
 
   // bracketProps.matches = populateMatches(bracketProps.entrants);
-
   Promise.all(userQueries(bracketProps.entrants))
     .then((bracketProps.matches = populateMatches(bracketProps.entrants)))
     .then(
       Bracket.create(bracketProps)
-        .then(bracket => res.send(bracket))
+        .then(bracket => {
+          return res.send(bracket)
+        })
         .catch(next)
     );
 };
@@ -67,7 +68,7 @@ exports.show = (req, res, next) => {
 // };
 
 exports.edit = (req, res, next) => {
-  const bracketId = req.params.id;
+  const bracketId = req.params.bracket_id;
   const bracketProps = req.body;
 
   Bracket.findByIdAndUpdate({ _id: bracketId }, bracketProps)
@@ -128,7 +129,7 @@ const userQueries = entrants => {
   for (let i = 0; i <= Object.keys(entrants).length; i++) {
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
-        user => (entrants[entrants[i]] = user ? user : { username: entrants[i], avatarUrl: "Test"})
+        user => (entrants[entrants[i]] = user ? user : {username : entrants[i], avatarUrl: "https://res.cloudinary.com/dj1l8etr0/image/upload/v1503705392/1497605502_bzref2.png"})
       )
     );
   }

@@ -23,6 +23,7 @@ Auth = class Auth extends Component {
 
     this.signUp = this.signUp.bind(this);
     this.logIn = this.logIn.bind(this);
+    this.guestAccount = this.guestAccount.bind(this);
   }
 
   signUp(values) {
@@ -39,8 +40,20 @@ Auth = class Auth extends Component {
       this.props.requestLiveBrackets();
   }
 
+  guestAccount(values) {
+    this.props
+      .logInUser({email:"guest@guest.com", password:"guest"})
+      .then(() => {
+        this.props.reset();
+      })
+      .then(() => {
+        if (this.props.state.auth.userId) {
+          this.props.navigation.navigate('Tabs');
+        }
+      });
+  }
+
   logIn(values) {
-    console.log(values);
     this.props
       .logInUser(values)
       .then(() => {
@@ -73,6 +86,9 @@ Auth = class Auth extends Component {
           <TouchableOpacity onPress={this.props.handleSubmit(this.logIn)}>
             <Text style={styles.button}>Log In</Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={this.props.handleSubmit(this.guestAccount)}>
+            <Text style={styles.button_guest}>Guest Account</Text>
+          </TouchableOpacity>
         </View>
         <AlertContainer />
       </View>
@@ -94,6 +110,20 @@ const styles = StyleSheet.create({
     height: 45,
     width: 250,
     fontSize: 16,
+  },
+  button_guest: {
+    backgroundColor: '#333',
+    borderColor: 'yellow',
+    color: 'yellow',
+    lineHeight: 30,
+    textAlign: 'center',
+    padding: 5,
+    borderRadius: 20,
+    borderWidth: 2,
+    marginTop: 10,
+    height: 45,
+    width: 250,
+    fontSize: 24,
   },
   container: {
     backgroundColor: '#333',
