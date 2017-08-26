@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
-import { NavigationActions } from 'react-navigation';
-
 import {
   StyleSheet,
   Text,
@@ -27,9 +25,8 @@ export default class BracketDetail extends Component {
     this.onLearnMore = this.onLearnMore.bind(this);
     this.onEditPress = this.onEditPress.bind(this);
     this.ShowEditButton = this.ShowEditButton.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
-
-
 
   onLearnMore(user) {
     this.props.navigation.navigate('PlayerModal', { user });
@@ -37,6 +34,10 @@ export default class BracketDetail extends Component {
 
   onEditPress(bracket, matchIndex) {
     this.props.navigation.navigate('ResultForm', { bracket, matchIndex });
+  }
+
+  goBack() {
+    this.props.navigation.navigate('BracketFeed');
   }
 
   ShowEditButton(bracket, matchIndex) {
@@ -56,6 +57,11 @@ export default class BracketDetail extends Component {
 
     return (
       <View style={styles.container}>
+        <TouchableOpacity style={styles.backButton} onPress={() => this.goBack()}>
+          <Text style={styles.backButtonText}>
+            back
+          </Text>
+        </TouchableOpacity>
         <View>
           <Text style={styles.header}>{bracket.title}</Text>
         </View>
@@ -224,12 +230,29 @@ const styles = StyleSheet.create({
     borderRightWidth: 5,
     borderColor: '#000'
   },
+  backButton: {
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: 'yellow',
+    padding: 5,
+    paddingRight: 15,
+    paddingLeft: 15,
+    position: 'absolute',
+    right: 10,
+    top: 5
+  },
+  backButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'yellow',
+  },
   editButton: {
     position: 'absolute',
     top: -30,
     right: 105
   },
   header: {
+    marginTop: 20,
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -237,24 +260,24 @@ const styles = StyleSheet.create({
   },
   wrapper: {},
   slide: {
-    flex: 9,
+    flex: 8,
     justifyContent: 'center',
     backgroundColor: 'transparent'
   },
   slide1: {
-    flex: 9,
+    flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#333'
   },
   slide2: {
-    flex: 9,
+    flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#333'
   },
   slide3: {
-    flex: 1,
+    flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#333'

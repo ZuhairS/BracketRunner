@@ -25,6 +25,10 @@ ResultForm = class ResultForm extends Component {
   constructor(props) {
     super(props);
 
+    const backAction = NavigationActions.back({
+      key: 'bracketDetail'
+    })
+
     this.onReportResult = this.onReportResult.bind(this);
     this.progressPlayer = this.progressPlayer.bind(this);
   }
