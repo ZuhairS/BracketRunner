@@ -14,7 +14,6 @@ const User = require('../models/user');
 // };
 
 exports.create = (req, res, next) => {
-  console.log("bracketController");
   const bracketProps = req.body;
 
   // bracketProps.matches = populateMatches(bracketProps.entrants);
@@ -23,7 +22,9 @@ exports.create = (req, res, next) => {
     .then((bracketProps.matches = populateMatches(bracketProps.entrants)))
     .then(
       Bracket.create(bracketProps)
-        .then(bracket => res.send(bracket))
+        .then(bracket => {
+          return res.send(bracket)
+        })
         .catch(next)
     );
 };
@@ -68,7 +69,7 @@ exports.show = (req, res, next) => {
 // };
 
 exports.edit = (req, res, next) => {
-  const bracketId = req.params.id;
+  const bracketId = req.params.bracket_id;
   const bracketProps = req.body;
 
   Bracket.findByIdAndUpdate({ _id: bracketId }, bracketProps)
@@ -110,13 +111,13 @@ exports.showFeatured = (req, res, next) => {
 // Populates matches with correct sequence of players in entrants
 const populateMatches = entrants => {
   let matches = [];
-  const numMatches = Math.ceil(Object.keys(entrants).length / 2);
+  const numMatches = Math.ceil(Object.keys(entrants).length - 1);
 
   for (let i = 0, j = 0; i < numMatches; i++, j = j + 2) {
     matches[i] = {
       pairing: {
-        player1: entrants[j],
-        player2: entrants[j + 1]
+        player1: entrants[j] ? entrants[j] : "Pending",
+        player2: entrants[j + 1] ? entrants[j+1] : "Pending"
       }
     };
   }

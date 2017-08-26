@@ -54,7 +54,6 @@ Auth = class Auth extends Component {
   }
 
   logIn(values) {
-    console.log(values);
     this.props
       .logInUser(values)
       .then(() => {

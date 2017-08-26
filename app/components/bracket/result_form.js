@@ -26,19 +26,46 @@ ResultForm = class ResultForm extends Component {
     super(props);
 
     this.onReportResult = this.onReportResult.bind(this);
+    this.progressPlayer = this.progressPlayer.bind(this);
+  }
+
+  progressPlayer(p1, p2, p1Score, p2Score, matchIndex){
+    //determine the winner of the match based on the score
+    const winner = p1Score > p2Score ? p1 : p2;
+    //determine which match they progress to based on the winner's current position in bracket
+    const matchNum = Math.floor(matchIndex / 2) + 4;
+    //determine whether they are player1 or player2 in the match the winner progresses to
+    const matchPosition = matchIndex % 2 === 0 ? 'player1' : 'player2';
+    //set match_.player_ = winner
+    this.props.selectedBracket.matches[matchNum].pairing[matchPosition] = winner;
   }
 
   onReportResult(values){
-    this.props.editBracket(values).then(() => {
+    const { matches } = this.props.selectedBracket;
+    const { matchIndex } = this.props.navigation.state.params;
+
+    matches[matchIndex].result.player1Score = parseInt(values.player1Score);
+    matches[matchIndex].result.player2Score = parseInt(values.player2Score);
+
+    const player1 = matches[matchIndex].pairing.player1;
+    const player2 = matches[matchIndex].pairing.player2;
+
+    if (matchIndex !== 6) {
+      this.progressPlayer(player1, player2, matches[matchIndex].result.player1Score, matches[matchIndex].result.player2Score, matchIndex);
+    }
+
+    this.props.editBracket(this.props.selectedBracket)
+    .then((res) => {
+      const bracket = res.data;
+      this.props.navigation.navigate('BracketDetail', { bracket });
+    })
+    .then(() => {
     this.props.reset();
-    }).then(() =>{
-      this.props.navigation.navigate('BracketDetail');
-    });
+    })
   }
 
   render() {
-
-    const matchNum = this.props.navigation.state.params.match + 1
+    const matchNum = this.props.navigation.state.params.matchIndex;
 
     return (
       <View style={styles.container}>
@@ -49,11 +76,11 @@ ResultForm = class ResultForm extends Component {
             <View style={styles.fieldContainer}>
               <View>
                 <Text style={styles.fieldTitle}>P1</Text>
-                <Field name="player1_result" component={renderInput} />
+                <Field name='player1Score' component={renderInput} />
               </View>
               <View>
                 <Text style={styles.fieldTitle}>P2</Text>
-                <Field name="player2_result" component={renderInput} />
+                <Field name="player2Score" component={renderInput} />
               </View>
             </View>
             <TouchableOpacity onPress={this.props.handleSubmit(this.onReportResult)}>
@@ -159,9 +186,11 @@ const styles = StyleSheet.create({
   },
 })
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
-    state
+    state,
+    selectedBracket: props.navigation.state.params.bracket,
+    matches: props.navigation.state.params.bracket.matches
   };
 };
 

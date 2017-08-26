@@ -21,12 +21,20 @@ export default class BracketFeed extends Component{
     this.tourneyStream = this.tourneyStream.bind(this);
   }
 
+  componentWillReceiveProps(){
+    this.props.requestLiveBrackets();
+  }
+
   componentWillMount() {
     this.props.requestLiveBrackets();
   }
 
   onLearnMore(bracket) {
     this.props.navigation.navigate('BracketDetail', { bracket });
+  }
+
+  onCreateBracketPress() {
+    this.props.navigation.navigate('BracketForm');
   }
 
   isLive(){
@@ -52,15 +60,12 @@ export default class BracketFeed extends Component{
   }
 
   render() {
-
     const { liveBrackets, selectedBracket } = this.props;
-    console.log(this.props);
 
     const allLiveBrackets = liveBrackets.map((bracket, idx) => {
-      console.log(bracket);
       return (
         <View key={`bracket-${idx}`} bracket={ bracket }>
-          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
+          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore(bracket)}>
             <Text style={styles.bracketTitle}>{bracket.title}</Text>
             <View style={styles.timeContainer}>
               <Text style={styles.gameText}>{bracket.game}</Text>
@@ -75,27 +80,15 @@ export default class BracketFeed extends Component{
 
     return (
       <View style={styles.bracketContainer}>
+        <TouchableOpacity
+          style={styles.createBracketButton}
+          onPress={() => this.onCreateBracketPress()}
+        >
+          <Text style={styles.createBracketButtonText}>Create Bracket</Text>
+        </TouchableOpacity>
         <Text style={styles.header}>Streaming Now</Text>
         <ScrollView>
           { allLiveBrackets }
-          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
-            <Text style={styles.bracketTitle}>{selectedBracket.title}</Text>
-            <View style={styles.gameTextContainer}>
-              <Text style={styles.gameText}>{selectedBracket.game}</Text>
-              {this.tourneyStream()}
-              <Text style={styles.live}>{this.isLive()}</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore()}>
-            <Text style={styles.bracketTitle}>Bracket Title</Text>
-            <View style={styles.gameTextContainer}>
-              <Text style={styles.gameText}>Game</Text>
-              <Text style={styles.streamLink} onPress={() => Linking.openURL(selectedBracket.streamUrl)}>
-                Watch Stream
-              </Text>
-              <Text style={styles.live}>{this.isLive()}</Text>
-            </View>
-          </TouchableOpacity>
         </ScrollView>
       </View>
     );
@@ -114,12 +107,27 @@ const styles = StyleSheet.create({
     borderRightWidth: 5,
     borderColor: '#000',
   },
+  createBracketButton: {
+    borderWidth: 2,
+    borderRadius: 10,
+    width: 200,
+    marginTop: 10,
+    marginBottom: 30,
+    borderColor: 'yellow'
+  },
+  createBracketButtonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 8,
+    color: 'yellow'
+  },
   header: {
     marginBottom: 40,
     fontWeight: 'bold',
     color: 'yellow',
     fontSize: 28,
-
   },
   bracketButton: {
     marginBottom: 15,
