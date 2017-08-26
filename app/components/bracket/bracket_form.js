@@ -23,6 +23,14 @@ BracketForm = class BracketForm extends Component {
   }
 
   createBracket(values) {
+
+    const entrants = {}
+    values.entrants.forEach((value,idx)=>
+    entrants[idx] = value
+    )
+    values.entrants = entrants;
+
+
     let bracket = Object.assign(
       { tournamentOrganizerId : this.props.state.auth.userId }, values
     );

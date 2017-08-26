@@ -39,6 +39,7 @@ export default class BracketDetail extends Component {
     this.props.navigation.navigate('ResultForm', { bracket, matchIndex });
   }
 
+
   ShowEditButton(bracket, matchIndex) {
     if (this.props.currentUserId === this.props.navigation.state.params.bracket.tournamentOrganizerId) {
       return (
@@ -67,7 +68,6 @@ export default class BracketDetail extends Component {
     {/*Match 1*/}
               <View style={styles.match}>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
                 </TouchableOpacity>
                 <View>
                   <Text style={styles.matchup}>
