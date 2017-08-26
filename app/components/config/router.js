@@ -17,26 +17,26 @@ import PlayerModal from '../modals/player_modal';
 import ProfilePageForm from '../user/profile_page_form';
 import ResultForm from '../bracket/result_form';
 
-export const HomePageStack = StackNavigator(
-  {
-    Home: {
-      screen: HomePage,
-      navigationOptions: {
-        title: 'Home'
-      }
-    },
-    BracketForm: {
-      screen: BracketForm,
-      navigationOptions: {
-        title: 'Create Bracket'
-      }
-    }
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none'
-  }
-);
+// export const HomePageStack = StackNavigator(
+//   {
+//     Home: {
+//       screen: HomePage,
+//       navigationOptions: {
+//         title: 'Home'
+//       }
+//     },
+//     BracketForm: {
+//       screen: BracketForm,
+//       navigationOptions: {
+//         // title: 'Create Bracket'
+//       }
+//     }
+//   },
+//   {
+//     mode: 'modal',
+//     headerMode: 'none'
+//   }
+// );
 
 export const ProfilePageStack = StackNavigator({
   ProfilePage: {
@@ -58,13 +58,13 @@ export const BracketDetailStack = StackNavigator(
     BracketDetail: {
       screen: BracketDetail,
       navigationOptions: {
-        title: 'Bracket Detail'
+        // title: 'Bracket Detail'
       }
     },
     PlayerModal: {
       screen: PlayerModal,
       navigationOptions: {
-        title: 'Player Modal'
+        // title: 'Player Modal'
       }
     }
   },
@@ -72,38 +72,39 @@ export const BracketDetailStack = StackNavigator(
     mode: 'modal',
     headerMode: 'none'
   }
+
 );
 
 export const BracketStack = StackNavigator({
   BracketFeed: {
     screen: BracketFeed,
     navigationOptions: {
-      title: 'Bracket Feed'
+      // title: 'Bracket Feed'
     }
   },
   BracketDetail: {
     screen: BracketDetailStack,
     navigationOptions: {
-      title: 'Bracket Detail'
+      // title: 'Bracket Detail'
     }
   },
   ResultForm: {
     screen: ResultForm,
     navigationOptions: {
-      title: 'Edit Results'
+      // title: 'Edit Results'
     }
   }
 });
 
 export const Tabs = TabNavigator({
-  Home: {
-    screen: HomePageStack,
-    navigationOptions: {
-      tabBarLabel: 'Home',
-      tabBarIcon: ({ tintColor }) =>
-        <Icon name="home" size={35} color={tintColor} />
-    }
-  },
+  // Home: {
+  //   screen: HomePageStack,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Home',
+  //     tabBarIcon: ({ tintColor }) =>
+  //       <Icon name="home" size={35} color={tintColor} />
+  //   }
+  // },
   ProfilePage: {
     screen: ProfilePageStack,
     navigationOptions: {
@@ -128,6 +129,12 @@ export const BracketFormStack = StackNavigator({
     navigationOptions: {
       title: 'Create Bracket'
     }
+  },
+  BracketDetail: {
+    screen: BracketDetail,
+    navigationOptions: {
+      title: 'Bracket Detail'
+    }
   }
 });
 
@@ -139,9 +146,9 @@ export const AuthPageStack = StackNavigator({
 
 export const Root = StackNavigator(
   {
-    Auth: {
-      screen: AuthPage
-    },
+    // Auth: {
+    //   screen: AuthPage
+    // },
     Tabs: {
       screen: Tabs
     },
