@@ -2,52 +2,29 @@ const Bracket = require('../models/bracket');
 const User = require('../models/user');
 
 // Create new Bracket through POST
-
-// exports.create = function(req, res, next) {
-//   var bracket = new Bracket(req.body);
-//   bracket.save(bracket, function(error) {
-//     if (error) {
-//       return next(error);
-//     }
-//     res.json(bracket);
-//   });
-// };
-
 exports.create = (req, res, next) => {
   const bracketProps = req.body;
 
-  // bracketProps.matches = populateMatches(bracketProps.entrants);
+  bracketProps.matches = populateMatches(bracketProps.entrants);
+
   Promise.all(userQueries(bracketProps.entrants))
-    .then((bracketProps.matches = populateMatches(bracketProps.entrants)))
-    .then(
-      Bracket.create(bracketProps)
-        .then(bracket => {
-          console.log(bracket.entrants);
-          console.log("BREAK");
-          console.log(bracketProps);
-          console.log("controller");
-          return res.send(bracket)
-        })
-        .catch(next)
-    );
+    .then(users => {
+      bracketProps.entrants = {};
+      users.forEach((user) => {
+      bracketProps.entrants[user.username] = user;
+    });
+    Bracket.create(bracketProps)
+      .then(bracket => res.send(bracket))
+      .catch(next);
+    });
 };
 
-// Display specific Bracket through GET
-
-// exports.show = function(req, res, next) {
-//   Bracket.findById(req.params.id).exec((err, bracket) => {
-//     if (err) {
-//       res.send({ error: err });
-//       return next(err);
-//     }
-//     res.json(bracket);
-//   });
-// };
-
+// Display all live Brackets through GET
 exports.index = (req, res, next) => {
   Bracket.find({ live: true }).then(brackets => res.send(brackets)).catch(next);
 };
 
+// Display specific Bracket through GET
 exports.show = (req, res, next) => {
   const bracketId = req.params.id;
 
@@ -57,20 +34,6 @@ exports.show = (req, res, next) => {
 };
 
 // Update Bracket through PUT
-
-// exports.edit = function(req, res, next) {
-//   Bracket.findByIdAndUpdate(req.params.id, { $set: req.body }).exec(function(
-//     err,
-//     bracket
-//   ) {
-//     if (err) {
-//       res.send({ error: err });
-//       return next(err);
-//     }
-//     res.json(bracket);
-//   });
-// };
-
 exports.edit = (req, res, next) => {
   const bracketId = req.params.bracket_id;
   const bracketProps = req.body;
@@ -82,17 +45,6 @@ exports.edit = (req, res, next) => {
 };
 
 // Delete a bracket through DELETE
-
-// exports.delete = function(req, res, next) {
-//   Bracket.findByIdAndRemove(req.params.id).exec((err, bracket) => {
-//     if (err) {
-//       res.send({ error: err });
-//       return next(err);
-//     }
-//     res.json({ message: 'Bracket deleted.' });
-//   });
-// };
-
 exports.delete = (req, res, next) => {
   const bracketId = req.params.id;
 
@@ -133,7 +85,7 @@ const userQueries = entrants => {
   for (let i = 0; i <= Object.keys(entrants).length; i++) {
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
-        user => (entrants[`${entrants[i]}`] = user ? user : {username : entrants[i], avatarUrl: "https://res.cloudinary.com/dj1l8etr0/image/upload/v1503705392/1497605502_bzref2.png"})
+        user => (entrants[entrants[i]] = user ? user : {username : entrants[i], avatarUrl: "https://res.cloudinary.com/dj1l8etr0/image/upload/v1503705392/1497605502_bzref2.png"})
       )
     );
   }
