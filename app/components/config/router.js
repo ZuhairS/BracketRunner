@@ -139,9 +139,9 @@ export const AuthPageStack = StackNavigator({
 
 export const Root = StackNavigator(
   {
-    Auth: {
-      screen: AuthPage
-    },
+    // Auth: {
+    //   screen: AuthPage
+    // },
     Tabs: {
       screen: Tabs
     },
