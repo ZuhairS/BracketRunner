@@ -16,7 +16,7 @@ import { RkConfig, RkText, RkCard } from 'react-native-ui-kitten';
 ProfilePage = class ProfilePage extends Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     this.onEditPress = this.onEditPress.bind(this);
     this.aboutMe = this.aboutMe.bind(this);
     this.youTube = this.youTube.bind(this);
@@ -24,6 +24,7 @@ ProfilePage = class ProfilePage extends Component {
     this.twitter = this.twitter.bind(this);
     this.sponserImage = this.sponserImage.bind(this);
     this.sponserName = this.sponserName.bind(this);
+    this.userImage = this.userImage.bind(this);
   }
 
   aboutMe() {
@@ -105,6 +106,20 @@ ProfilePage = class ProfilePage extends Component {
     }
   }
 
+  userImage() {
+    let user = this.props.state.auth.user;
+    if (user.avatarUrl) {
+      return (
+        <Image source={{ uri: user.avatarUrl }} style={styles.avatar} />
+      );
+    } else {
+      return <Image
+        source={require('./react_native.png')}
+        style={styles.avatar}
+      />
+    }
+  }
+
   sponserName() {
     let user = this.props.state.auth.user;
     if (user.sponserName) {
@@ -114,7 +129,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your Sponsers Name link</Text>;
+      return <Text style={styles.userText}>Add your Sponsers Name</Text>;
     }
   }
 
@@ -127,10 +142,7 @@ ProfilePage = class ProfilePage extends Component {
     return (
       <View>
         <ImageBackground
-          source={{
-            uri:
-              'https://i.pinimg.com/originals/c6/bd/1f/c6bd1f3632d8147c0d21e879a5b86132.png'
-          }}
+          source={require('./default.png')}
           style={styles.profileBackground}
         >
           <View />
@@ -140,10 +152,7 @@ ProfilePage = class ProfilePage extends Component {
           >
             <Icon name="edit" size={35} style={styles.edit_icon} />
           </TouchableOpacity>
-          <Image
-            source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}
-            style={styles.avatar}
-          />
+        {this.userImage()}
           <RkText style={styles.nameText}>
             {user.username} {user.email}
           </RkText>

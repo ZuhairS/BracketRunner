@@ -7,18 +7,20 @@ const User = require('../models/user');
 const config = require('../config');
 
 var localOptions = {
-  usernameField: 'email'
+  emailField: 'email',
+  usernameField: 'username'
 };
 
 var localStrategy = new LocalStrategy(localOptions, function(
   email,
+  username,
   password,
   done
 ) {
   // Verify the username/email and password
   var criteria =
     email.indexOf('@') === -1
-      ? { username: email }
+      ? { username: username }
       : { email: email.toLowerCase() };
   User.findOne(criteria, function(err, user) {
     if (err) {

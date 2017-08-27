@@ -14,6 +14,9 @@ if (process.env.NODE_ENV === 'production') {
   mongoose.connect('mongodb://localhost/BracketRunner');
 }
 
+// Root Route
+app.get('/', (req,res,next) => res.send({"Why": "Keep Dyno Awake"}));
+
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use('/api/v1', router);

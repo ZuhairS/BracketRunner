@@ -19,7 +19,7 @@ let bracketSchema = new Schema({
   //   required: true
   // },
   entrants: {
-    type: {},
+    type: Schema.Types.Mixed,
     required: true
   },
   game: {
@@ -61,5 +61,6 @@ let bracketSchema = new Schema({
     }
   ]
 });
+
 
 module.exports = mongoose.model('bracket', bracketSchema);

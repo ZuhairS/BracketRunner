@@ -24,11 +24,25 @@ BracketForm = class BracketForm extends Component {
 
   createBracket(values) {
 
-    const bracket = Object.assign({tournamentOrganizerId : this.props.state.auth.userId}, values);
-    console.log(bracket);
-    this.props.createBracket(bracket).then(() => {
+    const entrants = {}
+    values.entrants.forEach((value,idx)=>
+    entrants[idx] = value
+    )
+    values.entrants = entrants;
+
+
+    let bracket = Object.assign(
+      { tournamentOrganizerId : this.props.state.auth.userId }, values
+    );
+
+    this.props.createBracket(bracket)
+    .then((response) => {
+      let bracket = response.data;
+      this.props.navigation.navigate('BracketDetail', { bracket });
+    })
+    .then(() => {
       this.props.reset();
-      })
+    })
   }
 
   renderInput({ input: { onChange, ...restInput } }) {
