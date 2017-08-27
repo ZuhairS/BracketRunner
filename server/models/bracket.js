@@ -62,4 +62,5 @@ let bracketSchema = new Schema({
   ]
 });
 
+
 module.exports = mongoose.model('bracket', bracketSchema);
