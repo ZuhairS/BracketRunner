@@ -31,10 +31,14 @@ While not the most elegant solution, the one I implemented involved collecting a
 
 Promise.all(userQueries(bracketProps.entrants))
   .then(users => {
+
+    // Setup entrants to be used on the frontend
     bracketProps.entrants = {};
     users.forEach((user) => {
     bracketProps.entrants[user.username] = user;
   });
+
+  // Finally create the bracket
   Bracket.create(bracketProps)
     .then(bracket => res.send(bracket))
     .catch(next);
@@ -48,6 +52,8 @@ const userQueries = entrants => {
   const promiseArr = [];
 
   for (let i = 0; i <= Object.keys(entrants).length; i++) {
+
+    // Collect the queries then create respective user objects
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
         user => (entrants[entrants[i]] = user ? user : { /* dummy user object */ })
@@ -61,3 +67,21 @@ const userQueries = entrants => {
 ###### Note: MongoDB queries are not actually promises. Mongoose.js, which acts as a wrapper for MongoDB, provides queries that have promise like properties. Which is why we can chain `.then`'s onto them and have them work the way we expect.
 
 ## Looking forward
+
+## Developers
+
+#### Zach Greathouse
+
+[Github](https://github.com/zgreathouse) | [Linkedin](https://www.linkedin.com/in/zachary-greathouse-11345813b/)
+
+#### Nick Whitson
+
+[Github](https://github.com/newhitson) | [Linkedin](https://www.linkedin.com/in/newhitson/)
+
+#### Ali Haq
+
+[Github](https://github.com/alimhaq) | [Linkedin](https://www.linkedin.com/in/ali-haq-85825821)
+
+#### Zuhair Shaikh
+
+[Github](https://github.com/ZuhairS) | [Linkedin](https://www.linkedin.com/in/zuhairshaikh/)
