@@ -8,6 +8,20 @@ Link to Demo Page
 
 ## Technologies
 
+BracketRunner is developed primarily using the MERN stack which is made up of the following technologies:
+
+- MongoDB for non-relational data management.
+- Express.js to handle server-side routing and middleware functionality.
+- React-Native for composing mobile UI.
+- Node.js as a JavaScript runtime for web development.
+
+Beyond these we used:
+
+- Mongoose.js for MongoDB object modeling.
+- Robo 3T w/ Postman to test api calls and data preservation.
+- mLab for MongoDB database hosting.
+- appetize.io for emulating mobile functionality in browser.
+
 ## Features
 
 ### Zach Greathouse
@@ -68,20 +82,28 @@ const userQueries = entrants => {
 
 ## Looking forward
 
+There are a couple things we planned to develop that would set BracketRunner apart from what is out there.
+
+- [ ] Receive Push Notifications for when a tournament, match or player starts/stops playing.
+- [ ] Allow creation of multiple types of bracket.
+- [ ] Get BracketRunner listed on App Store.
+
+
+
 ## Developers
 
 #### Zach Greathouse
 
-[Github](https://github.com/zgreathouse) | [Linkedin](https://www.linkedin.com/in/zachary-greathouse-11345813b/)
+[Github](https://github.com/zgreathouse) | [LinkedIn](https://www.linkedin.com/in/zachary-greathouse-11345813b/)
 
 #### Nick Whitson
 
-[Github](https://github.com/newhitson) | [Linkedin](https://www.linkedin.com/in/newhitson/)
+[Github](https://github.com/newhitson) | [LinkedIn](https://www.linkedin.com/in/newhitson/)
 
 #### Ali Haq
 
-[Github](https://github.com/alimhaq) | [Linkedin](https://www.linkedin.com/in/ali-haq-85825821)
+[Github](https://github.com/alimhaq) | [LinkedIn](https://www.linkedin.com/in/ali-haq-85825821)
 
 #### Zuhair Shaikh
 
-[Github](https://github.com/ZuhairS) | [Linkedin](https://www.linkedin.com/in/zuhairshaikh/)
+[Github](https://github.com/ZuhairS) | [LinkedIn](https://www.linkedin.com/in/zuhairshaikh/)
