@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 //imported components
+import { NavigationActions } from 'react-navigation'
 import AlertContainer from '../alerts/alert_container';
 import { Field, reduxForm } from 'redux-form';
 import { editBracket } from '../../actions/bracket_actions';
