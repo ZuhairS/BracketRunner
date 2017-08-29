@@ -110,13 +110,13 @@ const styles = StyleSheet.create({
     height: 45,
     width: 250,
     fontSize: 16,
+    fontFamily: 'Verdana-Bold'
   },
   container: {
     backgroundColor: '#333',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-
   },
   input: {
     color: '#333',
@@ -130,9 +130,11 @@ const styles = StyleSheet.create({
     width: 250,
     textAlign: 'center',
     fontSize: 16,
+    fontFamily: 'Verdana'
   },
   title: {
-    color: '#2D3336'
+    color: '#2D3336',
+    fontFamily: 'Verdana-Bold'
   },
   avatar: {
     width: 120,

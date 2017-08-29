@@ -209,9 +209,10 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
   avatar: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    marginBottom: 5,
+    width: 140,
+    height: 140,
+    borderRadius: 70,
     alignSelf: 'center'
   },
   nameText: {
@@ -219,22 +220,34 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingVertical: 5,
     fontSize: 25,
-    color: 'white'
+    color: 'white',
+    fontFamily: 'Verdana-Bold'
   },
   tab1: {
-    backgroundColor: '#424242'
+    backgroundColor: '#333',
+    borderBottomWidth: .8,
+    borderBottomColor: 'yellow',
   },
   tab2: {
-    backgroundColor: '#424242'
+    backgroundColor: '#333',
+    borderBottomWidth: .8,
+    borderBottomColor: 'yellow',
   },
   tab3: {
-    backgroundColor: '#424242'
+    backgroundColor: '#333',
+    borderBottomWidth: .8,
+    borderBottomColor: 'yellow',
   },
   header: {
-    color: 'yellow'
+    color: 'yellow',
+    fontSize: 16,
+    textAlign: 'center',
+    fontFamily: 'Verdana-Bold'
   },
   userText: {
-    color: 'white'
+    color: 'white',
+    fontSize: 14,
+    fontFamily: 'Verdana-Bold'
   },
   sponserContainer: {}
 });

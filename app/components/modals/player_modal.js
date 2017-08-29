@@ -31,7 +31,7 @@ export default class PlayerModal extends Component {
     if (this.props.selectedUser.twitterUrl) {
       return (
         <TouchableOpacity style={styles.linkIcon} onPress={() => Linking.openURL(this.props.selectedUser.twitterUrl)}>
-          <Icon name="twitter" size={30} color={'yellow'} />
+          <Icon name="twitter" size={35} color={'yellow'} />
         </TouchableOpacity>
       );
     } else {
@@ -43,7 +43,7 @@ export default class PlayerModal extends Component {
     if (this.props.selectedUser.twitchUrl) {
       return (
         <TouchableOpacity style={styles.linkIcon} onPress={() => Linking.openURL(this.props.selectedUser.twitchUrl)}>
-          <Icon name="twitch" size={30} color={'yellow'} />
+          <Icon name="twitch" size={35} color={'yellow'} />
         </TouchableOpacity>
       );
     } else {
@@ -55,7 +55,7 @@ export default class PlayerModal extends Component {
     if (this.props.selectedUser.youtubeUrl) {
       return (
         <TouchableOpacity style={styles.linkIcon} onPress={() => Linking.openURL(this.props.selectedUser.youtubeUrl)}>
-          <Icon name="youtube" size={30} color={'yellow'} />
+          <Icon name="youtube" size={35} color={'yellow'} />
         </TouchableOpacity>
       );
     } else {
@@ -70,22 +70,28 @@ export default class PlayerModal extends Component {
       <View style={styles.outerContainer}>
         <View style={styles.container}>
 
-          <View style={styles.content}>
-            <Image style={styles.profilePicture} source={{uri: selectedUser.avatarUrl}}/>
-            <Text style={styles.header}>{ selectedUser.username }</Text>
-          </View>
+          <Image style={styles.sponserPicture} source={{uri: selectedUser.sponserImageUrl}}/>
 
-          <View style={styles.linksContainer}>
-            <View style={styles.links}>
-              {this.hasTwitterUrl()}
-              {this.hasTwitchUrl()}
-              {this.hasYoutubeUrl()}
+          <View style={styles.outerContentContainer}>
+            <View style={styles.contentContainer}>
+              <View style={styles.content}>
+                <Image style={styles.profilePicture} source={{uri: selectedUser.avatarUrl}}/>
+              </View>
+              <View style={styles.playerInfo}>
+                <Text style={styles.header}>{ selectedUser.username }</Text>
+              </View>
+            </View>
+
+            <View style={styles.linksContainer}>
+              <View style={styles.links}>
+                {this.hasTwitterUrl()}
+                {this.hasTwitchUrl()}
+                {this.hasYoutubeUrl()}
+              </View>
             </View>
           </View>
 
-
         </View>
-        <Image style={styles.sponserPicture} source={{uri: selectedUser.sponserImageUrl}}/>
       </View>
     );
   }
@@ -101,38 +107,51 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     marginLeft: 5,
     marginRight: 5,
+    borderBottomWidth: 25,
+    borderTopWidth: 25,
+    borderColor: '#333'
+  },
+  outerContentContainer: {
+    flexDirection: 'column',
+  },
+  contentContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   content: {
     flexDirection: 'row',
   },
   header: {
     alignItems: 'center',
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: 'bold',
     color: 'yellow',
-    paddingTop: 15,
+    paddingTop: 10,
+    fontFamily: 'Verdana-Bold'
   },
   profilePicture: {
-    alignSelf: 'center',
-    marginTop: 15,
-    height: 150,
-    width: 150,
+    height: 170,
+    width: 170,
     backgroundColor: 'white',
-    borderRadius: 80,
-    marginLeft: 20,
+    borderRadius: 90,
+    marginTop: 20,
+  },
+  playerInfo: {
+    padding: 40,
+    paddingTop: 0
   },
   sponserPicture: {
-
-    height: 110,
-    width: '100%',
+    height: 120,
+    width: '97.5%',
     backgroundColor: 'white',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    alignSelf: 'center'
   },
   followButton: {
     alignSelf: 'center',
     height: 50,
     width: 150,
-    marginTop: 50,
+    marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -143,23 +162,22 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 7,
-    marginTop: 20
   },
   linksContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   links: {
     backgroundColor: '#333',
-    borderBottomWidth: .5,
-    borderColor: 'yellow',
     alignItems: 'center',
-    width: 300,
     height: 80,
+    width: '95%',
     paddingTop: 10,
     paddingBottom: 10,
-    marginTop: 30,
+    marginLeft: 5,
     justifyContent: 'space-around',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderBottomWidth: .5,
+    borderColor: 'yellow'
   }
 });
 

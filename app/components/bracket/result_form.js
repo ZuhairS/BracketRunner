@@ -25,23 +25,21 @@ ResultForm = class ResultForm extends Component {
   constructor(props) {
     super(props);
 
-    const backAction = NavigationActions.back({
-      key: 'bracketDetail'
-    })
-
     this.onReportResult = this.onReportResult.bind(this);
     this.progressPlayer = this.progressPlayer.bind(this);
   }
 
   progressPlayer(p1, p2, p1Score, p2Score, matchIndex){
-    //determine the winner of the match based on the score
-    const winner = p1Score > p2Score ? p1 : p2;
     //determine which match they progress to based on the winner's current position in bracket
     const matchNum = Math.floor(matchIndex / 2) + 4;
+    //determine the winner of the match based on the score
+    this.props.selectedBracket.matches[matchNum].pairing.winner = p1Score > p2Score ? p1 : p2;
+    this.props.selectedBracket.matches[matchNum].pairing.loser = p1Score < p2Score ? p1 : p2;
     //determine whether they are player1 or player2 in the match the winner progresses to
     const matchPosition = matchIndex % 2 === 0 ? 'player1' : 'player2';
     //set match_.player_ = winner
-    this.props.selectedBracket.matches[matchNum].pairing[matchPosition] = winner;
+    this.props.selectedBracket.matches[matchNum].pairing[matchPosition] =
+      this.props.selectedBracket.matches[matchNum].pairing.winner;
   }
 
   onReportResult(values){
@@ -121,15 +119,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 15,
     paddingBottom: 30,
+    fontFamily: 'Verdana-Bold'
   },
   matchContainer: {
     borderTopWidth: .5,
     borderBottomWidth: .5,
     borderColor: 'yellow',
-    height: 160,
+    height: 190,
     width: 300,
     marginBottom: 20,
-
   },
   fieldContainer: {
     flexDirection: 'row',
@@ -138,16 +136,17 @@ const styles = StyleSheet.create({
   },
   matchHeader: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
     padding: 10,
-
+    fontFamily: 'Verdana-Bold'
   },
   fieldTitle:{
     color: 'yellow',
     textAlign: 'center',
     fontWeight: 'bold',
+    fontFamily: 'Verdana-Bold'
   },
   input: {
     color: '#333',
@@ -156,8 +155,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     textAlign: 'center',
     padding: 5,
-    height: 30,
-    width: 50,
+    height: 40,
+    width: 60,
     marginLeft: 50,
     marginRight: 50,
     fontSize: 16,
@@ -170,23 +169,22 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: 74,
     width: 250,
-
   },
   button: {
     backgroundColor: '#333',
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: 'yellow',
-    borderRadius: 5,
+    borderRadius: 6,
     fontWeight: 'bold',
     color: 'white',
-    height: 30,
-    lineHeight: 30,
-    marginTop: 10,
+    height: 40,
+    lineHeight: 35,
+    marginTop: 30,
     textAlign: 'center',
-    width: 100,
+    width: 120,
     alignSelf: 'center',
-    fontSize: 14,
-
+    fontSize: 18,
+    fontFamily: 'Verdana-Bold'
   },
 })
 

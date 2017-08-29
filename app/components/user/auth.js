@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     height: 45,
     width: 250,
     fontSize: 16,
+    fontFamily: 'Verdana'
   },
   button_guest: {
     backgroundColor: '#333',
@@ -123,7 +124,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     height: 45,
     width: 250,
-    fontSize: 24,
+    fontSize: 20,
+    fontFamily: 'Verdana-Bold'
   },
   container: {
     backgroundColor: '#333',
@@ -144,6 +146,7 @@ const styles = StyleSheet.create({
     width: 250,
     textAlign: 'center',
     fontSize: 16,
+    fontFamily: 'Verdana'
   },
   title: {
     color: '#2D3336'
