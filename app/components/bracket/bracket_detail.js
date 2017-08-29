@@ -228,9 +228,9 @@ export default class BracketDetail extends Component {
 
 const styles = StyleSheet.create({
   avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 20,
+    width: 55,
+    height: 57,
+    borderRadius: 27,
     alignSelf: 'center'
   },
   container: {
