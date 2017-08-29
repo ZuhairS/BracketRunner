@@ -49,7 +49,7 @@ ProfilePage = class ProfilePage extends Component {
             <Text style={styles.header}>About</Text>
           </View>
           <View rkCardContent>
-            <Text style={styles.userText}>Write somting about yourself</Text>
+            <Text style={styles.userText}>Write something about yourself</Text>
           </View>
         </RkCard>
       );
@@ -65,7 +65,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your Youtube link</Text>;
+      return <Text style={styles.userText}>No link provided</Text>;
     }
   }
 
@@ -78,7 +78,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your twitch link</Text>;
+      return <Text style={styles.userText}>No link provided</Text>;
     }
   }
 
@@ -91,7 +91,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your twitter link</Text>;
+      return <Text style={styles.userText}>No link provided</Text>;
     }
   }
 
@@ -102,7 +102,7 @@ ProfilePage = class ProfilePage extends Component {
         <Image source={{ uri: user.sponserImageUrl }} style={styles.avatar} />
       );
     } else {
-      return <Text style={styles.userText}>Add your sponsers Image link</Text>;
+      return <Text style={styles.userText}></Text>;
     }
   }
 
@@ -129,7 +129,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your Sponsers Name</Text>;
+      return <Text style={styles.userText}>Add your Sponser's Name</Text>;
     }
   }
 
@@ -167,7 +167,7 @@ ProfilePage = class ProfilePage extends Component {
 
           <View rkCardContent>
             <Text style={styles.userText}>
-              You Tube: {this.youTube()}
+              YouTube: {this.youTube()}
             </Text>
             <Text style={styles.userText}>
               Twitch: {this.twitch()}
@@ -186,7 +186,7 @@ ProfilePage = class ProfilePage extends Component {
           <View rkCardContent>
             <View style={styles.sponserContainer}>
               <Text style={styles.userText}>
-                Sponser Name {this.sponserName()}
+                Sponser Name: {this.sponserName()}
               </Text>
               {this.sponserImage()}
             </View>

@@ -67,7 +67,7 @@ ResultForm = class ResultForm extends Component {
   }
 
   render() {
-    const matchNum = this.props.navigation.state.params.matchIndex;
+    const matchNum = this.props.navigation.state.params.matchIndex + 1;
 
     return (
       <View style={styles.container}>
