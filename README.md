@@ -1,14 +1,14 @@
-#BracketRunner
+# BracketRunner
 
 Link to Demo Page
 
 **Gif/Image**
 
-##Background
+## Background
 
-##Technologies
+## Technologies
 
-##Features
+## Features
 
 ### Zach Greathouse
 
@@ -18,4 +18,4 @@ Link to Demo Page
 
 ### Zuhair Shaikh
 
-##Looking forward
+## Looking forward
