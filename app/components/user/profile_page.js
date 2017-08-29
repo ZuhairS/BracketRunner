@@ -140,7 +140,7 @@ ProfilePage = class ProfilePage extends Component {
   render() {
     let user = this.props.state.auth.user;
     return (
-      <View>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <ImageBackground
           source={require('./default.png')}
           style={styles.profileBackground}
@@ -192,7 +192,7 @@ ProfilePage = class ProfilePage extends Component {
             </View>
           </View>
         </RkCard>
-      </View>
+      </Image>
     );
   }
 };
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   nameText: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     paddingLeft: 20,
     paddingVertical: 5,
     fontSize: 25,
@@ -224,17 +224,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Verdana-Bold'
   },
   tab1: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderBottomWidth: .8,
     borderBottomColor: 'yellow',
   },
   tab2: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderBottomWidth: .8,
     borderBottomColor: 'yellow',
   },
   tab3: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderBottomWidth: .8,
     borderBottomColor: 'yellow',
   },

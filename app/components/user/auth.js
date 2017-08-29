@@ -69,7 +69,7 @@ Auth = class Auth extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <Image source={require('./logo.jpg')}
                style={styles.avatar}/>
         <View style={styles.titleContainer}>
@@ -91,14 +91,14 @@ Auth = class Auth extends Component {
           </TouchableOpacity>
         </View>
         <AlertContainer />
-      </View>
+      </Image>
     );
   }
 };
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderColor: 'yellow',
     color: 'white',
     lineHeight: 30,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Verdana'
   },
   button_guest: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderColor: 'yellow',
     color: 'yellow',
     lineHeight: 30,
@@ -128,14 +128,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Verdana-Bold'
   },
   container: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
-
+    alignItems: 'center',
   },
   input: {
-    color: '#333',
+    color: 'transparent',
     borderColor: '#404000',
     backgroundColor: 'white',
     padding: 5,
@@ -146,7 +145,7 @@ const styles = StyleSheet.create({
     width: 250,
     textAlign: 'center',
     fontSize: 16,
-    fontFamily: 'Verdana'
+    fontFamily: 'Verdana',
   },
   title: {
     color: '#2D3336'
@@ -156,7 +155,8 @@ const styles = StyleSheet.create({
     height: 120,
 
     alignSelf: 'center',
-    marginBottom: 40
+    marginBottom: 40,
+    backgroundColor: 'transparent',
   }
 });
 
