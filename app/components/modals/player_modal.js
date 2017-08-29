@@ -67,7 +67,7 @@ export default class PlayerModal extends Component {
     const { selectedUser } = this.props;
 
     return (
-      <View style={styles.outerContainer}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <View style={styles.container}>
 
           <Image style={styles.sponserPicture} source={{uri: selectedUser.sponserImageUrl}}/>
@@ -92,7 +92,7 @@ export default class PlayerModal extends Component {
           </View>
 
         </View>
-      </View>
+      </Image>
     );
   }
 }
@@ -100,23 +100,22 @@ export default class PlayerModal extends Component {
 const styles = StyleSheet.create({
   outerContainer: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: 'transparent',
   },
   container: {
     flex: 1,
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     marginLeft: 5,
     marginRight: 5,
-    borderBottomWidth: 25,
-    borderTopWidth: 25,
-    borderColor: '#333'
   },
   outerContentContainer: {
     flexDirection: 'column',
+    backgroundColor: 'transparent',
   },
   contentContainer: {
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: 'transparent',
   },
   content: {
     flexDirection: 'row',
@@ -138,14 +137,16 @@ const styles = StyleSheet.create({
   },
   playerInfo: {
     padding: 40,
-    paddingTop: 0
+    paddingTop: 0,
+    backgroundColor: 'transparent',
   },
   sponserPicture: {
     height: 120,
     width: '97.5%',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     justifyContent: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
   },
   followButton: {
     alignSelf: 'center',
@@ -165,9 +166,10 @@ const styles = StyleSheet.create({
   },
   linksContainer: {
     alignItems: 'center',
+    backgroundColor: 'transparent',
   },
   links: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     height: 80,
     width: '95%',

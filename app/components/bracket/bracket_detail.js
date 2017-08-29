@@ -56,7 +56,7 @@ export default class BracketDetail extends Component {
     const { bracket } = this.props.navigation.state.params;
 
     return (
-      <View style={styles.container}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <TouchableOpacity style={styles.backButton} onPress={() => this.goBack()}>
           <Text style={styles.backButtonText}>
             Bracket Feed
@@ -268,7 +268,7 @@ export default class BracketDetail extends Component {
             </View>
           </View>
         </Swiper>
-      </View>
+      </Image>
     );
   } //render
 } //Bracket
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingTop: 25,
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderLeftWidth: 5,
     borderRightWidth: 5,
     borderColor: '#000'
@@ -325,19 +325,19 @@ const styles = StyleSheet.create({
     flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#333'
+    backgroundColor: 'transparent'
   },
   slide2: {
     flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#333'
+    backgroundColor: 'transparent'
   },
   slide3: {
     flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#333'
+    backgroundColor: 'transparent'
   },
   text: {
     color: '#fff',
@@ -347,7 +347,7 @@ const styles = StyleSheet.create({
   },
   body: {
     alignSelf: 'stretch',
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
@@ -364,7 +364,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Verdana-Bold'
   },
   match: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     height: 70,
     width: 330,
     flexDirection: 'row',

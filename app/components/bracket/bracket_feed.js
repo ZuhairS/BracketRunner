@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity,
   ScrollView,
   Linking
@@ -79,7 +80,7 @@ export default class BracketFeed extends Component{
     });
 
     return (
-      <View style={styles.bracketContainer}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.bracketContainer}>
         <TouchableOpacity
           style={styles.createBracketButton}
           onPress={() => this.onCreateBracketPress()}
@@ -90,7 +91,7 @@ export default class BracketFeed extends Component{
         <ScrollView>
           { allLiveBrackets }
         </ScrollView>
-      </View>
+      </Image>
     );
   }
 }//BracketMatchesIndex
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     height: 450,
     width: '100%',
     padding: 20,
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderLeftWidth: 5,
     borderRightWidth: 5,
     borderColor: '#000',

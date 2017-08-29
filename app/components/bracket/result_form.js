@@ -9,6 +9,7 @@ import {
   NavigatorIOS,
   TextInput,
   ScrollView,
+  Image
 } from 'react-native';
 
 //imported components
@@ -70,7 +71,7 @@ ResultForm = class ResultForm extends Component {
     const matchNum = this.props.navigation.state.params.matchIndex + 1;
 
     return (
-      <View style={styles.container}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <Text style={styles.pageHeader}>Input Results</Text>
         <ScrollView>
           <View style={styles.matchContainer}>
@@ -91,7 +92,7 @@ ResultForm = class ResultForm extends Component {
           </View>
           <AlertContainer />
         </ScrollView>
-      </View>
+      </Image>
 
     );
   }
@@ -105,7 +106,7 @@ const renderInput = ({ input: { onChange, ...restInput }}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     flex : 1,
     justifyContent: 'center',
     alignItems: 'center',
