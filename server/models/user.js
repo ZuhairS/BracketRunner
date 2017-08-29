@@ -37,7 +37,7 @@ const userSchema = new Schema({
   sponserImageUrl: {type: String,
             default: "Include a sponsor Image"},
   avatarUrl: {type: String,
-              default: "http://res.cloudinary.com/dj1l8etr0/image/upload/v1504044232/images_zhegis.jpg"},
+              default: "http://res.cloudinary.com/dj1l8etr0/image/upload/v1504047374/default-profile-pic_720_ar5cts.jpg"},
   aboutMe: {type: String,
             default: "Write something about yourself"},
   gamesPlayed: [
