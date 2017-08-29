@@ -33,13 +33,13 @@ const userSchema = new Schema({
     type: String
   },
   sponserName: {type: String,
-            default: "Add a sponser"},
+            default: "Add a sponsor"},
   sponserImageUrl: {type: String,
-            default: "Include a sponser Image"},
+            default: "Include a sponsor Image"},
   avatarUrl: {type: String,
               default: "https://www.searchinggo.com/Assets/images/icons/1497605502.png"},
   aboutMe: {type: String,
-            default: "Write somthing about yourself"},
+            default: "Write something about yourself"},
   gamesPlayed: [
     {
       name: String
