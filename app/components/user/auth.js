@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    color: 'transparent',
+    color: '#333',
     borderColor: '#404000',
     backgroundColor: 'white',
     padding: 5,
