@@ -28,6 +28,23 @@ Beyond these we used:
 
 ### Nick Whitson
 
+#### This isn't even our final form
+
+The funniest bug that we encountered had to do with an update to Redux Form.  This handy node package comes with a suite of methods, has its own reducer and makes creating form easy.  However whenever we would use our form to create a new bracket we would get locked out of signing in as that user.
+
+After extensive bug hunting in our User Authentication form we found that Redux Forms were not clearing their fields after submitting. We also discovered what we thought were many small forms were really one big connected form.  Therefore whenever we send a form to create a bracket we were also sending the database an existing user with a unhashed password.  We fixed this by chaining a promise to the end of the dispatch request that cleared the form.
+
+```javascript
+this.props.createBracket(bracket)
+.then((response) => {
+  let bracket = response.data;
+  this.props.navigation.navigate('BracketDetail', { bracket });
+})
+.then(() => {
+  this.props.reset();
+})
+
+```
 ### Ali Haq
 
 ### Zuhair Shaikh
@@ -98,7 +115,8 @@ There are a couple things we planned to develop that would set BracketRunner apa
 
 #### Nick Whitson
 
-[Github](https://github.com/newhitson) | [LinkedIn](https://www.linkedin.com/in/newhitson/)
+[Github](https://github.com/newhitson) |
+[LinkedIn](https://www.linkedin.com/in/newhitson/)
 
 #### Ali Haq
 

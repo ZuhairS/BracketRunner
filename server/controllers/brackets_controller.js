@@ -85,7 +85,7 @@ const userQueries = entrants => {
   for (let i = 0; i <= Object.keys(entrants).length; i++) {
     promiseArr.push(
       User.findOne({ username: entrants[i] }).then(
-        user => (entrants[entrants[i]] = user ? user : {username : entrants[i], avatarUrl: "https://res.cloudinary.com/dj1l8etr0/image/upload/v1503705392/1497605502_bzref2.png"})
+        user => (entrants[entrants[i]] = user ? user : {username : entrants[i], avatarUrl: "https://res.cloudinary.com/dj1l8etr0/image/upload/v1504044232/images_zhegis.jpg"})
       )
     );
   }

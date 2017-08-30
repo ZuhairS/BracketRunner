@@ -26,6 +26,15 @@ export default class BracketDetail extends Component {
     this.onEditPress = this.onEditPress.bind(this);
     this.ShowEditButton = this.ShowEditButton.bind(this);
     this.goBack = this.goBack.bind(this);
+    this.showProfile = this.showProfile.bind(this);
+  }
+  showProfile(bracket, matchIndex, player) {
+    player = bracket.matches[matchIndex].pairing[player]
+    if(player !== "Pending"){
+      return (
+          <Image source={{ uri: this.props.selectedBracket.entrants[player].avatarUrl }} style={styles.avatar} />
+      )
+    }
   }
 
   onLearnMore(user) {
@@ -54,7 +63,7 @@ export default class BracketDetail extends Component {
 
   render() {
     const { bracket } = this.props.navigation.state.params;
-
+    
     return (
       <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <TouchableOpacity style={styles.backButton} onPress={() => this.goBack()}>
@@ -73,6 +82,7 @@ export default class BracketDetail extends Component {
     {/*Match 1*/}
               <View style={styles.match}>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
+                  <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[0].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
                   <View style={styles.matchUpContainer}>
@@ -92,13 +102,13 @@ export default class BracketDetail extends Component {
                   {this.ShowEditButton(bracket, 0)}
                 </View>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
+                <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[0].pairing.player2].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
               </View>
     {/*Match 2*/}
               <View style={styles.match}>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
+                  <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[1].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
                   <View style={styles.matchUpContainer}>
@@ -118,13 +128,13 @@ export default class BracketDetail extends Component {
                   {this.ShowEditButton(bracket, 1)}
                 </View>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
+                  <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[1].pairing.player2].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
               </View>
     {/*Match 3*/}
               <View style={styles.match}>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
+                  <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[2].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
                   <View style={styles.matchUpContainer}>
@@ -144,13 +154,13 @@ export default class BracketDetail extends Component {
                   {this.ShowEditButton(bracket, 2)}
                 </View>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
+                  <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[2].pairing.player2].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
               </View>
     {/*Match 4*/}
               <View style={styles.match}>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
+                  <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[3].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
                   <View style={styles.matchUpContainer}>
@@ -170,7 +180,7 @@ export default class BracketDetail extends Component {
                   {this.ShowEditButton(bracket, 3)}
                 </View>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
+                  <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[3].pairing.player2].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -182,7 +192,7 @@ export default class BracketDetail extends Component {
       {/*Match 5*/}
               <View style={styles.match}>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
+                  {this.showProfile(bracket, 4, "player1")}
                 </TouchableOpacity>
                 <View>
                   <View style={styles.matchUpContainer}>
@@ -202,14 +212,14 @@ export default class BracketDetail extends Component {
                   {this.ShowEditButton(bracket, 4)}
                 </View>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
+                  {this.showProfile(bracket, 4, "player2")}
                 </TouchableOpacity>
               </View>
       {/*Match 6*/}
               <View style={styles.match}>
 
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
+                  {this.showProfile(bracket, 5, "player1")}
                 </TouchableOpacity>
                 <View>
                   <View style={styles.matchUpContainer}>
@@ -229,7 +239,7 @@ export default class BracketDetail extends Component {
                   {this.ShowEditButton(bracket, 5)}
                 </View>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
+                  {this.showProfile(bracket, 5, "player2")}
                 </TouchableOpacity>
 
               </View>
@@ -242,7 +252,7 @@ export default class BracketDetail extends Component {
               <View style={styles.match}>
     {/*Match 7*/}
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 1 profile pic */}
+                  {this.showProfile(bracket, 6, "player1")}
                 </TouchableOpacity>
                 <View>
                   <View style={styles.matchUpContainer}>
@@ -262,7 +272,7 @@ export default class BracketDetail extends Component {
                   {this.ShowEditButton(bracket, 6)}
                 </View>
                 <TouchableOpacity style={styles.playerPicture} onPress={() => this.onLearnMore()}>
-                  {/* player 2 profile pic */}
+                  {this.showProfile(bracket, 6, "player2")}
                 </TouchableOpacity>
               </View>
             </View>
@@ -274,6 +284,12 @@ export default class BracketDetail extends Component {
 } //Bracket
 
 const styles = StyleSheet.create({
+  avatar: {
+    width: 55,
+    height: 57,
+    borderRadius: 27,
+    alignSelf: 'center'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
