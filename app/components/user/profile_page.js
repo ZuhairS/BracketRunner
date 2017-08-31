@@ -138,6 +138,7 @@ ProfilePage = class ProfilePage extends Component {
 
   render() {
     let user = this.props.state.auth.user;
+    console.log(this.props);
     return (
       <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <ImageBackground

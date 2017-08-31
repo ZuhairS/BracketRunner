@@ -55,6 +55,8 @@ exports.signup = function(req, res, next) {
         if (error) {
           return next(error);
         }
+        console.log(user);
+      
         res.json({ user: user, token: tokenForUser(user) });
       });
     }
