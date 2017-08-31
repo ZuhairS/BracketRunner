@@ -138,7 +138,6 @@ ProfilePage = class ProfilePage extends Component {
 
   render() {
     let user = this.props.state.auth.user;
-    console.log(this.props);
     return (
       <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <ImageBackground
@@ -219,7 +218,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     paddingLeft: 20,
     paddingVertical: 5,
-    fontSize: 25,
+    fontSize: 15,
     color: 'white',
     fontFamily: 'Verdana-Bold'
   },
