@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     paddingLeft: 20,
     paddingVertical: 5,
-    fontSize: 25,
+    fontSize: 15,
     color: 'white',
     fontFamily: 'Verdana-Bold'
   },
