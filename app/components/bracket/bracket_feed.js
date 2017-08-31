@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity,
   ScrollView,
   Linking
@@ -79,7 +80,7 @@ export default class BracketFeed extends Component{
     });
 
     return (
-      <View style={styles.bracketContainer}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.bracketContainer}>
         <TouchableOpacity
           style={styles.createBracketButton}
           onPress={() => this.onCreateBracketPress()}
@@ -90,7 +91,7 @@ export default class BracketFeed extends Component{
         <ScrollView>
           { allLiveBrackets }
         </ScrollView>
-      </View>
+      </Image>
     );
   }
 }//BracketMatchesIndex
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     height: 450,
     width: '100%',
     padding: 20,
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderLeftWidth: 5,
     borderRightWidth: 5,
     borderColor: '#000',
@@ -121,26 +122,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     padding: 8,
-    color: 'yellow'
+    color: 'yellow',
+    fontFamily: 'Verdana-Bold'
   },
   header: {
     marginBottom: 40,
     fontWeight: 'bold',
     color: 'yellow',
     fontSize: 28,
+    fontFamily: 'Verdana-Bold'
   },
   bracketButton: {
     marginBottom: 15,
-    borderBottomWidth: .3,
+    borderBottomWidth: 1.2,
     borderColor: 'yellow',
     borderRadius: 15,
     height: 90,
-    width: 330,
+    width: 320,
   },
   bracketTitle: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
+    fontFamily: 'Verdana-Bold'
   },
   gameTextContainer: {
 
@@ -148,17 +152,19 @@ const styles = StyleSheet.create({
   gameText: {
     color: 'white',
     fontSize: 13,
+    fontFamily: 'Verdana'
   },
   streamLink: {
     color: 'yellow',
     paddingTop: 10,
     width: 100,
-
+    fontFamily: 'Verdana'
   },
   live: {
     color: 'yellow',
     paddingTop: 0,
     alignSelf: 'flex-end',
+    fontFamily: 'Verdana'
   }
 });
 

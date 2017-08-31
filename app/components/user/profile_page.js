@@ -48,7 +48,7 @@ ProfilePage = class ProfilePage extends Component {
             <Text style={styles.header}>About</Text>
           </View>
           <View rkCardContent>
-            <Text style={styles.userText}>Write somting about yourself</Text>
+            <Text style={styles.userText}>Write something about yourself</Text>
           </View>
         </RkCard>
       );
@@ -64,7 +64,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your Youtube link</Text>;
+      return <Text style={styles.userText}>No link provided</Text>;
     }
   }
 
@@ -77,7 +77,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your twitch link</Text>;
+      return <Text style={styles.userText}>No link provided</Text>;
     }
   }
 
@@ -90,7 +90,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your twitter link</Text>;
+      return <Text style={styles.userText}>No link provided</Text>;
     }
   }
 
@@ -101,7 +101,7 @@ ProfilePage = class ProfilePage extends Component {
         <Image source={{ uri: user.sponserImageUrl }} style={styles.avatar} />
       );
     } else {
-      return <Text style={styles.userText}>Add your sponsers Image link</Text>;
+      return <Text style={styles.userText}></Text>;
     }
   }
 
@@ -128,7 +128,7 @@ ProfilePage = class ProfilePage extends Component {
         </Text>
       );
     } else {
-      return <Text style={styles.userText}>Add your Sponsers Name</Text>;
+      return <Text style={styles.userText}>Add your Sponser's Name</Text>;
     }
   }
 
@@ -139,7 +139,7 @@ ProfilePage = class ProfilePage extends Component {
   render() {
     let user = this.props.state.auth.user;
     return (
-      <View>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <ImageBackground
           source={require('./default.png')}
           style={styles.profileBackground}
@@ -166,7 +166,7 @@ ProfilePage = class ProfilePage extends Component {
 
           <View rkCardContent>
             <Text style={styles.userText}>
-              You Tube: {this.youTube()}
+              YouTube: {this.youTube()}
             </Text>
             <Text style={styles.userText}>
               Twitch: {this.twitch()}
@@ -185,13 +185,13 @@ ProfilePage = class ProfilePage extends Component {
           <View rkCardContent>
             <View style={styles.sponserContainer}>
               <Text style={styles.userText}>
-                Sponser Name {this.sponserName()}
+                Sponser Name: {this.sponserName()}
               </Text>
               {this.sponserImage()}
             </View>
           </View>
         </RkCard>
-      </View>
+      </Image>
     );
   }
 };
@@ -208,32 +208,45 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
   avatar: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    marginBottom: 5,
+    width: 140,
+    height: 140,
+    borderRadius: 70,
     alignSelf: 'center'
   },
   nameText: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     paddingLeft: 20,
     paddingVertical: 5,
     fontSize: 25,
-    color: 'white'
+    color: 'white',
+    fontFamily: 'Verdana-Bold'
   },
   tab1: {
-    backgroundColor: '#424242'
+    backgroundColor: 'transparent',
+    borderBottomWidth: .8,
+    borderBottomColor: 'yellow',
   },
   tab2: {
-    backgroundColor: '#424242'
+    backgroundColor: 'transparent',
+    borderBottomWidth: .8,
+    borderBottomColor: 'yellow',
   },
   tab3: {
-    backgroundColor: '#424242'
+    backgroundColor: 'transparent',
+    borderBottomWidth: .8,
+    borderBottomColor: 'yellow',
   },
   header: {
-    color: 'yellow'
+    color: 'yellow',
+    fontSize: 16,
+    textAlign: 'center',
+    fontFamily: 'Verdana-Bold'
   },
   userText: {
-    color: 'white'
+    color: 'white',
+    fontSize: 14,
+    fontFamily: 'Verdana-Bold'
   },
   sponserContainer: {}
 });

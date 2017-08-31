@@ -8,7 +8,8 @@ import {
   View,
   TouchableOpacity,
   NavigatorIOS,
-  TextInput
+  TextInput,
+  Image
 } from 'react-native';
 //imported components
 import AlertContainer from '../alerts/alert_container';
@@ -55,7 +56,7 @@ BracketForm = class BracketForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <View style={styles.container}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <View style={styles.titleContainer}>
 
           <Field name="title" component={renderInput} label="Bracket Name"/>
@@ -85,7 +86,7 @@ BracketForm = class BracketForm extends Component {
           </TouchableOpacity>
         </View>
         <AlertContainer />
-      </View>
+      </Image>
     );
   }
 };
@@ -98,7 +99,7 @@ const renderInput = ({ label, input: { onChange, ...restInput } }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderColor: 'yellow',
     color: 'white',
     lineHeight: 30,
@@ -109,14 +110,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
     height: 45,
     width: 250,
-    fontSize: 16,
+    fontSize: 18,
+    fontFamily: 'Verdana-Bold'
   },
   container: {
     backgroundColor: '#333',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-
   },
   input: {
     color: '#333',
@@ -130,9 +131,11 @@ const styles = StyleSheet.create({
     width: 250,
     textAlign: 'center',
     fontSize: 16,
+    fontFamily: 'Verdana'
   },
   title: {
-    color: '#2D3336'
+    color: '#2D3336',
+    fontFamily: 'Verdana-Bold'
   },
   avatar: {
     width: 120,
