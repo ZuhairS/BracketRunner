@@ -28,7 +28,7 @@ Beyond these we used:
 
 ### Nick Whitson
 
-####This isn't even our final form
+#### This isn't even our final form
 
 The funniest bug that we encountered had to do with an update to Redux Form.  This handy node package comes with a suite of methods, has its own reducer and makes creating form easy.  However whenever we would use our form to create a new bracket we would get locked out of signing in as that user.
 
@@ -49,7 +49,7 @@ this.props.createBracket(bracket)
 
 ### Zuhair Shaikh
 
-#### Waiting for a Promise
+#### Waiting on a Promise
 
 One of the features that we really wanted was for the app to automatically realize when a registered user was entered as a player in a tournament bracket. Doing so would allow us to have easy access to related information, such as their profile image, on the frontend.
 
