@@ -42,13 +42,13 @@ export const ProfilePageStack = StackNavigator({
   ProfilePage: {
     screen: ProfilePage,
     navigationOptions: {
-      title: 'Profile Page'
+      title: 'Profile'
     }
   },
   ProfilePageForm: {
     screen: ProfilePageForm,
     navigationOptions: {
-      title: 'Profile Page Edit'
+      title: 'Edit Profile'
     }
   }
 });
@@ -134,6 +134,12 @@ export const BracketFormStack = StackNavigator({
     screen: BracketDetail,
     navigationOptions: {
       title: 'Bracket Detail'
+    }
+  },
+  ResultForm: {
+    screen: ResultForm,
+    navigationOptions: {
+      // title: 'Edit Results'
     }
   }
 });

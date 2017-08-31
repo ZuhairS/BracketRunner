@@ -63,11 +63,12 @@ export default class BracketDetail extends Component {
 
   render() {
     const { bracket } = this.props.navigation.state.params;
+    
     return (
-      <View style={styles.container}>
+      <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
         <TouchableOpacity style={styles.backButton} onPress={() => this.goBack()}>
           <Text style={styles.backButtonText}>
-            back
+            Bracket Feed
           </Text>
         </TouchableOpacity>
         <View>
@@ -84,9 +85,17 @@ export default class BracketDetail extends Component {
                   <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[0].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={styles.matchup}>
-                    {bracket.matches[0].pairing.player1} vs {bracket.matches[0].pairing.player2}
-                  </Text>
+                  <View style={styles.matchUpContainer}>
+                    <Text style={styles.matchupLeft}>
+                      {bracket.matches[0].pairing.player1}
+                    </Text>
+                    <Text style={styles.vs}>
+                      vs
+                    </Text>
+                    <Text style={styles.matchupRight}>
+                      {bracket.matches[0].pairing.player2}
+                    </Text>
+                  </View>
                   <Text style={styles.resultText}>
                     {bracket.matches[0].result.player1Score} - {bracket.matches[0].result.player2Score}
                   </Text>
@@ -102,9 +111,17 @@ export default class BracketDetail extends Component {
                   <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[1].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={styles.matchup}>
-                    {bracket.matches[1].pairing.player1} vs {bracket.matches[1].pairing.player2}
-                  </Text>
+                  <View style={styles.matchUpContainer}>
+                    <Text style={styles.matchupLeft}>
+                      {bracket.matches[1].pairing.player1}
+                    </Text>
+                    <Text style={styles.vs}>
+                      vs
+                    </Text>
+                    <Text style={styles.matchupRight}>
+                      {bracket.matches[1].pairing.player2}
+                    </Text>
+                  </View>
                   <Text style={styles.resultText}>
                     {bracket.matches[1].result.player1Score} - {bracket.matches[1].result.player2Score}
                   </Text>
@@ -120,9 +137,17 @@ export default class BracketDetail extends Component {
                   <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[2].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={styles.matchup}>
-                    {bracket.matches[2].pairing.player1} vs {bracket.matches[2].pairing.player2}
-                  </Text>
+                  <View style={styles.matchUpContainer}>
+                    <Text style={styles.matchupLeft}>
+                      {bracket.matches[2].pairing.player1}
+                    </Text>
+                    <Text style={styles.vs}>
+                      vs
+                    </Text>
+                    <Text style={styles.matchupRight}>
+                      {bracket.matches[2].pairing.player2}
+                    </Text>
+                  </View>
                   <Text style={styles.resultText}>
                     {bracket.matches[2].result.player1Score} - {bracket.matches[2].result.player2Score}
                   </Text>
@@ -138,9 +163,17 @@ export default class BracketDetail extends Component {
                   <Image source={{ uri: this.props.selectedBracket.entrants[bracket.matches[3].pairing.player1].avatarUrl }} style={styles.avatar} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={styles.matchup}>
-                    {bracket.matches[3].pairing.player1} vs {bracket.matches[3].pairing.player2}
-                  </Text>
+                  <View style={styles.matchUpContainer}>
+                    <Text style={styles.matchupLeft}>
+                      {bracket.matches[3].pairing.player1}
+                    </Text>
+                    <Text style={styles.vs}>
+                      vs
+                    </Text>
+                    <Text style={styles.matchupRight}>
+                      {bracket.matches[3].pairing.player2}
+                    </Text>
+                  </View>
                   <Text style={styles.resultText}>
                     {bracket.matches[3].result.player1Score} - {bracket.matches[3].result.player2Score}
                   </Text>
@@ -162,9 +195,17 @@ export default class BracketDetail extends Component {
                   {this.showProfile(bracket, 4, "player1")}
                 </TouchableOpacity>
                 <View>
-                  <Text style={styles.matchup}>
-                    {bracket.matches[4].pairing.player1} vs {bracket.matches[4].pairing.player2}
-                  </Text>
+                  <View style={styles.matchUpContainer}>
+                    <Text style={styles.matchupLeft}>
+                      {bracket.matches[4].pairing.player1}
+                    </Text>
+                    <Text style={styles.vs}>
+                      vs
+                    </Text>
+                    <Text style={styles.matchupRight}>
+                      {bracket.matches[4].pairing.player2}
+                    </Text>
+                  </View>
                   <Text style={styles.resultText}>
                     {bracket.matches[4].result.player1Score} - {bracket.matches[4].result.player2Score}
                   </Text>
@@ -181,9 +222,17 @@ export default class BracketDetail extends Component {
                   {this.showProfile(bracket, 5, "player1")}
                 </TouchableOpacity>
                 <View>
-                  <Text style={styles.matchup}>
-                    {bracket.matches[5].pairing.player1} vs {bracket.matches[5].pairing.player2}
-                  </Text>
+                  <View style={styles.matchUpContainer}>
+                    <Text style={styles.matchupLeft}>
+                      {bracket.matches[5].pairing.player1}
+                    </Text>
+                    <Text style={styles.vs}>
+                      vs
+                    </Text>
+                    <Text style={styles.matchupRight}>
+                      {bracket.matches[5].pairing.player2}
+                    </Text>
+                  </View>
                   <Text style={styles.resultText}>
                     {bracket.matches[5].result.player1Score} - {bracket.matches[5].result.player2Score}
                   </Text>
@@ -206,9 +255,17 @@ export default class BracketDetail extends Component {
                   {this.showProfile(bracket, 6, "player1")}
                 </TouchableOpacity>
                 <View>
-                  <Text style={styles.matchup}>
-                    {bracket.matches[6].pairing.player1} vs {bracket.matches[6].pairing.player2}
-                  </Text>
+                  <View style={styles.matchUpContainer}>
+                    <Text style={styles.matchupLeft}>
+                      {bracket.matches[6].pairing.player1}
+                    </Text>
+                    <Text style={styles.vs}>
+                      vs
+                    </Text>
+                    <Text style={styles.matchupRight}>
+                      {bracket.matches[6].pairing.player2}
+                    </Text>
+                  </View>
                   <Text style={styles.resultText}>
                     {bracket.matches[6].result.player1Score} - {bracket.matches[6].result.player2Score}
                   </Text>
@@ -221,7 +278,7 @@ export default class BracketDetail extends Component {
             </View>
           </View>
         </Swiper>
-      </View>
+      </Image>
     );
   } //render
 } //Bracket
@@ -239,7 +296,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingTop: 25,
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     borderLeftWidth: 5,
     borderRightWidth: 5,
     borderColor: '#000'
@@ -259,18 +316,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: 'yellow',
+    fontFamily: 'Verdana-Bold'
   },
   editButton: {
     position: 'absolute',
     top: -30,
-    right: 105
+    right: 105,
   },
   header: {
-    marginTop: 20,
+    marginTop: 35,
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'yellow'
+    color: 'yellow',
+    fontFamily: 'Verdana-Bold'
   },
   wrapper: {},
   slide: {
@@ -282,45 +341,46 @@ const styles = StyleSheet.create({
     flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#333'
+    backgroundColor: 'transparent'
   },
   slide2: {
     flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#333'
+    backgroundColor: 'transparent'
   },
   slide3: {
     flex: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#333'
+    backgroundColor: 'transparent'
   },
   text: {
     color: '#fff',
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'Verdana-Bold'
   },
   body: {
     alignSelf: 'stretch',
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
   round: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     paddingBottom: 15,
-    paddingTop: 25,
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
+    fontFamily: 'Verdana-Bold'
   },
   match: {
-    backgroundColor: '#333',
+    backgroundColor: 'transparent',
     height: 70,
     width: 330,
     flexDirection: 'row',
@@ -328,23 +388,46 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 10,
     marginBottom: 10,
-    borderBottomWidth: 0.3,
+    borderBottomWidth: .5,
     borderColor: 'yellow'
   },
-  matchup: {
+  matchUpContainer: {
+    flexDirection: 'row',
+  },
+  vs: {
     textAlign: 'center',
     alignSelf: 'center',
-    fontSize: 15,
-    width: 230,
-    paddingLeft: 20,
-    paddingRight: 20,
+    fontSize: 14,
+    width: 30,
+    paddingLeft: 5,
+    paddingRight: 5,
     color: 'white',
-    fontWeight: 'bold'
+    fontFamily: 'Verdana-Bold'
+  },
+  matchupRight: {
+    fontSize: 15,
+    width: 105,
+    paddingLeft: 5,
+    paddingRight: 5,
+    color: 'white',
+    textAlign: 'left',
+    fontFamily: 'Verdana-Bold'
+  },
+  matchupLeft: {
+    fontSize: 15,
+    width: 100,
+    paddingLeft: 5,
+    paddingRight: 5,
+    color: 'white',
+    textAlign: 'right',
+    fontFamily: 'Verdana-Bold'
   },
   resultText: {
     color: 'yellow',
     fontWeight: 'bold',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontSize: 15,
+    fontFamily: 'Verdana-Bold'
   },
   playerPicture: {
     borderWidth: 1,

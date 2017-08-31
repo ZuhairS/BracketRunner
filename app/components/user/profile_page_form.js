@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     height: 45,
     width: 250,
-    fontSize: 16,
+    fontSize: 18,
+    fontFamily: 'Verdana-Bold'
   },
   container: {
     backgroundColor: '#333',
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
     width: 250,
     textAlign: 'center',
     fontSize: 16,
+    fontFamily: 'Verdana'
   },
   inputs: {
     color: '#333',
