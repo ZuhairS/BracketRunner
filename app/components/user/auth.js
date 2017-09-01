@@ -70,7 +70,7 @@ Auth = class Auth extends Component {
   render() {
     return (
       <Image source={ {uri: 'https://www.walldevil.com/wallpapers/a39/shoutbox-twitter-background-gamers-style-images-twisted.jpg'} } style={styles.container}>
-        <Image source={require('./logo.jpg')}
+        <Image source={require('./logo.png')}
                style={styles.avatar}/>
         <View style={styles.titleContainer}>
 
