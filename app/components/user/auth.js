@@ -41,8 +41,9 @@ Auth = class Auth extends Component {
   }
 
   guestAccount(values) {
+    let rand = Math.floor(Math.random() * 0xFFF).toString(16);
     this.props
-      .logInUser({email:"Guest@guest.com", username:"Guest", password:"guest"})
+      .signUpUser({email: `Guest${rand}@guest.com`, username: `Guest${rand}`, password: "guest"})
       .then(() => {
         this.props.reset();
       })
