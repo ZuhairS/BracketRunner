@@ -42,7 +42,7 @@ Auth = class Auth extends Component {
 
   guestAccount(values) {
     this.props
-      .logInUser({email:"guest@guest.com", password:"guest"})
+      .logInUser({email:"guest@guest.com", username:"guest", password:"guest"})
       .then(() => {
         this.props.reset();
       })
