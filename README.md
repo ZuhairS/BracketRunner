@@ -26,6 +26,59 @@ Beyond these we used:
 
 ### Zach Greathouse
 
+#### Navigating mobile
+
+Learning navigation for a mobile app was challenging. With web applications, navigation is simply based on parsing the url and moving through a 'path'. Of course with mobile applications there is no url to parse. We needed to find a React-Native module to assist us in breaking up components into pages and modals. Finding a good navigation module was a challenge, as there are very many deprecated or OS specific modules we needed to sift through. We ended up going with React Navigation, as it is not OS specific and holds its own state to allow one to pass props through navigation to navigate to specific pages. For example: navigating from a bracket feed to a bracket detail of a specific bracket. Below is a snippet from the router where we built the bracket feed stack, and a couple of snippets from the bracket feed component where we implemented said navigation.
+
+```javascript
+// app/components/config/router.js
+export const BracketStack = StackNavigator({
+  BracketFeed: {
+    screen: BracketFeed,
+    navigationOptions: {
+      // title: 'Bracket Feed'
+    }
+  },
+  BracketDetail: {
+    screen: BracketDetailStack,
+    navigationOptions: {
+      // title: 'Bracket Detail'
+    }
+  },
+  ResultForm: {
+    screen: ResultForm,
+    navigationOptions: {
+      // title: 'Edit Results'
+    }
+  }
+});
+
+// app/components/bracket/bracket_feed.js
+
+onLearnMore(bracket) {
+  this.props.navigation.navigate('BracketDetail', { bracket });
+}
+
+// app/components/bracket/bracket_feed.js (render function)
+const allLiveBrackets = liveBrackets.map((bracket, idx) => {
+  return (
+    <View key={`bracket-${idx}`} bracket={ bracket }>
+      <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore(bracket)}>
+        <Text style={styles.bracketTitle}>{bracket.title}</Text>
+        <View style={styles.timeContainer}>
+          <Text style={styles.gameText}>{bracket.game}</Text>
+          {this.tourneyStream()}
+          <Text style={styles.live}>{this.isLive()}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+  )
+
+});
+```
+
+
+
 ### Nick Whitson
 
 #### This isn't even our final form
