@@ -87,9 +87,9 @@ const allLiveBrackets = liveBrackets.map((bracket, idx) => {
 
 #### This isn't even our final form
 
-The funniest bug that we encountered had to do with an update to Redux Form.  This handy node package comes with a suite of methods, has its own reducer and makes creating form easy.  However whenever we would use our form to create a new bracket we would get locked out of signing in as that user.
+The funniest bug that we encountered had to do with an update to Redux Form. This handy node package comes with a suite of methods, has its own reducer, and makes creating forms easy. However whenever we would use our form to create a new bracket we would get locked out of signing in as that user.
 
-After extensive bug hunting in our User Authentication form we found that Redux Forms were not clearing their fields after submitting. We also discovered what we thought were many small forms were really one big connected form.  Therefore whenever we send a form to create a bracket we were also sending the database an existing user with a unhashed password.  We fixed this by chaining a promise to the end of the dispatch request that cleared the form.
+After extensive bug hunting in our User Authentication form we found that Redux Forms were not clearing their fields after being submitted. We also discovered what we thought were many small forms were really one big connected form. Therefore whenever we send a form to create a bracket we were also sending the database an existing user with an unhashed password. We fixed this by chaining a promise to the end of the dispatch request which cleared the form.
 
 ```javascript
 this.props.createBracket(bracket)
@@ -161,7 +161,6 @@ There are a couple things we planned to develop that would set BracketRunner apa
 - [ ] Receive Push Notifications for when a tournament, match or player starts/stops playing.
 - [ ] Allow creation of multiple types of bracket.
 - [ ] Get BracketRunner listed on App Store.
-
 
 
 ## Developers
