@@ -1,5 +1,7 @@
 # BracketRunner
 
+![Logo](docs/BracketRunnerLogo.png)
+
 Link to Demo Page
 
 **Gif/Image**
