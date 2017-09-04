@@ -6,6 +6,10 @@ Link to Demo Page
 
 ## Background
 
+One thing all of us share is a passion for competitive gaming. This ranges from Esports to Trading Card Games. Nick, having a background in playing, judging and organizing tournaments for Magic: The Gathering, and myself (Zach), having experience as a ranked competitor in the Northern California Super Smash Bros for WiiU community, came up with the idea for this application independently. Zuhair, being a League of Legends Esports enthusiast, and Ali, being an Esport enthusiast for the Super Smash Brothers series, were both talented programmers who shared Nick and I's passion.
+
+We felt that the current tournament bracket applications used for running tournaments were missing something. Our goal was to develop a game agnostic tournament bracket runner which assisted Tournament Organizers in running their tournaments, enhanced participant's experience competing in a given bracket, and gave spectators an enriched experience following a bracket. Currently the app is at its foundation, upon which we look forward to adding more of the other unique features, such as following users and bracket push notifications.
+
 ## Technologies
 
 BracketRunner is developed primarily using the MERN stack which is made up of the following technologies:
