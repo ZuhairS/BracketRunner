@@ -6,6 +6,10 @@ Link to Demo Page
 
 ## Background
 
+One thing all of us share is a passion for competitive gaming. This ranges from Esports to Trading Card Games. Nick, having a background in playing, judging and organizing tournaments for Magic: The Gathering, and myself (Zach), having experience as a ranked competitor in the Northern California Super Smash Bros for WiiU community, came up with the idea for this application independently. Zuhair, being a League of Legends Esports enthusiast, and Ali, being an Esport enthusiast for the Super Smash Brothers series, were both talented programmers who shared Nick and I's passion.
+
+We felt that the current tournament bracket applications used for running tournaments were missing something. Our goal was to develop a game agnostic tournament bracket runner which assisted Tournament Organizers in running their tournaments, enhanced participant's experience competing in a given bracket, and gave spectators an enriched experience following a bracket. Currently the app is at its foundation, upon which we look forward to adding more of the other unique features, such as following users and bracket push notifications.
+
 ## Technologies
 
 BracketRunner is developed primarily using the MERN stack which is made up of the following technologies:
@@ -26,13 +30,66 @@ Beyond these we used:
 
 ### Zach Greathouse
 
+#### Navigating mobile
+
+Learning navigation for a mobile app was challenging. With web applications, navigation is simply based on parsing the url and moving through a 'path'. Of course with mobile applications there is no url to parse. We needed to find a React-Native module to assist us in breaking up components into pages and modals. Finding a good navigation module was a challenge, as there are very many deprecated or OS specific modules we needed to sift through. We ended up going with React Navigation, as it is not OS specific and holds its own state to allow one to pass props through navigation to navigate to specific pages. For example: navigating from a bracket feed to a bracket detail of a specific bracket. Below is a snippet from the router where we built the bracket feed stack, and a couple of snippets from the bracket feed component where we implemented said navigation.
+
+```javascript
+// app/components/config/router.js
+export const BracketStack = StackNavigator({
+  BracketFeed: {
+    screen: BracketFeed,
+    navigationOptions: {
+      // title: 'Bracket Feed'
+    }
+  },
+  BracketDetail: {
+    screen: BracketDetailStack,
+    navigationOptions: {
+      // title: 'Bracket Detail'
+    }
+  },
+  ResultForm: {
+    screen: ResultForm,
+    navigationOptions: {
+      // title: 'Edit Results'
+    }
+  }
+});
+
+// app/components/bracket/bracket_feed.js
+
+onLearnMore(bracket) {
+  this.props.navigation.navigate('BracketDetail', { bracket });
+}
+
+// app/components/bracket/bracket_feed.js (render function)
+const allLiveBrackets = liveBrackets.map((bracket, idx) => {
+  return (
+    <View key={`bracket-${idx}`} bracket={ bracket }>
+      <TouchableOpacity style={styles.bracketButton} onPress={() => this.onLearnMore(bracket)}>
+        <Text style={styles.bracketTitle}>{bracket.title}</Text>
+        <View style={styles.timeContainer}>
+          <Text style={styles.gameText}>{bracket.game}</Text>
+          {this.tourneyStream()}
+          <Text style={styles.live}>{this.isLive()}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
+  )
+
+});
+```
+
+
+
 ### Nick Whitson
 
 #### This isn't even our final form
 
-The funniest bug that we encountered had to do with an update to Redux Form.  This handy node package comes with a suite of methods, has its own reducer and makes creating form easy.  However whenever we would use our form to create a new bracket we would get locked out of signing in as that user.
+The funniest bug that we encountered had to do with an update to Redux Form. This handy node package comes with a suite of methods, has its own reducer, and makes creating forms easy. However whenever we would use our form to create a new bracket we would get locked out of signing in as that user.
 
-After extensive bug hunting in our User Authentication form we found that Redux Forms were not clearing their fields after submitting. We also discovered what we thought were many small forms were really one big connected form.  Therefore whenever we send a form to create a bracket we were also sending the database an existing user with a unhashed password.  We fixed this by chaining a promise to the end of the dispatch request that cleared the form.
+After extensive bug hunting in our User Authentication form we found that Redux Forms were not clearing their fields after being submitted. We also discovered what we thought were many small forms were really one big connected form. Therefore whenever we send a form to create a bracket we were also sending the database an existing user with an unhashed password. We fixed this by chaining a promise to the end of the dispatch request which cleared the form.
 
 ```javascript
 this.props.createBracket(bracket)
@@ -104,7 +161,6 @@ There are a couple things we planned to develop that would set BracketRunner apa
 - [ ] Receive Push Notifications for when a tournament, match or player starts/stops playing.
 - [ ] Allow creation of multiple types of bracket.
 - [ ] Get BracketRunner listed on App Store.
-
 
 
 ## Developers
