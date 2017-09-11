@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     justifyContent: 'center',
     alignSelf: 'center',
-    backgroundColor: 'transparent',
   },
   followButton: {
     alignSelf: 'center',
