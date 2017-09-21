@@ -4,8 +4,6 @@
 
 [Link to Demo Page](http://zuhairshaikh.me/BracketRunner-DemoPage)
 
-**Gif/Image**
-
 ## Background
 
 One thing all of us share is a passion for competitive gaming. This ranges from Esports to Trading Card Games. Nick, having a background in playing, acting as a judge and organizing tournaments for Magic: The Gathering, and myself (Zach), having experience as a ranked competitor in the Northern California Super Smash Bros for WiiU community, came up with the idea for this application independently. Zuhair, being a League of Legends Esports enthusiast, and Ali, being an Esport enthusiast for the Super Smash Brothers series, were both talented programmers who shared Nick and my passion.
@@ -86,8 +84,6 @@ const allLiveBrackets = liveBrackets.map((bracket, idx) => {
 
 });
 ```
-
-
 
 ### Nick Whitson
 
